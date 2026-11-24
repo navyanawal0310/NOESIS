@@ -336,11 +336,11 @@ def test_ingestion_job_tracker():
     # Wait for completion (dummy task runs quickly in executor)
     import time
     for _ in range(30):
-        if job1.status in ("completed", "failed"):
+        if job1.status.lower() in ("completed", "failed"):
             break
         time.sleep(0.05)
 
-    assert job1.status == "completed"
+    assert job1.status.lower() == "completed"
     assert job1.progress_percent == 100.0
     assert job1.result == {"entities": 2, "claims": 1}
     assert called is True
