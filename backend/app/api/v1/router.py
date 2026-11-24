@@ -1,5 +1,6 @@
 """FastAPI REST API Routers - v1."""
 
+import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -38,7 +39,12 @@ from backend.app.reasoning.answer_generator import GroundedAnswer, GroundedAnswe
 from backend.app.reasoning.engine import BoundedReasoningEngine
 from backend.app.reasoning.gap_detector import KnowledgeGapDetector
 from backend.app.reasoning.models import ReasoningResult, StructuredQueryPlan
-from backend.app.reasoning.nl_planner import NLQueryPlanner
+from backend.app.reasoning.nl_planner import (
+    AmbiguousEntityError,
+    EntityNotFoundError,
+    NLQueryPlanner,
+    QueryPlanningError,
+)
 
 router = APIRouter(prefix="/api/v1", tags=["NOESIS API v1"])
 
@@ -502,9 +508,11 @@ def execute_natural_query(
     gap_detector: KnowledgeGapDetector = Depends(get_gap_detector),
 ):
     """Translates a natural-language question into a StructuredQueryPlan, executes bounded traversal,
-
     and returns a provenance-grounded answer with gap diagnostics. Returns 503 if Ollama is unavailable.
     """
+    t_start = time.perf_counter()
+    latencies: Dict[str, float] = {}
+
     if not planner.llm_provider or not planner.llm_provider.is_available():
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -516,7 +524,75 @@ def execute_natural_query(
         )
 
     try:
-        plan = planner.plan_query(request.question)
+        plan, plan_status, plan_latencies = planner.plan_query_with_telemetry(request.question)
+        latencies.update(plan_latencies)
+    except EntityNotFoundError as enfe:
+        t_tot = round((time.perf_counter() - t_start) * 1000, 2)
+        latencies["total_ms"] = t_tot
+        return GroundedAnswer(
+            answer=(
+                f"The entity '{enfe.mention}' referenced in the query was not found in the knowledge graph. "
+                "A grounded reasoning path cannot be constructed."
+            ),
+            status="insufficient_evidence",
+            status_code="ENTITY_NOT_FOUND",
+            confidence=0.0,
+            hop_count=0,
+            terminal_entities=[],
+            supporting_document_ids=[],
+            supporting_quotes=[],
+            has_contradictions=False,
+            contradiction_notes=[],
+            gap_diagnostics=None,
+            synthesized_by_llm=False,
+            execution_time_ms=t_tot,
+            executed_plan=None,
+            latencies=latencies,
+        )
+    except AmbiguousEntityError as aee:
+        t_tot = round((time.perf_counter() - t_start) * 1000, 2)
+        latencies["total_ms"] = t_tot
+        names = [c.canonical_name for c in aee.candidates]
+        return GroundedAnswer(
+            answer=(
+                f"Multiple ambiguous candidate entities were detected in the query: {', '.join(names)}. "
+                "Please specify the exact entity name."
+            ),
+            status="insufficient_evidence",
+            status_code="AMBIGUOUS_ENTITY",
+            confidence=0.0,
+            hop_count=0,
+            terminal_entities=[],
+            supporting_document_ids=[],
+            supporting_quotes=[],
+            has_contradictions=False,
+            contradiction_notes=[],
+            gap_diagnostics=None,
+            synthesized_by_llm=False,
+            execution_time_ms=t_tot,
+            executed_plan=None,
+            latencies=latencies,
+        )
+    except QueryPlanningError as qpe:
+        t_tot = round((time.perf_counter() - t_start) * 1000, 2)
+        latencies["total_ms"] = t_tot
+        return GroundedAnswer(
+            answer=f"Failed to generate a valid graph query plan for this question: {str(qpe)}",
+            status="insufficient_evidence",
+            status_code="QUERY_PLANNING_FAILED",
+            confidence=0.0,
+            hop_count=0,
+            terminal_entities=[],
+            supporting_document_ids=[],
+            supporting_quotes=[],
+            has_contradictions=False,
+            contradiction_notes=[],
+            gap_diagnostics=None,
+            synthesized_by_llm=False,
+            execution_time_ms=t_tot,
+            executed_plan=None,
+            latencies=latencies,
+        )
     except (LLMUnavailableError, LLMInferenceError) as lue:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(lue))
     except ValueError as ve:
@@ -525,7 +601,19 @@ def execute_natural_query(
     if request.max_hops and 1 <= request.max_hops <= 5:
         plan.max_hops = request.max_hops
 
+    t_trav_0 = time.perf_counter()
     result = engine.execute_query(plan)
+    latencies["traversal_ms"] = round((time.perf_counter() - t_trav_0) * 1000, 2)
+    latencies["total_ms"] = round((time.perf_counter() - t_start) * 1000, 2)
+
+    status_code = "SUCCESS"
+    if result.status == "insufficient_evidence":
+        if plan.temporal_constraint:
+            status_code = "UNSUPPORTED_CONSTRAINT"
+        else:
+            status_code = "INSUFFICIENT_EVIDENCE"
+    elif result.status == "contradiction_detected":
+        status_code = "CONTRADICTION_DETECTED"
 
     grounded_ans = answer_gen.generate_answer(
         result=result,
@@ -533,6 +621,8 @@ def execute_natural_query(
         question=request.question,
         use_llm=request.use_llm_synthesis or False,
         gap_detector=gap_detector,
+        status_code=status_code,
+        latencies=latencies,
     )
     return grounded_ans
 

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import {
+  Activity,
   AlertTriangle,
   CheckCircle2,
+  ChevronDown,
+  ChevronRight,
   Clock,
   Compass,
   Cpu,
@@ -11,6 +14,7 @@ import {
   Search,
   ShieldAlert,
   Sparkles,
+  Terminal,
 } from 'lucide-react';
 import {
   Claim,
@@ -54,6 +58,7 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
   const [naturalQuestion, setNaturalQuestion] = useState<string>('');
   const [naturalMaxHops, setNaturalMaxHops] = useState<number>(3);
   const [naturalError, setNaturalError] = useState<string | null>(null);
+  const [showExecutedPlan, setShowExecutedPlan] = useState<boolean>(true);
 
   const exampleQuestions = [
     'What organization was founded by Elena Vance?',
@@ -272,27 +277,72 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
       {/* Natural Query Grounded Answer Display */}
       {naturalAnswer && (
         <div className="space-y-6">
-          <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-4 font-mono flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div className="flex items-center space-x-3">
-              {getStatusBadge(naturalAnswer.status)}
-              <span className="text-neutral-500">|</span>
-              <div className="flex items-center space-x-1 text-neutral-300">
-                <Clock className="w-3.5 h-3.5 text-neutral-400" />
-                <span>{naturalAnswer.execution_time_ms} ms</span>
+          <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-4 font-mono space-y-3 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center space-x-3">
+                {getStatusBadge(naturalAnswer.status)}
+                {naturalAnswer.status_code && (
+                  <span
+                    className={`px-2 py-0.5 rounded text-[11px] font-bold ${
+                      naturalAnswer.status_code === 'SUCCESS'
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                        : naturalAnswer.status_code === 'ENTITY_NOT_FOUND'
+                        ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
+                        : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                    }`}
+                  >
+                    {naturalAnswer.status_code}
+                  </span>
+                )}
+                <span className="text-neutral-500">|</span>
+                <div className="flex items-center space-x-1 text-neutral-300">
+                  <Clock className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>{naturalAnswer.execution_time_ms} ms</span>
+                </div>
+                <span className="text-neutral-500">|</span>
+                <div className="flex items-center space-x-1 text-neutral-300">
+                  <Layers className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>{naturalAnswer.hop_count} Hop(s)</span>
+                </div>
               </div>
-              <span className="text-neutral-500">|</span>
-              <div className="flex items-center space-x-1 text-neutral-300">
-                <Layers className="w-3.5 h-3.5 text-neutral-400" />
-                <span>{naturalAnswer.hop_count} Hop(s)</span>
+
+              <div className="flex items-center space-x-2">
+                <span className="text-neutral-400">Path Confidence:</span>
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
+                  {(naturalAnswer.confidence * 100).toFixed(1)}%
+                </span>
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              <span className="text-neutral-400">Path Confidence:</span>
-              <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
-                {(naturalAnswer.confidence * 100).toFixed(1)}%
-              </span>
-            </div>
+            {/* Latency Breakdown Telemetry */}
+            {naturalAnswer.latencies && Object.keys(naturalAnswer.latencies).length > 0 && (
+              <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-graphite-800 text-[11px] text-neutral-400">
+                <span className="text-neutral-500 uppercase tracking-wider flex items-center space-x-1 mr-1">
+                  <Activity className="w-3 h-3 text-amber-400" />
+                  <span>Latencies:</span>
+                </span>
+                {naturalAnswer.latencies.entity_resolution_ms !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-graphite-950 border border-graphite-800">
+                    Resolution: <strong className="text-neutral-200">{naturalAnswer.latencies.entity_resolution_ms} ms</strong>
+                  </span>
+                )}
+                {naturalAnswer.latencies.llm_planning_ms !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-graphite-950 border border-graphite-800">
+                    Planning: <strong className="text-neutral-200">{naturalAnswer.latencies.llm_planning_ms} ms</strong>
+                  </span>
+                )}
+                {naturalAnswer.latencies.traversal_ms !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-graphite-950 border border-graphite-800">
+                    Traversal: <strong className="text-neutral-200">{naturalAnswer.latencies.traversal_ms} ms</strong>
+                  </span>
+                )}
+                {naturalAnswer.latencies.total_ms !== undefined && (
+                  <span className="px-2 py-0.5 rounded bg-graphite-950 border border-graphite-800 text-amber-400">
+                    Total: <strong>{naturalAnswer.latencies.total_ms} ms</strong>
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Answer Text */}
@@ -301,6 +351,63 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
             <p className="text-sm font-sans text-neutral-100 leading-relaxed bg-graphite-950 p-4 rounded border border-graphite-850">
               {naturalAnswer.answer}
             </p>
+
+            {/* Executed Query Plan (Symbolic) */}
+            {naturalAnswer.executed_plan && (
+              <div className="border border-graphite-800 rounded bg-graphite-950 overflow-hidden text-xs">
+                <button
+                  onClick={() => setShowExecutedPlan(!showExecutedPlan)}
+                  className="w-full px-3 py-2 bg-graphite-900/60 hover:bg-graphite-900 flex items-center justify-between text-neutral-300 font-mono transition-colors"
+                >
+                  <div className="flex items-center space-x-2">
+                    <Terminal className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="font-semibold text-neutral-200">Executed Query Plan (Symbolic)</span>
+                    <span className="text-[10px] text-neutral-500 font-normal">
+                      Start: {naturalAnswer.executed_plan.start_entity} | {naturalAnswer.executed_plan.steps.length} step(s)
+                    </span>
+                  </div>
+                  {showExecutedPlan ? (
+                    <ChevronDown className="w-4 h-4 text-neutral-400" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4 text-neutral-400" />
+                  )}
+                </button>
+                {showExecutedPlan && (
+                  <div className="p-3 space-y-2 border-t border-graphite-800 font-mono text-[11px]">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pb-2 border-b border-graphite-850 text-neutral-400">
+                      <div>
+                        Start Entity: <strong className="text-amber-300">{naturalAnswer.executed_plan.start_entity}</strong>
+                      </div>
+                      <div>
+                        Return Type: <strong className="text-neutral-200">{naturalAnswer.executed_plan.return_type || 'ANY'}</strong>
+                      </div>
+                      {naturalAnswer.executed_plan.temporal_constraint && (
+                        <div>
+                          Temporal Scope: <strong className="text-cyan-300">{naturalAnswer.executed_plan.temporal_constraint}</strong>
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1.5 pt-1">
+                      <span className="text-[10px] uppercase text-neutral-500 block">Traversal Steps:</span>
+                      {naturalAnswer.executed_plan.steps.map((st, idx) => (
+                        <div key={idx} className="flex items-center space-x-2 bg-graphite-900 px-2.5 py-1.5 rounded border border-graphite-800">
+                          <span className="text-amber-400 font-bold">{idx + 1}.</span>
+                          <span className="text-neutral-300 uppercase font-semibold">{st.predicate}</span>
+                          <span className="text-neutral-500">
+                            {st.direction === 'incoming' ? '← incoming (from object)' : '→ outgoing (from subject)'}
+                          </span>
+                          {st.target_type && (
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-graphite-950 text-neutral-400 border border-graphite-800">
+                              Target: {st.target_type}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Knowledge Gap Diagnostics */}
             {naturalAnswer.gap_diagnostics && (

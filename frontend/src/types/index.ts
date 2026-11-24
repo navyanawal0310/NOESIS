@@ -67,6 +67,8 @@ export interface StructuredQueryPlan {
   predicate_filter?: string;
   max_hops: number;
   excluded_document_ids?: string[];
+  temporal_constraint?: string;
+  unsupported_constraints?: string[];
 }
 
 export interface PathSegment {
@@ -185,6 +187,15 @@ export interface KnowledgeGap {
 export interface GroundedAnswer {
   answer: string;
   status: 'success' | 'insufficient_evidence' | 'contradiction_detected';
+  status_code?: string;
+  executed_plan?: StructuredQueryPlan | null;
+  latencies?: {
+    entity_resolution_ms?: number;
+    llm_planning_ms?: number;
+    traversal_ms?: number;
+    total_ms?: number;
+    [key: string]: number | undefined;
+  };
   confidence: number;
   hop_count: number;
   terminal_entities: string[];
