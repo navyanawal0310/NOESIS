@@ -101,7 +101,7 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
         return (
           <span className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
             <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Verifiable Path Established</span>
+            <span>Evidentiary Path Traversed</span>
           </span>
         );
       case 'contradiction_detected':

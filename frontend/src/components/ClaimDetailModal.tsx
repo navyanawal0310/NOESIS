@@ -145,7 +145,8 @@ export const ClaimDetailModal: React.FC<ClaimDetailModalProps> = ({ claim, onClo
 
         <div className="mt-5 pt-3 border-t border-graphite-800 flex justify-between items-center text-xs">
           <span className="text-[11px] text-neutral-500 italic font-sans">
-            Quotation matching verifies text existence, not semantic claim correctness.
+            Quotation matching verifies lexical presence in source text, not semantic
+            claim correctness or factual truth.
           </span>
           <button
             onClick={onClose}

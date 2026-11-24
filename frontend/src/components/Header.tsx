@@ -106,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeTab, se
 
           <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Provenance Verified</span>
+            <span className="hidden sm:inline">Lexically Grounded</span>
           </div>
         </div>
       </div>

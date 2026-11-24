@@ -318,10 +318,10 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
             <div className="p-3 bg-graphite-950 rounded border border-graphite-800 flex items-start space-x-2 text-[11px] text-neutral-400 font-sans">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-neutral-300 font-medium">Exact Text Provenance Verification Guarantee</p>
+                <p className="text-neutral-300 font-medium">Lexical Grounding & Text Provenance</p>
                 <p className="mt-0.5 text-neutral-400 leading-relaxed">
-                  Every evidence record mapped to {selectedDoc.id} is verified at character offsets against this raw text.
-                  Quotation matching confirms exact lexical presence in source text, while semantic correctness is maintained via the claim graph.
+                  Evidence quotations mapped to {selectedDoc.id} are verified at exact character offsets against this source text.
+                  Quotation matching verifies lexical presence in the document; it does not establish semantic entailment or factual truth.
                 </p>
               </div>
             </div>
