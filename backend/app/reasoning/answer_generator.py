@@ -1,7 +1,7 @@
 """Grounded Answer Generation from Reasoning Results and Evidentiary Provenance."""
 
 import time
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
@@ -25,6 +25,9 @@ class GroundedAnswer(BaseModel):
     gap_diagnostics: Optional[KnowledgeGap] = None
     synthesized_by_llm: bool = False
     execution_time_ms: float = 0.0
+    status_code: str = "SUCCESS"
+    executed_plan: Optional[StructuredQueryPlan] = None
+    latencies: Dict[str, float] = Field(default_factory=dict)
 
 
 class GroundedAnswerGenerator:
@@ -40,9 +43,12 @@ class GroundedAnswerGenerator:
         question: Optional[str] = None,
         use_llm: bool = False,
         gap_detector: Optional[KnowledgeGapDetector] = None,
+        status_code: Optional[str] = None,
+        latencies: Optional[Dict[str, float]] = None,
     ) -> GroundedAnswer:
         """Synthesizes a grounded answer from reasoning results and evidence quotations."""
         start_time = time.perf_counter()
+        latencies_dict = dict(latencies or {})
 
         # Handle Insufficient Evidence
         if result.status == "insufficient_evidence":
@@ -57,9 +63,12 @@ class GroundedAnswerGenerator:
             )
             elapsed = (time.perf_counter() - start_time) * 1000
 
+            resolved_status_code = status_code or ("UNSUPPORTED_CONSTRAINT" if plan.temporal_constraint else "INSUFFICIENT_EVIDENCE")
+
             return GroundedAnswer(
                 answer=answer_text,
                 status="insufficient_evidence",
+                status_code=resolved_status_code,
                 confidence=0.0,
                 hop_count=result.hop_count,
                 terminal_entities=[],
@@ -70,6 +79,8 @@ class GroundedAnswerGenerator:
                 gap_diagnostics=gap,
                 synthesized_by_llm=False,
                 execution_time_ms=round(elapsed + result.execution_time_ms, 2),
+                executed_plan=plan,
+                latencies=latencies_dict,
             )
 
         # Extract verified facts
@@ -137,9 +148,12 @@ class GroundedAnswerGenerator:
 
         elapsed = (time.perf_counter() - start_time) * 1000
 
+        resolved_status_code = status_code or ("CONTRADICTION_DETECTED" if has_contradictions else "SUCCESS")
+
         return GroundedAnswer(
             answer=final_answer,
             status=result.status,
+            status_code=resolved_status_code,
             confidence=result.confidence,
             hop_count=result.hop_count,
             terminal_entities=matching_names,
@@ -150,4 +164,6 @@ class GroundedAnswerGenerator:
             gap_diagnostics=None,
             synthesized_by_llm=synthesized_by_llm,
             execution_time_ms=round(elapsed + result.execution_time_ms, 2),
+            executed_plan=plan,
+            latencies=latencies_dict,
         )
