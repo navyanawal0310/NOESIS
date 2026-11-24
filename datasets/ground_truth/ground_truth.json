@@ -1,0 +1,1602 @@
+{
+  "corpus": {
+    "documents": [
+      {
+        "id": "DOC_001",
+        "title": "Foundations of Project Prometheus and Cognitive Dynamics",
+        "source_type": "synthetic",
+        "publication_date": "2023-01-15",
+        "source_uri": "synthetic://corpus/doc_001.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nIn early 2021, the Nexus Advanced Research Institute launched Project Prometheus, an ambitious multi-institutional research initiative focused on self-supervised neural representation learning. Dr. Alyssa Vance served as the principal investigator and lead researcher who worked on Project Prometheus during its formative stages. Historical records state that Dr. Alyssa Vance was employed by Nexus Advanced Research Institute prior to her commercial spinout. Following breakthrough results in graph-structured attention, Dr. Alyssa Vance founded Cognitive Dynamics in late 2022 to commercialize neuro-symbolic reasoning systems. Under her technical guidance, Cognitive Dynamics developed the Axiom Semantic Reasoner, a specialized inference engine designed for formal mathematical and ontological verification. Nexus Advanced Research Institute funded Project Prometheus with initial exploratory grants.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_research_report"
+        }
+      },
+      {
+        "id": "DOC_002",
+        "title": "Annual Technical Review of Cognitive Dynamics Corporation",
+        "source_type": "synthetic",
+        "publication_date": "2023-08-20",
+        "source_uri": "synthetic://corpus/doc_002.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nThe 2023 technical audit of Cognitive Dynamics Corporation highlights key structural developments. Cognitive Dynamics is located in Zurich Innovation Center, where it maintains its primary engineering facility. The company confirmed that Cognitive Dynamics developed the Axiom Semantic Reasoner for high-assurance industries. Furthermore, Dr. Clara Weber joined the executive board and was employed by Cognitive Dynamics as strategy director. Records show Dr. Clara Weber collaborated with Dr. Alyssa Vance on multi-agent consensus protocols. The organization actively uses TensorStream Runtime to accelerate inference pipelines. In production testing, Cognitive Dynamics uses Axiom Semantic Reasoner for customer data integrity.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_audit"
+        }
+      },
+      {
+        "id": "DOC_003",
+        "title": "The Genesis of Synapse Bio Technologies and Synaptic Core",
+        "source_type": "synthetic",
+        "publication_date": "2023-03-10",
+        "source_uri": "synthetic://corpus/doc_003.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nCRITICAL PROVENANCE RECORD: Dr. Marcus Chen worked on Project Prometheus as senior systems architect until 2022. Archival employment logs verify that Dr. Marcus Chen was employed by Nexus Advanced Research Institute during this period. Seeking to apply distributed neural architectures to biological signal processing, Dr. Marcus Chen founded Synapse Bio. Operating in close partnership with academic medical centers, Synapse Bio developed the Synaptic Core Engine, a neuromorphic co-processor capable of real-time spike pattern recognition. In its production laboratory, Synapse Bio uses TensorStream Runtime for pipeline acceleration. Note: This document provides the single primary attribution connecting Dr. Chen to the founding of Synapse Bio.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_biography",
+          "is_critical_ablation_source": true
+        }
+      },
+      {
+        "id": "DOC_004",
+        "title": "DeepLogic Labs and the Chronos Neuromorphic Project",
+        "source_type": "synthetic",
+        "publication_date": "2022-11-05",
+        "source_uri": "synthetic://corpus/doc_004.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nDeepLogic Labs has accelerated its investment in event-driven artificial intelligence. Dr. Sarah Jenkins was employed by DeepLogic Labs as research director from 2019 to 2023. During her tenure, Dr. Sarah Jenkins worked on Project Chronos, an effort aimed at continuous-time temporal reasoning. Corporate archives confirm that DeepLogic Labs funded Project Chronos through multi-year allocations. DeepLogic Labs developed the TensorStream Runtime to support high-throughput asynchronous execution. The lab maintained active collaborations with Helix Compute Foundry for specialized silicon tape-outs. Helix Compute Foundry is located in Zurich Innovation Center adjacent to the microelectronics cluster.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_industry_brief"
+        }
+      },
+      {
+        "id": "DOC_005",
+        "title": "Project Aegis and the Evolution of Neural Mesh v2",
+        "source_type": "synthetic",
+        "publication_date": "2023-05-18",
+        "source_uri": "synthetic://corpus/doc_005.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nProject Aegis was instituted to establish mathematical bounds on neural network adversarial vulnerability. Dr. Elena Rostova worked on Project Aegis as chief verification architect. Personnel rosters state Dr. Elena Rostova was employed by Nexus Advanced Research Institute during the core research phase. In collaboration with partner laboratories, Dr. Elena Rostova developed Neural Mesh v2, a topology designed to resist gradient-based adversarial perturbations. Nexus Advanced Research Institute funded Project Aegis with foundational grants between 2021 and 2024. Technical evaluations verify that Project Aegis uses Neural Mesh v2 as its primary benchmarking testbed.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_technical_paper"
+        }
+      },
+      {
+        "id": "DOC_006",
+        "title": "Biographical Archive: Dr. Alyssa Vance and Contemporary AI",
+        "source_type": "synthetic",
+        "publication_date": "2023-10-12",
+        "source_uri": "synthetic://corpus/doc_006.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nA retrospective on contemporary computing figures highlights the career of Dr. Alyssa Vance. Historical corporate filings confirm that Dr. Alyssa Vance founded Cognitive Dynamics after departing academia. The biographical entry corroborates that Dr. Alyssa Vance worked on Project Prometheus between 2021 and 2022. Her work on distributed representation paved the way for subsequent developments across European research laboratories. During 2023, Dr. Alyssa Vance collaborated with Dr. Clara Weber to formalize decentralized agent consensus.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_biography",
+          "is_redundant_source": true
+        }
+      },
+      {
+        "id": "DOC_007",
+        "title": "Investigative Retraction and Advisory History at Cognitive Dynamics",
+        "source_type": "synthetic",
+        "publication_date": "2023-11-01",
+        "source_uri": "synthetic://corpus/doc_007.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nCONTRADICTION ANALYSIS DISCLOSURE: Disputed founder attribution.\nAn independent retrospective published by technology analysts challenges prevailing corporate narratives. According to internal governance memorandums, Dr. Alyssa Vance did not found Cognitive Dynamics, having acted solely as an external scientific consultant during its initial incorporation period. The memorandum asserts that founding equity was held exclusively by institutional holding entities.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_dispute",
+          "contains_contradiction": true
+        }
+      },
+      {
+        "id": "DOC_008",
+        "title": "Global Technology Infrastructure and Site Assessments",
+        "source_type": "synthetic",
+        "publication_date": "2023-12-04",
+        "source_uri": "synthetic://corpus/doc_008.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nSITE DISPUTE DOSSIER:\nMunicipal filings and economic development records indicate conflicting geographical listings. While European registries list Swiss operations, commercial licensing indicates that Cognitive Dynamics is located in Bengaluru Tech Corridor under a foreign direct investment initiative. Additionally, the report notes that Turing Institute of Bengaluru collaborated with Dr. Vikram Patel on local incubation. Furthermore, Dr. Vikram Patel was employed by Turing Institute of Bengaluru to direct machine intelligence workshops. Turing Institute of Bengaluru is located in Bengaluru Tech Corridor within the electronic city precinct.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_regional_report",
+          "contains_contradiction": true
+        }
+      },
+      {
+        "id": "DOC_009",
+        "title": "Quantum Information Bridges at Qubit Dynamics",
+        "source_type": "synthetic",
+        "publication_date": "2023-04-22",
+        "source_uri": "synthetic://corpus/doc_009.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nThe intersection of solid-state qubits and neural decoders represents a burgeoning subfield. Dr. Tariq Al-Mansoor was employed by Qubit Dynamics Group as principal quantum engineer. Under his direction, Qubit Dynamics Group developed the QubitSync Protocol to synchronize pulse channels. Technical memoranda record that Dr. Tariq Al-Mansoor collaborated with Dr. Elena Rostova on quantum error-correcting neural topographies. Qubit Dynamics Group is located in Zurich Innovation Center near partner physics laboratories. In high-speed test environments, Qubit Dynamics Group uses QubitSync Protocol for real-time calibration.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_quantum_report"
+        }
+      },
+      {
+        "id": "DOC_010",
+        "title": "Project Hyperion and Distributed AI Governance",
+        "source_type": "synthetic",
+        "publication_date": "2024-01-30",
+        "source_uri": "synthetic://corpus/doc_010.txt",
+        "raw_text": "SYNTHETIC DOCUMENT: For benchmark purposes only.\n\nProject Hyperion was established to investigate decentralized governance protocols for autonomous agents. Dr. Daniel Kim worked on Project Hyperion from its inception in mid-2023. Later in the year, Dr. Daniel Kim was employed by Apex Robotics Systems to direct autonomous fleet coordination. Apex Robotics Systems developed the HoloVector Architecture for spatial multi-robot localization. Apex Robotics Systems is located in Bengaluru Tech Corridor near industrial robotics facilities. Dr. Daniel Kim collaborated with Dr. Vikram Patel on distributed localization benchmarks. CRITICAL NEGATIVE TEST CONSTRAINT: Neither Dr. Kim nor Apex Robotics Systems developed any quantum protocols, leaving quantum-robotic cross-domain queries provably unanswerable under current evidentiary bounds.",
+        "metadata": {
+          "benchmark": "KG-RS-01",
+          "classification": "synthetic_governance_report",
+          "unanswerable_boundary": true
+        }
+      }
+    ],
+    "entities": [
+      {
+        "id": "ent_alyssa_vance",
+        "canonical_name": "Dr. Alyssa Vance",
+        "type": "PERSON",
+        "aliases": [
+          "Alyssa Vance",
+          "A. Vance"
+        ],
+        "description": "Principal investigator of Project Prometheus"
+      },
+      {
+        "id": "ent_marcus_chen",
+        "canonical_name": "Dr. Marcus Chen",
+        "type": "PERSON",
+        "aliases": [
+          "Marcus Chen",
+          "M. Chen"
+        ],
+        "description": "Senior systems architect and founder of Synapse Bio"
+      },
+      {
+        "id": "ent_elena_rostova",
+        "canonical_name": "Dr. Elena Rostova",
+        "type": "PERSON",
+        "aliases": [
+          "Elena Rostova",
+          "E. Rostova"
+        ],
+        "description": "Chief verification architect of Neural Mesh"
+      },
+      {
+        "id": "ent_tariq_al_mansoor",
+        "canonical_name": "Dr. Tariq Al-Mansoor",
+        "type": "PERSON",
+        "aliases": [
+          "Tariq Al-Mansoor"
+        ],
+        "description": "Principal quantum engineer at Qubit Dynamics"
+      },
+      {
+        "id": "ent_sarah_jenkins",
+        "canonical_name": "Dr. Sarah Jenkins",
+        "type": "PERSON",
+        "aliases": [
+          "Sarah Jenkins"
+        ],
+        "description": "Research director at DeepLogic Labs"
+      },
+      {
+        "id": "ent_vikram_patel",
+        "canonical_name": "Dr. Vikram Patel",
+        "type": "PERSON",
+        "aliases": [
+          "Vikram Patel"
+        ],
+        "description": "Research fellow at Turing Institute of Bengaluru"
+      },
+      {
+        "id": "ent_clara_weber",
+        "canonical_name": "Dr. Clara Weber",
+        "type": "PERSON",
+        "aliases": [
+          "Clara Weber"
+        ],
+        "description": "Executive board member at Cognitive Dynamics"
+      },
+      {
+        "id": "ent_daniel_kim",
+        "canonical_name": "Dr. Daniel Kim",
+        "type": "PERSON",
+        "aliases": [
+          "Daniel Kim"
+        ],
+        "description": "Chief scientist at Apex Robotics"
+      },
+      {
+        "id": "ent_nexus_institute",
+        "canonical_name": "Nexus Advanced Research Institute",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Nexus Institute"
+        ],
+        "description": "Multi-institutional research facility"
+      },
+      {
+        "id": "ent_synapse_bio",
+        "canonical_name": "Synapse Bio",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Synapse Bio Technologies"
+        ],
+        "description": "Neuromorphic biotechnology enterprise"
+      },
+      {
+        "id": "ent_deep_logic",
+        "canonical_name": "DeepLogic Labs",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "DeepLogic"
+        ],
+        "description": "Event-driven AI research lab"
+      },
+      {
+        "id": "ent_cognitive_dyn",
+        "canonical_name": "Cognitive Dynamics",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Cognitive Dynamics Corporation"
+        ],
+        "description": "Neuro-symbolic reasoning commercial venture"
+      },
+      {
+        "id": "ent_qubit_dynamics",
+        "canonical_name": "Qubit Dynamics Group",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Qubit Dynamics"
+        ],
+        "description": "Solid-state quantum technology consortium"
+      },
+      {
+        "id": "ent_turing_bengaluru",
+        "canonical_name": "Turing Institute of Bengaluru",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Turing Bengaluru"
+        ],
+        "description": "Indian AI research institute"
+      },
+      {
+        "id": "ent_apex_robotics",
+        "canonical_name": "Apex Robotics Systems",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Apex Robotics"
+        ],
+        "description": "Autonomous robotics research lab"
+      },
+      {
+        "id": "ent_helix_foundry",
+        "canonical_name": "Helix Compute Foundry",
+        "type": "ORGANIZATION",
+        "aliases": [
+          "Helix Foundry"
+        ],
+        "description": "Custom silicon fabrication foundry"
+      },
+      {
+        "id": "ent_proj_prometheus",
+        "canonical_name": "Project Prometheus",
+        "type": "PROJECT",
+        "aliases": [
+          "Prometheus Project"
+        ],
+        "description": "Self-supervised neural reasoning initiative"
+      },
+      {
+        "id": "ent_proj_aegis",
+        "canonical_name": "Project Aegis",
+        "type": "PROJECT",
+        "aliases": [
+          "Aegis Project"
+        ],
+        "description": "Adversarial vulnerability research project"
+      },
+      {
+        "id": "ent_proj_chronos",
+        "canonical_name": "Project Chronos",
+        "type": "PROJECT",
+        "aliases": [
+          "Chronos Project"
+        ],
+        "description": "Continuous-time temporal reasoning initiative"
+      },
+      {
+        "id": "ent_proj_hyperion",
+        "canonical_name": "Project Hyperion",
+        "type": "PROJECT",
+        "aliases": [
+          "Hyperion Project"
+        ],
+        "description": "Decentralized autonomous AI governance protocol"
+      },
+      {
+        "id": "ent_tech_neural_mesh",
+        "canonical_name": "Neural Mesh v2",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "Neural Mesh"
+        ],
+        "description": "Adversarially robust graph topology"
+      },
+      {
+        "id": "ent_tech_synaptic_core",
+        "canonical_name": "Synaptic Core Engine",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "Synaptic Core"
+        ],
+        "description": "Neuromorphic spike recognition co-processor"
+      },
+      {
+        "id": "ent_tech_tensor_stream",
+        "canonical_name": "TensorStream Runtime",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "TensorStream"
+        ],
+        "description": "Asynchronous tensor execution pipeline"
+      },
+      {
+        "id": "ent_tech_qubit_sync",
+        "canonical_name": "QubitSync Protocol",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "QubitSync"
+        ],
+        "description": "Quantum-classical pulse synchronization protocol"
+      },
+      {
+        "id": "ent_tech_axiom_reasoner",
+        "canonical_name": "Axiom Semantic Reasoner",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "Axiom Reasoner"
+        ],
+        "description": "Ontological verification inference engine"
+      },
+      {
+        "id": "ent_tech_holo_vector",
+        "canonical_name": "HoloVector Architecture",
+        "type": "TECHNOLOGY",
+        "aliases": [
+          "HoloVector"
+        ],
+        "description": "Spatial multi-robot localization architecture"
+      },
+      {
+        "id": "ent_bengaluru",
+        "canonical_name": "Bengaluru Tech Corridor",
+        "type": "LOCATION",
+        "aliases": [
+          "Bengaluru"
+        ],
+        "description": "Technology innovation district in Karnataka"
+      },
+      {
+        "id": "ent_zurich",
+        "canonical_name": "Zurich Innovation Center",
+        "type": "LOCATION",
+        "aliases": [
+          "Zurich"
+        ],
+        "description": "Technology cluster in Switzerland"
+      }
+    ],
+    "claims": [
+      {
+        "id": "clm_62863325803a6edf",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_prometheus",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_01",
+          "ev_doc_006_30"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_154c59460e2543ce",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_nexus_institute",
+        "polarity": "affirmed",
+        "temporal_scope": "2020-2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_02"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_92a5a86ec6ca3083",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "FOUNDED",
+        "object_id": "ent_cognitive_dyn",
+        "polarity": "affirmed",
+        "temporal_scope": "2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_03",
+          "ev_doc_006_29"
+        ],
+        "contradiction_ids": [
+          "clm_791714881279d4b6"
+        ]
+      },
+      {
+        "id": "clm_632ae2c68343896b",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_axiom_reasoner",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_04",
+          "ev_doc_002_08"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_de705ae2d02a4818",
+        "subject_id": "ent_nexus_institute",
+        "predicate": "FOUNDED",
+        "object_id": "ent_proj_prometheus",
+        "polarity": "affirmed",
+        "temporal_scope": "2021",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_05"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_ded7903da9d1f0a5",
+        "subject_id": "ent_nexus_institute",
+        "predicate": "FUNDED",
+        "object_id": "ent_proj_prometheus",
+        "polarity": "affirmed",
+        "temporal_scope": "2021",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_001_06"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_b986e5b5c9f52a0b",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_zurich",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_002_07"
+        ],
+        "contradiction_ids": [
+          "clm_2520891be562e683"
+        ]
+      },
+      {
+        "id": "clm_4a380abb497fe9bc",
+        "subject_id": "ent_clara_weber",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_cognitive_dyn",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_002_09"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_7bca7e075fe596b2",
+        "subject_id": "ent_clara_weber",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_alyssa_vance",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_002_10"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_ea6ff152621fa9ea",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "USES",
+        "object_id": "ent_tech_tensor_stream",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_002_11"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_b74e6eeaa5c4074f",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "USES",
+        "object_id": "ent_tech_axiom_reasoner",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_002_12"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_d1288067b55dbe85",
+        "subject_id": "ent_marcus_chen",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_prometheus",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_003_13"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_45d6306533ff7978",
+        "subject_id": "ent_marcus_chen",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_nexus_institute",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_003_14"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_68e1c1ae9afed205",
+        "subject_id": "ent_marcus_chen",
+        "predicate": "FOUNDED",
+        "object_id": "ent_synapse_bio",
+        "polarity": "affirmed",
+        "temporal_scope": "2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_003_15"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_2ae1e5550348e62d",
+        "subject_id": "ent_synapse_bio",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_synaptic_core",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_003_16"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_3bfb842f623a5c18",
+        "subject_id": "ent_synapse_bio",
+        "predicate": "USES",
+        "object_id": "ent_tech_tensor_stream",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_003_17"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_1fa8f5d41cdf81ea",
+        "subject_id": "ent_sarah_jenkins",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_deep_logic",
+        "polarity": "affirmed",
+        "temporal_scope": "2019-2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_18"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_a07894883068f405",
+        "subject_id": "ent_sarah_jenkins",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_chronos",
+        "polarity": "affirmed",
+        "temporal_scope": "2020-2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_19"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_a51900c2f653ea17",
+        "subject_id": "ent_deep_logic",
+        "predicate": "FUNDED",
+        "object_id": "ent_proj_chronos",
+        "polarity": "affirmed",
+        "temporal_scope": "2020-2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_20"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_47fee11e2b4d981c",
+        "subject_id": "ent_deep_logic",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_tensor_stream",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_21"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_d9281d8bf770ef64",
+        "subject_id": "ent_deep_logic",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_helix_foundry",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_22"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_a34eb3c63c4ffdec",
+        "subject_id": "ent_helix_foundry",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_zurich",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_004_23"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_cf2146c73fb64c3d",
+        "subject_id": "ent_elena_rostova",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_aegis",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_005_24"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_9cfeec6b8bd90947",
+        "subject_id": "ent_elena_rostova",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_nexus_institute",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_005_25"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_57d5f2dc7ca2dbd7",
+        "subject_id": "ent_elena_rostova",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_neural_mesh",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_005_26"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_85aa288b593d8fb3",
+        "subject_id": "ent_nexus_institute",
+        "predicate": "FUNDED",
+        "object_id": "ent_proj_aegis",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2024",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_005_27"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_9469113a737dbee6",
+        "subject_id": "ent_proj_aegis",
+        "predicate": "USES",
+        "object_id": "ent_tech_neural_mesh",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_005_28"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_b1febe61daf13241",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_clara_weber",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_006_31"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_791714881279d4b6",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "FOUNDED",
+        "object_id": "ent_cognitive_dyn",
+        "polarity": "negated",
+        "temporal_scope": "2022",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_007_32"
+        ],
+        "contradiction_ids": [
+          "clm_92a5a86ec6ca3083"
+        ]
+      },
+      {
+        "id": "clm_2520891be562e683",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_bengaluru",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_008_33"
+        ],
+        "contradiction_ids": [
+          "clm_b986e5b5c9f52a0b"
+        ]
+      },
+      {
+        "id": "clm_a1d930ca3a0e9115",
+        "subject_id": "ent_turing_bengaluru",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_vikram_patel",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_008_34"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_d9d2f305831c9a31",
+        "subject_id": "ent_vikram_patel",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_turing_bengaluru",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_008_35"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_c51b850dfca37eec",
+        "subject_id": "ent_turing_bengaluru",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_bengaluru",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_008_36"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_ff57f96037167898",
+        "subject_id": "ent_tariq_al_mansoor",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_qubit_dynamics",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_009_37"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_2a742ecf11713f55",
+        "subject_id": "ent_qubit_dynamics",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_qubit_sync",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_009_38"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_967edffdb97611fd",
+        "subject_id": "ent_tariq_al_mansoor",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_elena_rostova",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_009_39"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_cf7707968507d3f7",
+        "subject_id": "ent_qubit_dynamics",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_zurich",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_009_40"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_a91bf707ce88614e",
+        "subject_id": "ent_qubit_dynamics",
+        "predicate": "USES",
+        "object_id": "ent_tech_qubit_sync",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_009_41"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_bd2a0b1ae4facb85",
+        "subject_id": "ent_daniel_kim",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_hyperion",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_010_42"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_58d50187bb6556ea",
+        "subject_id": "ent_daniel_kim",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_apex_robotics",
+        "polarity": "affirmed",
+        "temporal_scope": "2023-2024",
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_010_43"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_feb19fb3d8427ba9",
+        "subject_id": "ent_apex_robotics",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_holo_vector",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_010_44"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_686c6f606de2615e",
+        "subject_id": "ent_apex_robotics",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_bengaluru",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_010_45"
+        ],
+        "contradiction_ids": []
+      },
+      {
+        "id": "clm_68073d7d8e7282d6",
+        "subject_id": "ent_daniel_kim",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_vikram_patel",
+        "polarity": "affirmed",
+        "temporal_scope": null,
+        "confidence": 1.0,
+        "evidence_ids": [
+          "ev_doc_010_46"
+        ],
+        "contradiction_ids": []
+      }
+    ],
+    "evidence": [
+      {
+        "id": "ev_doc_001_01",
+        "claim_id": "clm_62863325803a6edf",
+        "document_id": "DOC_001",
+        "quote": "Dr. Alyssa Vance served as the principal investigator and lead researcher who worked on Project Prometheus during its formative stages.",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 244,
+        "char_offset_end": 379,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_001_02",
+        "claim_id": "clm_154c59460e2543ce",
+        "document_id": "DOC_001",
+        "quote": "Historical records state that Dr. Alyssa Vance was employed by Nexus Advanced Research Institute prior to her commercial spinout.",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 380,
+        "char_offset_end": 509,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_001_03",
+        "claim_id": "clm_92a5a86ec6ca3083",
+        "document_id": "DOC_001",
+        "quote": "Dr. Alyssa Vance founded Cognitive Dynamics in late 2022 to commercialize neuro-symbolic reasoning systems.",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 572,
+        "char_offset_end": 679,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_001_04",
+        "claim_id": "clm_632ae2c68343896b",
+        "document_id": "DOC_001",
+        "quote": "Cognitive Dynamics developed the Axiom Semantic Reasoner, a specialized inference engine designed for formal mathematical and ontological verification.",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 710,
+        "char_offset_end": 861,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_001_05",
+        "claim_id": "clm_de705ae2d02a4818",
+        "document_id": "DOC_001",
+        "quote": "In early 2021, the Nexus Advanced Research Institute launched Project Prometheus, an ambitious multi-institutional research initiative",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 50,
+        "char_offset_end": 184,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_001_06",
+        "claim_id": "clm_ded7903da9d1f0a5",
+        "document_id": "DOC_001",
+        "quote": "Nexus Advanced Research Institute funded Project Prometheus with initial exploratory grants.",
+        "page": 1,
+        "chunk_id": "chk_DOC_001_01",
+        "char_offset_start": 862,
+        "char_offset_end": 954,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_07",
+        "claim_id": "clm_b986e5b5c9f52a0b",
+        "document_id": "DOC_002",
+        "quote": "Cognitive Dynamics is located in Zurich Innovation Center, where it maintains its primary engineering facility.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 149,
+        "char_offset_end": 260,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_08",
+        "claim_id": "clm_632ae2c68343896b",
+        "document_id": "DOC_002",
+        "quote": "Cognitive Dynamics developed the Axiom Semantic Reasoner for high-assurance industries.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 288,
+        "char_offset_end": 375,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_09",
+        "claim_id": "clm_4a380abb497fe9bc",
+        "document_id": "DOC_002",
+        "quote": "Dr. Clara Weber joined the executive board and was employed by Cognitive Dynamics as strategy director.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 389,
+        "char_offset_end": 492,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_10",
+        "claim_id": "clm_7bca7e075fe596b2",
+        "document_id": "DOC_002",
+        "quote": "Records show Dr. Clara Weber collaborated with Dr. Alyssa Vance on multi-agent consensus protocols.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 493,
+        "char_offset_end": 592,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_11",
+        "claim_id": "clm_ea6ff152621fa9ea",
+        "document_id": "DOC_002",
+        "quote": "The organization actively uses TensorStream Runtime to accelerate inference pipelines.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 593,
+        "char_offset_end": 679,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_002_12",
+        "claim_id": "clm_b74e6eeaa5c4074f",
+        "document_id": "DOC_002",
+        "quote": "Cognitive Dynamics uses Axiom Semantic Reasoner for customer data integrity.",
+        "page": 1,
+        "chunk_id": "chk_DOC_002_01",
+        "char_offset_start": 703,
+        "char_offset_end": 779,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_003_13",
+        "claim_id": "clm_d1288067b55dbe85",
+        "document_id": "DOC_003",
+        "quote": "Dr. Marcus Chen worked on Project Prometheus as senior systems architect until 2022.",
+        "page": 1,
+        "chunk_id": "chk_DOC_003_01",
+        "char_offset_start": 78,
+        "char_offset_end": 162,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_003_14",
+        "claim_id": "clm_45d6306533ff7978",
+        "document_id": "DOC_003",
+        "quote": "Archival employment logs verify that Dr. Marcus Chen was employed by Nexus Advanced Research Institute during this period.",
+        "page": 1,
+        "chunk_id": "chk_DOC_003_01",
+        "char_offset_start": 163,
+        "char_offset_end": 285,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_003_15",
+        "claim_id": "clm_68e1c1ae9afed205",
+        "document_id": "DOC_003",
+        "quote": "Dr. Marcus Chen founded Synapse Bio.",
+        "page": 1,
+        "chunk_id": "chk_DOC_003_01",
+        "char_offset_start": 369,
+        "char_offset_end": 405,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_003_16",
+        "claim_id": "clm_2ae1e5550348e62d",
+        "document_id": "DOC_003",
+        "quote": "Synapse Bio developed the Synaptic Core Engine, a neuromorphic co-processor capable of real-time spike pattern recognition.",
+        "page": 1,
+        "chunk_id": "chk_DOC_003_01",
+        "char_offset_start": 468,
+        "char_offset_end": 591,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_003_17",
+        "claim_id": "clm_3bfb842f623a5c18",
+        "document_id": "DOC_003",
+        "quote": "Synapse Bio uses TensorStream Runtime for pipeline acceleration.",
+        "page": 1,
+        "chunk_id": "chk_DOC_003_01",
+        "char_offset_start": 622,
+        "char_offset_end": 686,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_18",
+        "claim_id": "clm_1fa8f5d41cdf81ea",
+        "document_id": "DOC_004",
+        "quote": "Dr. Sarah Jenkins was employed by DeepLogic Labs as research director from 2019 to 2023.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 137,
+        "char_offset_end": 225,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_19",
+        "claim_id": "clm_a07894883068f405",
+        "document_id": "DOC_004",
+        "quote": "Dr. Sarah Jenkins worked on Project Chronos, an effort aimed at continuous-time temporal reasoning.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 245,
+        "char_offset_end": 344,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_20",
+        "claim_id": "clm_a51900c2f653ea17",
+        "document_id": "DOC_004",
+        "quote": "DeepLogic Labs funded Project Chronos through multi-year allocations.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 377,
+        "char_offset_end": 446,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_21",
+        "claim_id": "clm_47fee11e2b4d981c",
+        "document_id": "DOC_004",
+        "quote": "DeepLogic Labs developed the TensorStream Runtime to support high-throughput asynchronous execution.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 447,
+        "char_offset_end": 547,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_22",
+        "claim_id": "clm_d9281d8bf770ef64",
+        "document_id": "DOC_004",
+        "quote": "The lab maintained active collaborations with Helix Compute Foundry for specialized silicon tape-outs.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 548,
+        "char_offset_end": 650,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_004_23",
+        "claim_id": "clm_a34eb3c63c4ffdec",
+        "document_id": "DOC_004",
+        "quote": "Helix Compute Foundry is located in Zurich Innovation Center adjacent to the microelectronics cluster.",
+        "page": 1,
+        "chunk_id": "chk_DOC_004_01",
+        "char_offset_start": 651,
+        "char_offset_end": 753,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_005_24",
+        "claim_id": "clm_cf2146c73fb64c3d",
+        "document_id": "DOC_005",
+        "quote": "Dr. Elena Rostova worked on Project Aegis as chief verification architect.",
+        "page": 1,
+        "chunk_id": "chk_DOC_005_01",
+        "char_offset_start": 157,
+        "char_offset_end": 231,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_005_25",
+        "claim_id": "clm_9cfeec6b8bd90947",
+        "document_id": "DOC_005",
+        "quote": "Personnel rosters state Dr. Elena Rostova was employed by Nexus Advanced Research Institute during the core research phase.",
+        "page": 1,
+        "chunk_id": "chk_DOC_005_01",
+        "char_offset_start": 232,
+        "char_offset_end": 355,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_005_26",
+        "claim_id": "clm_57d5f2dc7ca2dbd7",
+        "document_id": "DOC_005",
+        "quote": "Dr. Elena Rostova developed Neural Mesh v2, a topology designed to resist gradient-based adversarial perturbations.",
+        "page": 1,
+        "chunk_id": "chk_DOC_005_01",
+        "char_offset_start": 400,
+        "char_offset_end": 515,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_005_27",
+        "claim_id": "clm_85aa288b593d8fb3",
+        "document_id": "DOC_005",
+        "quote": "Nexus Advanced Research Institute funded Project Aegis with foundational grants between 2021 and 2024.",
+        "page": 1,
+        "chunk_id": "chk_DOC_005_01",
+        "char_offset_start": 516,
+        "char_offset_end": 618,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_005_28",
+        "claim_id": "clm_9469113a737dbee6",
+        "document_id": "DOC_005",
+        "quote": "Project Aegis uses Neural Mesh v2 as its primary benchmarking testbed.",
+        "page": 1,
+        "chunk_id": "chk_DOC_005_01",
+        "char_offset_start": 653,
+        "char_offset_end": 723,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_006_29",
+        "claim_id": "clm_92a5a86ec6ca3083",
+        "document_id": "DOC_006",
+        "quote": "Historical corporate filings confirm that Dr. Alyssa Vance founded Cognitive Dynamics after departing academia.",
+        "page": 1,
+        "chunk_id": "chk_DOC_006_01",
+        "char_offset_start": 143,
+        "char_offset_end": 254,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_006_30",
+        "claim_id": "clm_62863325803a6edf",
+        "document_id": "DOC_006",
+        "quote": "The biographical entry corroborates that Dr. Alyssa Vance worked on Project Prometheus between 2021 and 2022.",
+        "page": 1,
+        "chunk_id": "chk_DOC_006_01",
+        "char_offset_start": 255,
+        "char_offset_end": 364,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_006_31",
+        "claim_id": "clm_b1febe61daf13241",
+        "document_id": "DOC_006",
+        "quote": "Dr. Alyssa Vance collaborated with Dr. Clara Weber to formalize decentralized agent consensus.",
+        "page": 1,
+        "chunk_id": "chk_DOC_006_01",
+        "char_offset_start": 498,
+        "char_offset_end": 592,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_007_32",
+        "claim_id": "clm_791714881279d4b6",
+        "document_id": "DOC_007",
+        "quote": "According to internal governance memorandums, Dr. Alyssa Vance did not found Cognitive Dynamics, having acted solely as an external scientific consultant",
+        "page": 1,
+        "chunk_id": "chk_DOC_007_01",
+        "char_offset_start": 221,
+        "char_offset_end": 374,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_008_33",
+        "claim_id": "clm_2520891be562e683",
+        "document_id": "DOC_008",
+        "quote": "commercial licensing indicates that Cognitive Dynamics is located in Bengaluru Tech Corridor under a foreign direct investment initiative.",
+        "page": 1,
+        "chunk_id": "chk_DOC_008_01",
+        "char_offset_start": 216,
+        "char_offset_end": 354,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_008_34",
+        "claim_id": "clm_a1d930ca3a0e9115",
+        "document_id": "DOC_008",
+        "quote": "Turing Institute of Bengaluru collaborated with Dr. Vikram Patel on local incubation.",
+        "page": 1,
+        "chunk_id": "chk_DOC_008_01",
+        "char_offset_start": 391,
+        "char_offset_end": 476,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_008_35",
+        "claim_id": "clm_d9d2f305831c9a31",
+        "document_id": "DOC_008",
+        "quote": "Dr. Vikram Patel was employed by Turing Institute of Bengaluru to direct machine intelligence workshops.",
+        "page": 1,
+        "chunk_id": "chk_DOC_008_01",
+        "char_offset_start": 490,
+        "char_offset_end": 594,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_008_36",
+        "claim_id": "clm_c51b850dfca37eec",
+        "document_id": "DOC_008",
+        "quote": "Turing Institute of Bengaluru is located in Bengaluru Tech Corridor within the electronic city precinct.",
+        "page": 1,
+        "chunk_id": "chk_DOC_008_01",
+        "char_offset_start": 595,
+        "char_offset_end": 699,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_009_37",
+        "claim_id": "clm_ff57f96037167898",
+        "document_id": "DOC_009",
+        "quote": "Dr. Tariq Al-Mansoor was employed by Qubit Dynamics Group as principal quantum engineer.",
+        "page": 1,
+        "chunk_id": "chk_DOC_009_01",
+        "char_offset_start": 143,
+        "char_offset_end": 231,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_009_38",
+        "claim_id": "clm_2a742ecf11713f55",
+        "document_id": "DOC_009",
+        "quote": "Qubit Dynamics Group developed the QubitSync Protocol to synchronize pulse channels.",
+        "page": 1,
+        "chunk_id": "chk_DOC_009_01",
+        "char_offset_start": 253,
+        "char_offset_end": 337,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_009_39",
+        "claim_id": "clm_967edffdb97611fd",
+        "document_id": "DOC_009",
+        "quote": "Dr. Tariq Al-Mansoor collaborated with Dr. Elena Rostova on quantum error-correcting neural topographies.",
+        "page": 1,
+        "chunk_id": "chk_DOC_009_01",
+        "char_offset_start": 370,
+        "char_offset_end": 475,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_009_40",
+        "claim_id": "clm_cf7707968507d3f7",
+        "document_id": "DOC_009",
+        "quote": "Qubit Dynamics Group is located in Zurich Innovation Center near partner physics laboratories.",
+        "page": 1,
+        "chunk_id": "chk_DOC_009_01",
+        "char_offset_start": 476,
+        "char_offset_end": 570,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_009_41",
+        "claim_id": "clm_a91bf707ce88614e",
+        "document_id": "DOC_009",
+        "quote": "Qubit Dynamics Group uses QubitSync Protocol for real-time calibration.",
+        "page": 1,
+        "chunk_id": "chk_DOC_009_01",
+        "char_offset_start": 604,
+        "char_offset_end": 675,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_010_42",
+        "claim_id": "clm_bd2a0b1ae4facb85",
+        "document_id": "DOC_010",
+        "quote": "Dr. Daniel Kim worked on Project Hyperion from its inception in mid-2023.",
+        "page": 1,
+        "chunk_id": "chk_DOC_010_01",
+        "char_offset_start": 156,
+        "char_offset_end": 229,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_010_43",
+        "claim_id": "clm_58d50187bb6556ea",
+        "document_id": "DOC_010",
+        "quote": "Dr. Daniel Kim was employed by Apex Robotics Systems to direct autonomous fleet coordination.",
+        "page": 1,
+        "chunk_id": "chk_DOC_010_01",
+        "char_offset_start": 249,
+        "char_offset_end": 342,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_010_44",
+        "claim_id": "clm_feb19fb3d8427ba9",
+        "document_id": "DOC_010",
+        "quote": "Apex Robotics Systems developed the HoloVector Architecture for spatial multi-robot localization.",
+        "page": 1,
+        "chunk_id": "chk_DOC_010_01",
+        "char_offset_start": 343,
+        "char_offset_end": 440,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_010_45",
+        "claim_id": "clm_686c6f606de2615e",
+        "document_id": "DOC_010",
+        "quote": "Apex Robotics Systems is located in Bengaluru Tech Corridor near industrial robotics facilities.",
+        "page": 1,
+        "chunk_id": "chk_DOC_010_01",
+        "char_offset_start": 441,
+        "char_offset_end": 537,
+        "confidence": 1.0
+      },
+      {
+        "id": "ev_doc_010_46",
+        "claim_id": "clm_68073d7d8e7282d6",
+        "document_id": "DOC_010",
+        "quote": "Dr. Daniel Kim collaborated with Dr. Vikram Patel on distributed localization benchmarks.",
+        "page": 1,
+        "chunk_id": "chk_DOC_010_01",
+        "char_offset_start": 538,
+        "char_offset_end": 627,
+        "confidence": 1.0
+      }
+    ],
+    "contradictions": [
+      [
+        "clm_92a5a86ec6ca3083",
+        "clm_791714881279d4b6"
+      ],
+      [
+        "clm_b986e5b5c9f52a0b",
+        "clm_2520891be562e683"
+      ]
+    ]
+  },
+  "queries": [
+    {
+      "id": "Q_3HOP_PROMETHEUS_TECH",
+      "description": "Three-hop reasoning connecting project researchers to technologies",
+      "question": "Which technologies were developed by organizations founded by researchers who worked on Project Prometheus?",
+      "query_plan": {
+        "start_entity": "ent_proj_prometheus",
+        "steps": [
+          {
+            "predicate": "WORKED_ON",
+            "direction": "incoming"
+          },
+          {
+            "predicate": "FOUNDED",
+            "direction": "outgoing"
+          },
+          {
+            "predicate": "DEVELOPED",
+            "direction": "outgoing"
+          }
+        ],
+        "return_type": "TECHNOLOGY",
+        "max_hops": 3
+      },
+      "expected_matches": [
+        "ent_tech_axiom_reasoner",
+        "ent_tech_synaptic_core"
+      ],
+      "expected_hops": 3,
+      "critical_source_for_match": {
+        "ent_tech_synaptic_core": "DOC_003"
+      },
+      "redundant_sources_for_match": {
+        "ent_tech_axiom_reasoner": [
+          "DOC_001",
+          "DOC_006"
+        ]
+      }
+    },
+    {
+      "id": "Q_2HOP_NEXUS_RESEARCHERS",
+      "description": "Two-hop reasoning finding researchers on funded projects",
+      "question": "Which researchers worked on projects funded by Nexus Advanced Research Institute?",
+      "query_plan": {
+        "start_entity": "ent_nexus_institute",
+        "steps": [
+          {
+            "predicate": "FUNDED",
+            "direction": "outgoing"
+          },
+          {
+            "predicate": "WORKED_ON",
+            "direction": "incoming"
+          }
+        ],
+        "return_type": "PERSON",
+        "max_hops": 2
+      },
+      "expected_matches": [
+        "ent_alyssa_vance",
+        "ent_marcus_chen",
+        "ent_elena_rostova"
+      ],
+      "expected_hops": 2
+    },
+    {
+      "id": "Q_1HOP_ZURICH_ORGS",
+      "description": "Single-hop incoming location query",
+      "question": "Which organizations are located in Zurich Innovation Center?",
+      "query_plan": {
+        "start_entity": "ent_zurich",
+        "steps": [
+          {
+            "predicate": "LOCATED_IN",
+            "direction": "incoming"
+          }
+        ],
+        "return_type": "ORGANIZATION",
+        "max_hops": 1
+      },
+      "expected_matches": [
+        "ent_cognitive_dyn",
+        "ent_helix_foundry",
+        "ent_qubit_dynamics"
+      ],
+      "expected_hops": 1
+    },
+    {
+      "id": "Q_UNANSWERABLE_HYPERION_QUANTUM",
+      "description": "Negative control: query with missing relationship requiring insufficient evidence response",
+      "question": "Which quantum protocols were developed by organizations that employed researchers who worked on Project Hyperion?",
+      "query_plan": {
+        "start_entity": "ent_proj_hyperion",
+        "steps": [
+          {
+            "predicate": "WORKED_ON",
+            "direction": "incoming"
+          },
+          {
+            "predicate": "EMPLOYED_BY",
+            "direction": "outgoing"
+          },
+          {
+            "predicate": "DEVELOPED",
+            "direction": "outgoing"
+          }
+        ],
+        "return_type": "TECHNOLOGY",
+        "predicate_filter": "DEVELOPED_QUANTUM",
+        "max_hops": 3
+      },
+      "expected_matches": [],
+      "expected_status": "insufficient_evidence"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "domain": "Artificial Intelligence & Computational Systems",
+    "total_documents": 10,
+    "total_entities": 28,
+    "total_claims": 43,
+    "total_evidence": 46,
+    "total_contradictions": 2
+  }
+}
