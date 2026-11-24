@@ -31,6 +31,23 @@ class Settings(BaseSettings):
     NEO4J_USER: str = "neo4j"
     NEO4J_PASSWORD: str = "noesis_secret_pass"
 
+    # Local LLM (Ollama) Settings
+    OLLAMA_BASE_URL: str = "http://127.0.0.1:11434"
+    OLLAMA_MODEL: str = "qwen3:4b"
+    OLLAMA_CONTEXT_LENGTH: int = 4096
+    OLLAMA_TEMPERATURE: float = 0.0
+    OLLAMA_CONCURRENCY: int = 1
+    ALLOW_CLOUD_LLM: bool = False
+    OLLAMA_TIMEOUT_SECONDS: float = 30.0
+    OLLAMA_MAX_RETRIES: int = 2
+
+    # Ingestion & Chunking Settings
+    MAX_DOCUMENT_SIZE_MB: int = 15
+    MAX_UPLOAD_FILE_SIZE_BYTES: int = 15 * 1024 * 1024  # 15 MB
+    CHUNK_SIZE_CHARS: int = 2400  # ~600 tokens
+    CHUNK_OVERLAP_CHARS: int = 350  # ~85 tokens
+    EXTRACTION_CACHE_DIR: str = ".cache/extraction"
+
     # Logging Level
     LOG_LEVEL: str = "INFO"
 

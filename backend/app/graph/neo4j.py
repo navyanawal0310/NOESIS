@@ -23,6 +23,7 @@ class Neo4jGraphRepository(BaseGraphRepository):
     def _initialize_driver(self):
         try:
             from neo4j import GraphDatabase
+
             self._driver = GraphDatabase.driver(self.uri, auth=(self.user, self.password))
             self._driver.verify_connectivity()
             self._initialize_schema()
@@ -513,103 +514,121 @@ class Neo4jGraphRepository(BaseGraphRepository):
             # Entities
             for r in session.run("MATCH (e:Entity) RETURN e"):
                 ep = r["e"]
-                nodes.append({
-                    "data": {
-                        "id": ep["id"],
-                        "label": ep["canonical_name"],
-                        "type": "Entity",
-                        "entity_type": ep["type"],
-                        "description": ep.get("description", ""),
-                        "aliases": ep.get("aliases", []),
+                nodes.append(
+                    {
+                        "data": {
+                            "id": ep["id"],
+                            "label": ep["canonical_name"],
+                            "type": "Entity",
+                            "entity_type": ep["type"],
+                            "description": ep.get("description", ""),
+                            "aliases": ep.get("aliases", []),
+                        }
                     }
-                })
+                )
             # Claims
             for r in session.run("MATCH (c:Claim) RETURN c"):
                 cp = r["c"]
-                nodes.append({
-                    "data": {
-                        "id": cp["id"],
-                        "label": f"{cp['predicate']} ({cp['polarity']})",
-                        "type": "Claim",
-                        "predicate": cp["predicate"],
-                        "polarity": cp["polarity"],
-                        "temporal_scope": cp.get("temporal_scope", ""),
-                        "confidence": cp.get("confidence", 1.0),
+                nodes.append(
+                    {
+                        "data": {
+                            "id": cp["id"],
+                            "label": f"{cp['predicate']} ({cp['polarity']})",
+                            "type": "Claim",
+                            "predicate": cp["predicate"],
+                            "polarity": cp["polarity"],
+                            "temporal_scope": cp.get("temporal_scope", ""),
+                            "confidence": cp.get("confidence", 1.0),
+                        }
                     }
-                })
-                edges.append({
-                    "data": {
-                        "id": f"{cp['subject_id']}_subj_{cp['id']}",
-                        "source": cp["subject_id"],
-                        "target": cp["id"],
-                        "label": "SUBJECT_OF",
-                        "rel_type": "SUBJECT_OF",
+                )
+                edges.append(
+                    {
+                        "data": {
+                            "id": f"{cp['subject_id']}_subj_{cp['id']}",
+                            "source": cp["subject_id"],
+                            "target": cp["id"],
+                            "label": "SUBJECT_OF",
+                            "rel_type": "SUBJECT_OF",
+                        }
                     }
-                })
-                edges.append({
-                    "data": {
-                        "id": f"{cp['id']}_obj_{cp['object_id']}",
-                        "source": cp["id"],
-                        "target": cp["object_id"],
-                        "label": "OBJECT",
-                        "rel_type": "OBJECT",
+                )
+                edges.append(
+                    {
+                        "data": {
+                            "id": f"{cp['id']}_obj_{cp['object_id']}",
+                            "source": cp["id"],
+                            "target": cp["object_id"],
+                            "label": "OBJECT",
+                            "rel_type": "OBJECT",
+                        }
                     }
-                })
+                )
             # Documents
             for r in session.run("MATCH (d:Document) RETURN d"):
                 dp = r["d"]
-                nodes.append({
-                    "data": {
-                        "id": dp["id"],
-                        "label": dp["title"],
-                        "type": "Document",
-                        "source_type": dp.get("source_type", "synthetic"),
-                        "content_hash": dp["content_hash"],
+                nodes.append(
+                    {
+                        "data": {
+                            "id": dp["id"],
+                            "label": dp["title"],
+                            "type": "Document",
+                            "source_type": dp.get("source_type", "synthetic"),
+                            "content_hash": dp["content_hash"],
+                        }
                     }
-                })
+                )
             # Evidence
             for r in session.run("MATCH (ev:Evidence) RETURN ev"):
                 evp = r["ev"]
-                nodes.append({
-                    "data": {
-                        "id": evp["id"],
-                        "label": f"Quote [{evp['char_offset_start']}:{evp['char_offset_end']}]",
-                        "type": "Evidence",
-                        "quote": evp["quote"],
-                        "page": evp.get("page", 1),
-                        "offsets": [evp["char_offset_start"], evp["char_offset_end"]],
-                        "confidence": evp.get("confidence", 1.0),
+                nodes.append(
+                    {
+                        "data": {
+                            "id": evp["id"],
+                            "label": f"Quote [{evp['char_offset_start']}:{evp['char_offset_end']}]",
+                            "type": "Evidence",
+                            "quote": evp["quote"],
+                            "page": evp.get("page", 1),
+                            "offsets": [evp["char_offset_start"], evp["char_offset_end"]],
+                            "confidence": evp.get("confidence", 1.0),
+                        }
                     }
-                })
-                edges.append({
-                    "data": {
-                        "id": f"{evp['claim_id']}_supp_{evp['id']}",
-                        "source": evp["claim_id"],
-                        "target": evp["id"],
-                        "label": "SUPPORTED_BY",
-                        "rel_type": "SUPPORTED_BY",
+                )
+                edges.append(
+                    {
+                        "data": {
+                            "id": f"{evp['claim_id']}_supp_{evp['id']}",
+                            "source": evp["claim_id"],
+                            "target": evp["id"],
+                            "label": "SUPPORTED_BY",
+                            "rel_type": "SUPPORTED_BY",
+                        }
                     }
-                })
-                edges.append({
-                    "data": {
-                        "id": f"{evp['id']}_from_{evp['document_id']}",
-                        "source": evp["id"],
-                        "target": evp["document_id"],
-                        "label": "FROM_DOCUMENT",
-                        "rel_type": "FROM_DOCUMENT",
+                )
+                edges.append(
+                    {
+                        "data": {
+                            "id": f"{evp['id']}_from_{evp['document_id']}",
+                            "source": evp["id"],
+                            "target": evp["document_id"],
+                            "label": "FROM_DOCUMENT",
+                            "rel_type": "FROM_DOCUMENT",
+                        }
                     }
-                })
+                )
             # Contradictions
             for r in session.run("MATCH (c1:Claim)-[:CONTRADICTS]->(c2:Claim) WHERE c1.id < c2.id RETURN c1.id, c2.id"):
-                edges.append({
-                    "data": {
-                        "id": f"{r['c1.id']}_contra_{r['c2.id']}",
-                        "source": r["c1.id"],
-                        "target": r["c2.id"],
-                        "label": "CONTRADICTS",
-                        "rel_type": "CONTRADICTS",
+                edges.append(
+                    {
+                        "data": {
+                            "id": f"{r['c1.id']}_contra_{r['c2.id']}",
+                            "source": r["c1.id"],
+                            "target": r["c2.id"],
+                            "label": "CONTRADICTS",
+                            "rel_type": "CONTRADICTS",
+                        }
                     }
-                })
+                )
 
         return {
             "storage_mode": self.get_storage_mode(),
