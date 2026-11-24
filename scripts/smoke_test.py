@@ -2,8 +2,12 @@
 
 Launches the FastAPI server on a test port, executes actual HTTP requests against:
 - GET /api/v1/health
+- GET /api/v1/llm/status
 - GET /api/v1/graph
 - POST /api/v1/query/structured (3-Hop Traversal)
+- POST /api/v1/query/natural (Offline Graceful Degradation / 503 Check)
+- POST /api/v1/documents/upload (Multipart Ingestion Upload)
+- GET /api/v1/documents/{id}/status (Processing Status Check)
 - POST /api/v1/counterfactual (Evidence Ablation)
 and prints verified actual results.
 """
@@ -19,7 +23,7 @@ import urllib.error
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-PORT = 8000
+PORT = 8042
 BASE_URL = f"http://127.0.0.1:{PORT}"
 
 
@@ -36,7 +40,7 @@ def wait_for_server(url: str, timeout: int = 15):
 
 
 def run_smoke_test():
-    print(f"[1/5] Launching NOESIS backend on port {PORT}...", flush=True)
+    print(f"[1/8] Launching NOESIS backend on port {PORT}...", flush=True)
     env = os.environ.copy()
     env["PYTHONPATH"] = str(Path(__file__).resolve().parent.parent)
 
@@ -60,7 +64,7 @@ def run_smoke_test():
             print("ERROR: Server failed to start within timeout.")
             sys.exit(1)
 
-        print("[2/5] Server online! Verifying GET /api/v1/health...", flush=True)
+        print("[2/8] Server online! Verifying GET /api/v1/health...", flush=True)
         with urllib.request.urlopen(f"{BASE_URL}/api/v1/health") as resp:
             health_data = json.loads(resp.read().decode())
             print(f"  Status: {health_data['status']}")
@@ -69,14 +73,22 @@ def run_smoke_test():
             print(f"  Total Claims: {health_data['total_claims']}")
             print(f"  Total Documents: {health_data['total_documents']}")
 
-        print("[3/5] Verifying GET /api/v1/graph...", flush=True)
+        print("[3/8] Verifying GET /api/v1/llm/status...", flush=True)
+        with urllib.request.urlopen(f"{BASE_URL}/api/v1/llm/status") as resp:
+            llm_data = json.loads(resp.read().decode())
+            print(f"  Provider: {llm_data['provider_name']}")
+            print(f"  Configured Model: {llm_data['configured_model']}")
+            print(f"  Available: {llm_data['available']}")
+            print(f"  Details: {llm_data.get('details', 'N/A')}")
+
+        print("[4/8] Verifying GET /api/v1/graph...", flush=True)
         with urllib.request.urlopen(f"{BASE_URL}/api/v1/graph") as resp:
             graph_data = json.loads(resp.read().decode())
             nodes_count = len(graph_data["elements"]["nodes"])
             edges_count = len(graph_data["elements"]["edges"])
             print(f"  Cytoscape Nodes: {nodes_count}, Edges: {edges_count}")
 
-        print("[4/5] Executing 3-Hop Traversal Query: Project Prometheus -> Tech...", flush=True)
+        print("[5/8] Executing 3-Hop Traversal Query: Project Prometheus -> Tech...", flush=True)
         query_payload = {
             "start_entity": "ent_proj_prometheus",
             "steps": [
@@ -105,7 +117,55 @@ def run_smoke_test():
                 path_str = " -> ".join([seg["from_entity"]["canonical_name"] for seg in p["segments"]] + [p["terminal_entity"]["canonical_name"]])
                 print(f"    Path {idx + 1}: {path_str} (Confidence: {p['path_confidence']})")
 
-        print("[5/5] Executing Counterfactual Evidence Ablation on Synaptic Core...", flush=True)
+        print("[6/8] Testing Natural-Language Query Endpoint Graceful Degradation...", flush=True)
+        natural_payload = {"question": "What organization did Elena Vance found?"}
+        natural_req = urllib.request.Request(
+            f"{BASE_URL}/api/v1/query/natural",
+            data=json.dumps(natural_payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(natural_req) as resp:
+                ans_data = json.loads(resp.read().decode())
+                print(f"  Natural Query Answer: {ans_data['answer']}")
+        except urllib.error.HTTPError as he:
+            if he.code == 503:
+                print(f"  HTTP 503 Gracefully Caught: Ollama offline as expected ({he.reason})")
+            else:
+                raise
+
+        print("[7/8] Testing Document Upload and Status Endpoint...", flush=True)
+        boundary = "----WebKitFormBoundaryNoesisSmokeTest"
+        doc_content = b"Smoke test custom document: Elena Vance established Aetheris Lab in Zurich."
+        body = (
+            f"--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="file"; filename="smoke_test.txt"\r\n'
+            f"Content-Type: text/plain\r\n\r\n"
+        ).encode("utf-8") + doc_content + f"\r\n--{boundary}--\r\n".encode("utf-8")
+
+        upload_req = urllib.request.Request(
+            f"{BASE_URL}/api/v1/documents/upload",
+            data=body,
+            headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(upload_req) as resp:
+                upload_data = json.loads(resp.read().decode())
+                new_doc_id = upload_data["document_id"]
+                print(f"  Uploaded Doc ID: {new_doc_id}, Status: {upload_data['status']}")
+        except urllib.error.HTTPError as he:
+            err_body = he.read().decode()
+            print(f"  Upload failed ({he.code}): {err_body}")
+            raise
+
+        # Verify status of uploaded doc
+        with urllib.request.urlopen(f"{BASE_URL}/api/v1/documents/{new_doc_id}/status") as resp:
+            status_data = json.loads(resp.read().decode())
+            print(f"  Verified Doc Status: {status_data['status']}, Chars: {status_data['total_chars']}")
+
+        print("[8/8] Executing Counterfactual Evidence Ablation on Synaptic Core...", flush=True)
         ablation_payload = {
             "query_plan": query_payload,
             "target_entity_id": "ent_tech_synaptic_core",
@@ -123,7 +183,9 @@ def run_smoke_test():
             print(f"  Redundant Sources: {ablation_res['redundant_sources']}")
             print(f"  Robustness Score R(a): {ablation_res['robustness_score']}")
 
-        print("\nALL END-TO-END SMOKE TESTS PASSED CLEANLY!", flush=True)
+        print("\n=======================================================", flush=True)
+        print("ALL END-TO-END SMOKE TESTS PASSED CLEANLY!", flush=True)
+        print("=======================================================", flush=True)
 
     finally:
         print("Terminating server process...", flush=True)

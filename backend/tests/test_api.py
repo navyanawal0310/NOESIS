@@ -1,20 +1,31 @@
 """Tests for FastAPI API Routers and Schema Validation."""
 
+import pytest
+from fastapi import HTTPException
+
 from backend.app.api.v1.router import (
     CounterfactualRequest,
+    NaturalQueryRequest,
+    execute_natural_query,
     execute_structured_query,
     get_claim,
     get_claim_evidence,
     get_contradictions,
     get_document,
+    get_document_status,
     get_entity,
     get_graph,
     get_health,
+    get_llm_status,
     list_documents,
     list_entities,
     run_counterfactual_ablation,
 )
+from backend.app.llm.base import BaseLLMProvider, LLMResponse, LLMStatus
+from backend.app.reasoning.answer_generator import GroundedAnswerGenerator
+from backend.app.reasoning.gap_detector import KnowledgeGapDetector
 from backend.app.reasoning.models import StructuredQueryPlan, TraversalStep
+from backend.app.reasoning.nl_planner import NLQueryPlanner
 
 
 def test_api_health_endpoint(seeded_repository):
@@ -60,7 +71,6 @@ def test_api_entities_endpoints(seeded_repository):
 
 def test_api_claims_and_evidence_endpoints(seeded_repository):
     """Verify claim retrieval and grounded evidence mapping."""
-    # Find claim for Marcus Chen founding Synapse Bio
     claims = seeded_repository.list_claims(predicate="FOUNDED", subject_id="ent_marcus_chen")
     assert len(claims) > 0
     claim = claims[0]
@@ -109,3 +119,51 @@ def test_api_contradictions_and_counterfactual_endpoints(seeded_repository, reas
     ablation_res = run_counterfactual_ablation(request=req, engine=reasoning_engine)
     assert ablation_res["baseline_supported"] is True
     assert "DOC_003" in ablation_res["critical_sources"]
+
+
+class OfflineMockLLM(BaseLLMProvider):
+    def check_status(self) -> LLMStatus:
+        return LLMStatus(
+            available=False,
+            provider_name="ollama",
+            base_url="http://127.0.0.1:11434",
+            configured_model="qwen3:4b",
+            installed_models=[],
+            model_available=False,
+            details="Ollama is offline",
+        )
+
+    def generate(self, prompt: str, system_prompt=None, schema=None, temperature=None, max_tokens=None) -> LLMResponse:
+        raise HTTPException(status_code=503, detail="Offline")
+
+
+def test_api_llm_status_and_natural_query_offline(seeded_repository, reasoning_engine):
+    """Verifies that GET /api/v1/llm/status and POST /api/v1/query/natural handle offline LLM with 503."""
+    offline_llm = OfflineMockLLM()
+    status_dict = get_llm_status(llm=offline_llm)
+    assert status_dict["available"] is False
+    assert status_dict["configured_model"] == "qwen3:4b"
+
+    planner = NLQueryPlanner(repository=seeded_repository, llm_provider=offline_llm)
+    answer_gen = GroundedAnswerGenerator(llm_provider=offline_llm)
+    gap_detector = KnowledgeGapDetector(repository=seeded_repository)
+
+    req = NaturalQueryRequest(question="What organization did Marcus Chen found?")
+    with pytest.raises(HTTPException) as exc_info:
+        execute_natural_query(
+            request=req,
+            planner=planner,
+            engine=reasoning_engine,
+            answer_gen=answer_gen,
+            gap_detector=gap_detector,
+        )
+    assert exc_info.value.status_code == 503
+
+
+def test_api_document_status_endpoint(seeded_repository):
+    """Verifies document processing and evidence status retrieval."""
+    status_res = get_document_status("DOC_001", repo=seeded_repository)
+    assert status_res["document_id"] == "DOC_001"
+    assert status_res["source_type"] == "synthetic"
+    assert status_res["status"] == "ingested"
+    assert status_res["total_chars"] > 0
