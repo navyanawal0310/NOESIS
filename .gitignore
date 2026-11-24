@@ -60,6 +60,7 @@ Thumbs.db
 .coverage
 htmlcov/
 .ruff_cache/
+scratch/
 
 # Databases
 neo4j_data/
