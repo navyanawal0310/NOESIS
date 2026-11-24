@@ -1,6 +1,5 @@
 """Evidence Quotation and Text Offset Validation."""
 
-from typing import Tuple
 
 
 class QuotationValidationResult:
@@ -29,7 +28,7 @@ def validate_evidence_quotation(
     """Verifies that an evidence record's quotation exactly matches the source document text
 
     at the specified character offsets.
-    
+
     IMPORTANT NOTE:
     Quotation matching proves that the exact words exist in the document at that position,
     but does not in itself guarantee that the semantic claim extracted from it is true or valid.

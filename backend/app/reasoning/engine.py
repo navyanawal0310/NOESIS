@@ -2,10 +2,11 @@
 
 import time
 import uuid
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set
+
 from backend.app.extraction.validator import validate_evidence_quotation
 from backend.app.graph.base import BaseGraphRepository
-from backend.app.ontology.models import Claim, Entity, EntityType, Evidence
+from backend.app.ontology.models import Claim, Entity, Evidence
 from backend.app.reasoning.confidence import compute_claim_confidence, compute_path_confidence
 from backend.app.reasoning.models import (
     PathSegment,

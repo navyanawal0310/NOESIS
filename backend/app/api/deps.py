@@ -1,6 +1,7 @@
 """Dependency Injection Providers for NOESIS FastAPI Backend."""
 
 from fastapi import Depends
+
 from backend.app.graph.base import BaseGraphRepository
 from backend.app.graph.factory import get_graph_repository
 from backend.app.reasoning.engine import BoundedReasoningEngine

@@ -1,8 +1,10 @@
 """FastAPI REST API Routers - v1."""
 
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
+
 from backend.app.api.deps import get_reasoning_engine, get_repository
 from backend.app.config import settings
 from backend.app.graph.base import BaseGraphRepository
@@ -81,7 +83,8 @@ def list_entities(
     repo: BaseGraphRepository = Depends(get_repository),
 ):
     """Lists all entities, optionally filtered by type."""
-    return repo.list_entities(type_filter=type)
+    type_filter = type if isinstance(type, str) else None
+    return repo.list_entities(type_filter=type_filter)
 
 
 # 6. GET /api/v1/entities/{id}

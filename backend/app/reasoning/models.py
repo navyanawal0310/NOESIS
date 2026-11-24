@@ -1,7 +1,9 @@
 """Reasoning Engine Data Models and Structured Query Plans."""
 
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
+
 from pydantic import BaseModel, Field
+
 from backend.app.ontology.models import Claim, Entity, EntityType, Evidence
 
 

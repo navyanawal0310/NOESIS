@@ -7,6 +7,7 @@ C(P) = min_{e in P} C(e)
 """
 
 from typing import List
+
 from backend.app.ontology.models import Claim, Evidence
 
 

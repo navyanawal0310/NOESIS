@@ -1,6 +1,7 @@
 """Graph Repository Factory and Lifecycle Management."""
 
 import logging
+
 from backend.app.config import settings
 from backend.app.graph.base import BaseGraphRepository
 from backend.app.graph.in_memory import InMemoryGraphRepository

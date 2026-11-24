@@ -2,6 +2,7 @@
 
 import logging
 from typing import Any, Dict, List, Optional, Set, Tuple
+
 from backend.app.graph.base import BaseGraphRepository
 from backend.app.ontology.models import Claim, Document, Entity, Evidence
 

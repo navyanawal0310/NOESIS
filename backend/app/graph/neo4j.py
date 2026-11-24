@@ -1,7 +1,8 @@
 """Neo4j Persistent Graph Store Repository."""
 
 import logging
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
+
 from backend.app.config import settings
 from backend.app.graph.base import BaseGraphRepository
 from backend.app.ontology.models import Claim, Document, Entity, EntityType, Evidence, Polarity

@@ -3,7 +3,8 @@
 Evaluates conclusion survival when individual source documents are systematically excluded.
 """
 
-from typing import Any, Dict, List
+from typing import Any, Dict
+
 from backend.app.reasoning.engine import BoundedReasoningEngine
 from backend.app.reasoning.models import StructuredQueryPlan
 

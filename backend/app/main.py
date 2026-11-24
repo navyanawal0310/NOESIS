@@ -1,9 +1,11 @@
 """FastAPI Application Entrypoint for NOESIS."""
 
 import logging
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
 from backend.app.api.v1.router import router as api_v1_router
 from backend.app.config import settings
 from backend.app.graph.factory import get_graph_repository
