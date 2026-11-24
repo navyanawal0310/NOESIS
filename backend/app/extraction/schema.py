@@ -47,8 +47,8 @@ class VerifiedClaimRecord(BaseModel):
     chunk_id: str
     char_offset_start: int
     char_offset_end: int
-    page: int
-    is_lexically_verified: bool
+    page: int = 1
+    is_lexically_verified: bool = True
     review_status: str = Field(default="accepted", description="'accepted', 'unverified', or 'rejected'")
     rejection_reason: Optional[str] = None
 
@@ -58,12 +58,14 @@ class ExtractionResult(BaseModel):
 
     model_config = ConfigDict(protected_namespaces=())
 
-    document_id: str
-    total_extracted_claims: int
-    accepted_claims: List[VerifiedClaimRecord]
-    rejected_claims: List[Dict[str, Any]]
-    resolved_entities: List[Dict[str, Any]]
-    ambiguous_entities: List[Dict[str, Any]]
-    model_used: str
-    inference_duration_ms: float
+    document_id: str = ""
+    chunk_id: Optional[str] = None
+    total_extracted_claims: int = 0
+    accepted_claims: List[VerifiedClaimRecord] = Field(default_factory=list)
+    rejected_claims: List[Dict[str, Any]] = Field(default_factory=list)
+    resolved_entities: List[Dict[str, Any]] = Field(default_factory=list)
+    ambiguous_entities: List[Dict[str, Any]] = Field(default_factory=list)
+    entities: List[Dict[str, Any]] = Field(default_factory=list)
+    model_used: str = "default"
+    inference_duration_ms: float = 0.0
     from_cache: bool = False

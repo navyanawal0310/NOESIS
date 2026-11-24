@@ -302,6 +302,29 @@ class EvidenceConstrainedExtractor:
             from_cache=from_cache,
         )
 
+    @staticmethod
+    def _are_temporally_incompatible(scope1: Optional[str], scope2: Optional[str]) -> bool:
+        """Determines if two claims with opposite polarities are temporally incompatible.
+
+        If scopes are missing, identical, or overlapping, they conflict.
+        If both have distinct non-overlapping intervals, they may co-exist without contradiction.
+        """
+        if not scope1 or not scope2:
+            return True
+        s1 = scope1.strip().lower()
+        s2 = scope2.strip().lower()
+        if s1 == s2:
+            return True
+        import re
+        years1 = [int(y) for y in re.findall(r"\b\d{4}\b", s1)]
+        years2 = [int(y) for y in re.findall(r"\b\d{4}\b", s2)]
+        if years1 and years2:
+            min1, max1 = min(years1), max(years1)
+            min2, max2 = min(years2), max(years2)
+            if max1 < min2 or max2 < min1:
+                return False
+        return True
+
     def ingest_document_into_graph(
         self,
         document: ParsedDocument,
@@ -387,21 +410,61 @@ class EvidenceConstrainedExtractor:
             evidence_added += 1
 
         # 6. Check for contradictory claims with existing claims
-        contradictions_flagged = 0
+        # Distinguish: newly_detected_contradictions, document_associated_contradictions, total_corpus_contradictions
+        new_claim_ids = {rec.claim_id for rec in all_accepted}
+        newly_detected_contradictions: List[Dict[str, Any]] = []
+        document_associated_contradictions: List[Dict[str, Any]] = []
+        total_corpus_contradictions = 0
+
         all_claims = self.repo.list_claims()
-        for c1 in all_claims:
-            for c2 in all_claims:
-                if c1.id >= c2.id:
-                    continue
-                # Opposite polarity conflict
+        for i, c1 in enumerate(all_claims):
+            for c2 in all_claims[i + 1:]:
+                # Only classify as contradiction if same subject, same predicate, same object, opposite polarity
+                # Non-functional predicates with multiple objects (e.g. org developing multiple technologies) do not conflict.
                 if (
                     c1.subject_id == c2.subject_id
                     and c1.predicate == c2.predicate
                     and c1.object_id == c2.object_id
                     and c1.polarity != c2.polarity
                 ):
-                    self.repo.add_contradiction(c1.id, c2.id)
-                    contradictions_flagged += 1
+                    # Check temporal compatibility
+                    if self._are_temporally_incompatible(c1.temporal_scope, c2.temporal_scope):
+                        total_corpus_contradictions += 1
+                        was_already_flagged = c2.id in c1.contradiction_ids or c1.id in c2.contradiction_ids
+                        self.repo.add_contradiction(c1.id, c2.id)
+
+                        c1_quotes = [ev.quote for ev in self.repo.get_evidence_for_claim(c1.id)]
+                        c2_quotes = [ev.quote for ev in self.repo.get_evidence_for_claim(c2.id)]
+                        detail = {
+                            "claim_1_id": c1.id,
+                            "claim_2_id": c2.id,
+                            "subject_id": c1.subject_id,
+                            "predicate": c1.predicate,
+                            "object_id": c1.object_id,
+                            "polarity_1": c1.polarity.value if hasattr(c1.polarity, "value") else str(c1.polarity),
+                            "polarity_2": c2.polarity.value if hasattr(c2.polarity, "value") else str(c2.polarity),
+                            "temporal_scope_1": c1.temporal_scope,
+                            "temporal_scope_2": c2.temporal_scope,
+                            "evidence_1": c1_quotes,
+                            "evidence_2": c2_quotes,
+                            "reason": (
+                                f"Opposite polarity conflict on predicate '{c1.predicate}': "
+                                f"Claim {c1.id[:8]} asserts {c1.polarity} while Claim {c2.id[:8]} asserts {c2.polarity} "
+                                f"for subject '{c1.subject_id}' and object '{c1.object_id}'."
+                            ),
+                        }
+
+                        c1_doc_ids = {ev.document_id for ev in self.repo.get_evidence_for_claim(c1.id)}
+                        c2_doc_ids = {ev.document_id for ev in self.repo.get_evidence_for_claim(c2.id)}
+                        if (
+                            document.document_id in c1_doc_ids
+                            or document.document_id in c2_doc_ids
+                            or c1.id in new_claim_ids
+                            or c2.id in new_claim_ids
+                        ):
+                            document_associated_contradictions.append(detail)
+                            if not was_already_flagged:
+                                newly_detected_contradictions.append(detail)
 
         return {
             "document_id": document.document_id,
@@ -411,6 +474,10 @@ class EvidenceConstrainedExtractor:
             "claims_accepted": len(all_accepted),
             "claims_rejected": len(all_rejected),
             "evidence_records": evidence_added,
-            "contradictions_flagged": contradictions_flagged,
+            "contradictions_flagged": len(newly_detected_contradictions),
+            "newly_detected_contradictions": len(newly_detected_contradictions),
+            "document_associated_contradictions": len(document_associated_contradictions),
+            "total_corpus_contradictions": total_corpus_contradictions,
+            "contradiction_details": newly_detected_contradictions,
             "rejected_details": all_rejected[:5],
         }

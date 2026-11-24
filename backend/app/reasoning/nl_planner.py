@@ -131,8 +131,14 @@ class NLQueryPlanner:
                 tt = str(step_dict["target_type"]).upper().strip()
                 step_dict["target_type"] = next((et for et in valid_types if et in tt or tt[:5] in et), None)
 
+        # Detect explicit temporal constraints in question (e.g., 'in 1995', 'during 2021-2023')
+        temporal_match = re.search(r"\b(?:in|during|before|after|since)\s+(\d{4}(?:-\d{4})?)\b", question, re.IGNORECASE)
+        detected_temporal = temporal_match.group(1) if temporal_match else None
+
         # Validate with Pydantic
         try:
+            if detected_temporal and not parsed.get("temporal_constraint"):
+                parsed["temporal_constraint"] = detected_temporal
             plan = StructuredQueryPlan(**parsed)
         except ValidationError as ve:
             raise ValueError(f"Generated query plan failed schema validation: {ve}") from ve

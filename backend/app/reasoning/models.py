@@ -33,6 +33,14 @@ class StructuredQueryPlan(BaseModel):
         default_factory=list,
         description="List of document IDs to ablate/exclude for counterfactual testing",
     )
+    temporal_constraint: Optional[str] = Field(
+        default=None,
+        description="Optional temporal constraint (e.g., '1995', '2021-2023')",
+    )
+    unsupported_constraints: List[str] = Field(
+        default_factory=list,
+        description="List of user constraints requested in natural language that cannot be represented in the query",
+    )
 
 
 class PathSegment(BaseModel):
