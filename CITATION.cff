@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use NOESIS in your research, please cite it as below."
+authors:
+  - family-names: "Nawal"
+    given-names: "Navya"
+  - family-names: "S"
+    given-names: "Gaurav"
+  - family-names: "Praveen"
+    given-names: "KK"
+title: "NOESIS: Neural-Ontological Evidence Synthesis and Inference System"
+version: 1.0.0
+date-released: 2026-11-24
+url: "https://github.com/NavyaNawal/NOESIS"
+repository-code: "https://github.com/NavyaNawal/NOESIS"
+keywords:
+  - "knowledge-graph"
+  - "evidence-synthesis"
+  - "multi-hop-reasoning"
+  - "explainable-ai"
+  - "contradiction-detection"
+  - "counterfactual-ablation"
+license: "Apache-2.0"
