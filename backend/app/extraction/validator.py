@@ -1,7 +1,6 @@
 """Evidence Quotation and Text Offset Validation."""
 
 
-
 class QuotationValidationResult:
     """Outcome of quotation span verification."""
 
