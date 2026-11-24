@@ -1,6 +1,6 @@
 """FastAPI REST API Routers - v1."""
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from pydantic import BaseModel, Field
@@ -18,6 +18,12 @@ from backend.app.config import settings
 from backend.app.extraction.pipeline import EvidenceConstrainedExtractor
 from backend.app.graph.base import BaseGraphRepository
 from backend.app.ingestion.chunking import DocumentChunker
+from backend.app.ingestion.jobs import (
+    IngestionJob,
+    get_job,
+    get_job_by_document,
+    submit_ingestion_job,
+)
 from backend.app.ingestion.parser import (
     DocumentParser,
     PageSpan,
@@ -176,13 +182,14 @@ async def upload_document(
 
 
 # 5. POST /api/v1/documents/{id}/ingest
-@router.post("/documents/{doc_id}/ingest")
+@router.post("/documents/{doc_id}/ingest", status_code=status.HTTP_202_ACCEPTED)
 def ingest_document_claims(
     doc_id: str,
+    sync: bool = Query(default=False, description="Run synchronously instead of queuing background worker"),
     repo: BaseGraphRepository = Depends(get_repository),
     extractor: EvidenceConstrainedExtractor = Depends(get_extractor),
 ):
-    """Executes evidence-constrained extraction and graph integration on an uploaded document."""
+    """Executes evidence-constrained extraction and graph integration via background worker or sync mode."""
     doc = repo.get_document(doc_id)
     if not doc:
         raise HTTPException(
@@ -190,11 +197,18 @@ def ingest_document_claims(
             detail=f"Document with ID '{doc_id}' not found.",
         )
 
+    # Prevent duplicate ingestion
+    if doc.metadata.get("ingestion_status") == "ingested":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=f"Document '{doc_id}' has already been processed and ingested.",
+        )
+
     if not extractor.llm or not extractor.llm.is_available():
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=(
-                f"Local LLM service (Ollama) is required for claim extraction but is currently offline. "
+                f"Local LLM service (Ollama) is required for claim extraction but is currently unavailable. "
                 f"Please ensure Ollama is running at {settings.OLLAMA_BASE_URL} with model '{settings.OLLAMA_MODEL}'."
             ),
         )
@@ -217,32 +231,64 @@ def ingest_document_claims(
     chunker = DocumentChunker()
     chunks = chunker.chunk_document(parsed_doc)
 
-    try:
-        ingest_result = extractor.ingest_document_into_graph(parsed_doc, chunks)
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Extraction pipeline failed: {str(e)}",
-        )
+    def _worker(job: Optional[IngestionJob] = None) -> Dict[str, Any]:
+        if job:
+            job.total_chunks = len(chunks)
 
-    doc.metadata["ingestion_status"] = "ingested"
-    doc.metadata["chunks_count"] = len(chunks)
-    doc.metadata["accepted_claims_count"] = ingest_result.get(
-        "claims_accepted", ingest_result.get("accepted_claims_count", 0)
-    )
-    doc.metadata["rejected_claims_count"] = ingest_result.get(
-        "claims_rejected", ingest_result.get("rejected_claims_count", 0)
-    )
+        def _on_progress(processed, total, accepted, rejected):
+            if job:
+                job.processed_chunks = processed
+                job.progress_percent = round((processed / total) * 100, 1) if total > 0 else 100.0
+                job.accepted_claims = accepted
+                job.rejected_claims = rejected
 
+        ingest_result = extractor.ingest_document_into_graph(parsed_doc, chunks, progress_callback=_on_progress)
+        doc.metadata["ingestion_status"] = "ingested"
+        doc.metadata["chunks_count"] = len(chunks)
+        doc.metadata["accepted_claims_count"] = ingest_result.get("claims_accepted", 0)
+        doc.metadata["rejected_claims_count"] = ingest_result.get("claims_rejected", 0)
+        return ingest_result
+
+    if sync:
+        try:
+            res = _worker()
+            return {
+                "document_id": doc_id,
+                "status": "ingested",
+                "chunks_processed": len(chunks),
+                "results": res,
+            }
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Extraction pipeline failed: {str(e)}",
+            )
+
+    # Asynchronous single-worker queue
+    job = submit_ingestion_job(doc_id, _worker)
     return {
+        "job_id": job.job_id,
         "document_id": doc_id,
-        "status": "ingested",
-        "chunks_processed": len(chunks),
-        "results": ingest_result,
+        "status": job.status,
+        "progress_percent": job.progress_percent,
+        "message": "Document ingestion job submitted to sequential worker.",
     }
 
 
-# 6. GET /api/v1/documents/{id}/status
+# 6. GET /api/v1/jobs/{job_id}
+@router.get("/jobs/{job_id}", response_model=IngestionJob)
+def get_ingestion_job_status(job_id: str):
+    """Retrieves real-time processing progress of a background ingestion job."""
+    job = get_job(job_id)
+    if not job:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Ingestion job '{job_id}' not found.",
+        )
+    return job
+
+
+# 7. GET /api/v1/documents/{id}/status
 @router.get("/documents/{doc_id}/status")
 def get_document_status(
     doc_id: str,
@@ -268,6 +314,8 @@ def get_document_status(
         "ingested" if doc.source_type == "synthetic" else "uploaded",
     )
 
+    active_job = get_job_by_document(doc_id)
+
     return {
         "document_id": doc.id,
         "title": doc.title,
@@ -280,6 +328,7 @@ def get_document_status(
         "accepted_claims": doc.metadata.get("accepted_claims_count", len(doc_evidence)),
         "rejected_claims": doc.metadata.get("rejected_claims_count", 0),
         "evidence_records": len(doc_evidence),
+        "job": active_job.model_dump() if active_job else None,
     }
 
 

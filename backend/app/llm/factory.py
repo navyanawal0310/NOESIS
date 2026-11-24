@@ -17,7 +17,11 @@ def get_llm_provider() -> BaseLLMProvider:
             context_length=settings.OLLAMA_CONTEXT_LENGTH,
             temperature=settings.OLLAMA_TEMPERATURE,
             timeout=settings.OLLAMA_TIMEOUT_SECONDS,
+            health_timeout=settings.OLLAMA_HEALTH_TIMEOUT_SECONDS,
+            keep_alive=settings.OLLAMA_KEEP_ALIVE,
             max_retries=settings.OLLAMA_MAX_RETRIES,
+            think=settings.OLLAMA_THINK,
+            max_tokens=settings.OLLAMA_MAX_GENERATED_TOKENS,
         )
     return _provider_instance
 

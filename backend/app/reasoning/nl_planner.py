@@ -90,6 +90,7 @@ class NLQueryPlanner:
             response = self.llm_provider.generate(
                 prompt=user_prompt,
                 system_prompt=SYSTEM_PLANNER_PROMPT,
+                schema="json",
             )
         except Exception as e:
             logger.error("LLM query plan generation failed: %s", e)
@@ -118,6 +119,17 @@ class NLQueryPlanner:
         for key in ("cypher", "query", "sql", "statement"):
             if key in parsed:
                 raise ValueError("Direct query execution language detected; Cypher/SQL injection rejected.")
+
+        # Normalize entity type strings if model included descriptive text
+        valid_types = {"PERSON", "ORGANIZATION", "TECHNOLOGY", "PROJECT", "PUBLICATION", "LOCATION", "CONCEPT"}
+        if parsed.get("return_type"):
+            rt = str(parsed["return_type"]).upper().strip()
+            parsed["return_type"] = next((et for et in valid_types if et in rt or rt[:5] in et), None)
+
+        for step_dict in parsed.get("steps", []):
+            if isinstance(step_dict, dict) and step_dict.get("target_type"):
+                tt = str(step_dict["target_type"]).upper().strip()
+                step_dict["target_type"] = next((et for et in valid_types if et in tt or tt[:5] in et), None)
 
         # Validate with Pydantic
         try:
