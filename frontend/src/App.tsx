@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Claim, Entity, HealthData, LLMStatus, ReasoningResult, StructuredQueryPlan } from './types';
+import { Claim, Entity, HealthData, IngestionJob, LLMStatus, ReasoningResult, StructuredQueryPlan } from './types';
 import { api } from './services/api';
 import { Header } from './components/Header';
 import { InvestigationWorkspace } from './components/InvestigationWorkspace';
@@ -16,23 +16,27 @@ export const App: React.FC = () => {
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [selectedClaim, setSelectedClaim] = useState<Claim | null>(null);
   const [vaultDocId, setVaultDocId] = useState<string | null>(null);
+  const [activeJob, setActiveJob] = useState<IngestionJob | null>(null);
+  const [lastRefreshTimestamp, setLastRefreshTimestamp] = useState<number>(Date.now());
+
+  const refreshAll = async () => {
+    try {
+      const [h, ents] = await Promise.all([api.getHealth(), api.getEntities()]);
+      setHealth(h);
+      setEntities(ents);
+      setLastRefreshTimestamp(Date.now());
+    } catch (err) {
+      console.error('Error refreshing telemetry after ingestion:', err);
+    }
+  };
 
   useEffect(() => {
     // Initial telemetry fetch
-    api
-      .getHealth()
-      .then((h) => setHealth(h))
-      .catch((err) => console.error('Health fetch error:', err));
-
+    refreshAll();
     api
       .getLLMStatus()
       .then((s) => setLlmStatus(s))
       .catch((err) => console.error('LLM status fetch error:', err));
-
-    api
-      .getEntities()
-      .then((ents) => setEntities(ents))
-      .catch((err) => console.error('Entities fetch error:', err));
   }, []);
 
   const handleSelectDocument = (docId: string) => {
@@ -44,9 +48,19 @@ export const App: React.FC = () => {
     return await api.executeQuery(plan);
   };
 
+  const handleIngestionComplete = (_docId?: string, _result?: any) => {
+    refreshAll();
+  };
+
   return (
     <div className="min-h-screen bg-graphite-950 text-neutral-200 flex flex-col font-sans">
-      <Header health={health} llmStatus={llmStatus} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header
+        health={health}
+        llmStatus={llmStatus}
+        activeJob={activeJob}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       <main className="flex-1 max-w-7xl w-full mx-auto p-6">
         {activeTab === 'workspace' && (
@@ -66,6 +80,7 @@ export const App: React.FC = () => {
             onSelectEntity={(ent) => setSelectedEntity(ent)}
             onSelectClaim={(clm) => setSelectedClaim(clm)}
             onSelectDocument={handleSelectDocument}
+            lastRefreshTimestamp={lastRefreshTimestamp}
           />
         )}
 
@@ -73,6 +88,8 @@ export const App: React.FC = () => {
           <SourceVault
             initialDocumentId={vaultDocId}
             llmStatus={llmStatus}
+            onIngestionComplete={handleIngestionComplete}
+            onActiveJobChange={setActiveJob}
           />
         )}
       </main>

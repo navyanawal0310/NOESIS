@@ -220,4 +220,50 @@ export interface DocumentStatusResponse {
   accepted_claims: number;
   rejected_claims: number;
   evidence_records: number;
+  job?: IngestionJob | null;
+}
+
+export type IngestionJobStatus =
+  | 'QUEUED'
+  | 'PARSING'
+  | 'CHUNKING'
+  | 'EXTRACTING'
+  | 'VALIDATING'
+  | 'INDEXING'
+  | 'COMPLETED'
+  | 'FAILED';
+
+export interface IngestionJob {
+  job_id: string;
+  document_id: string;
+  status: IngestionJobStatus | string;
+  progress_percent: number;
+  total_chunks: number;
+  processed_chunks: number;
+  accepted_claims: number;
+  rejected_claims: number;
+  evidence_records?: number;
+  elapsed_time_seconds?: number;
+  error_message?: string | null;
+  created_at: string;
+  completed_at?: string | null;
+  result?: {
+    document_id?: string;
+    filename?: string;
+    total_chunks?: number;
+    new_entities?: number;
+    claims_accepted?: number;
+    claims_rejected?: number;
+    evidence_records?: number;
+    contradictions_flagged?: number;
+    rejected_details?: any[];
+  } | null;
+}
+
+export interface IngestSubmitResponse {
+  job_id: string;
+  document_id: string;
+  status: string;
+  progress_percent: number;
+  message: string;
 }

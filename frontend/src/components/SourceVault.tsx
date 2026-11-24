@@ -10,16 +10,24 @@ import {
   Cpu,
   AlertCircle,
   Layers,
+  Loader2,
 } from 'lucide-react';
-import { Document, LLMStatus } from '../types';
+import { Document, IngestionJob, LLMStatus } from '../types';
 import { api } from '../services/api';
 
 interface SourceVaultProps {
   initialDocumentId?: string | null;
   llmStatus?: LLMStatus | null;
+  onIngestionComplete?: (docId: string, result?: any) => void;
+  onActiveJobChange?: (job: IngestionJob | null) => void;
 }
 
-export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llmStatus }) => {
+export const SourceVault: React.FC<SourceVaultProps> = ({
+  initialDocumentId,
+  llmStatus,
+  onIngestionComplete,
+  onActiveJobChange,
+}) => {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,8 +39,48 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
+
+  // Active Job & Polling state
+  const [activeJob, setActiveJob] = useState<IngestionJob | null>(null);
   const [ingesting, setIngesting] = useState<boolean>(false);
-  const [ingestStatusMsg, setIngestStatusMsg] = useState<string | null>(null);
+  const pollingTimer = useRef<any>(null);
+
+  const stopPolling = () => {
+    if (pollingTimer.current) {
+      window.clearInterval(pollingTimer.current);
+      pollingTimer.current = null;
+    }
+  };
+
+  const startPolling = (jobId: string, docId: string) => {
+    stopPolling();
+    pollingTimer.current = window.setInterval(async () => {
+      try {
+        const job = await api.getJobStatus(jobId);
+        setActiveJob(job);
+        if (onActiveJobChange) onActiveJobChange(job);
+
+        const statusUpper = job.status.toUpperCase();
+        if (statusUpper === 'COMPLETED') {
+          stopPolling();
+          setIngesting(false);
+          if (onActiveJobChange) onActiveJobChange(null);
+          await fetchDocs();
+          const doc = await api.getDocument(docId);
+          setSelectedDoc(doc);
+          if (onIngestionComplete) {
+            onIngestionComplete(docId, job.result);
+          }
+        } else if (statusUpper === 'FAILED') {
+          stopPolling();
+          setIngesting(false);
+          if (onActiveJobChange) onActiveJobChange(null);
+        }
+      } catch (err) {
+        console.error('Error polling job status:', err);
+      }
+    }, 750);
+  };
 
   const fetchDocs = () => {
     return api
@@ -54,6 +102,39 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
   useEffect(() => {
     fetchDocs();
   }, [initialDocumentId]);
+
+  // Check document status and resume active polling on selection or page refresh
+  useEffect(() => {
+    if (!selectedDoc) {
+      stopPolling();
+      setActiveJob(null);
+      setIngesting(false);
+      return;
+    }
+
+    api
+      .getDocumentStatus(selectedDoc.id)
+      .then((statusResp) => {
+        if (statusResp.job) {
+          const job = statusResp.job;
+          setActiveJob(job);
+          const s = job.status.toUpperCase();
+          if (s !== 'COMPLETED' && s !== 'FAILED') {
+            setIngesting(true);
+            startPolling(job.job_id, selectedDoc.id);
+          }
+        } else {
+          if (!ingesting) {
+            setActiveJob(null);
+          }
+        }
+      })
+      .catch((err) => console.debug('Status check failed:', err));
+
+    return () => {
+      stopPolling();
+    };
+  }, [selectedDoc?.id]);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -78,23 +159,49 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
     }
   };
 
+  const isJobActive = Boolean(
+    activeJob && !['COMPLETED', 'FAILED'].includes(activeJob.status.toUpperCase())
+  );
+
   const handleIngestDocument = async () => {
-    if (!selectedDoc) return;
+    if (!selectedDoc || isJobActive) return;
     setIngesting(true);
-    setIngestStatusMsg(null);
+    setUploadError(null);
 
     try {
-      const res = await api.ingestDocument(selectedDoc.id);
-      setIngestStatusMsg(
-        `Ingested successfully: ${res.chunks_processed} chunk(s) processed, ${res.results?.accepted_claims_count || 0} claims accepted.`
-      );
-      await fetchDocs();
-      const doc = await api.getDocument(selectedDoc.id);
-      setSelectedDoc(doc);
+      const submitRes = await api.ingestDocument(selectedDoc.id);
+      const initialJob: IngestionJob = {
+        job_id: submitRes.job_id,
+        document_id: selectedDoc.id,
+        status: submitRes.status || 'QUEUED',
+        progress_percent: submitRes.progress_percent || 0.0,
+        total_chunks: 0,
+        processed_chunks: 0,
+        accepted_claims: 0,
+        rejected_claims: 0,
+        evidence_records: 0,
+        elapsed_time_seconds: 0.0,
+        created_at: new Date().toISOString(),
+      };
+      setActiveJob(initialJob);
+      if (onActiveJobChange) onActiveJobChange(initialJob);
+      startPolling(submitRes.job_id, selectedDoc.id);
     } catch (err: any) {
-      setIngestStatusMsg(`Ingestion failed: ${err.message || 'Error executing LLM extraction'}`);
-    } finally {
       setIngesting(false);
+      const failedJob: IngestionJob = {
+        job_id: 'error',
+        document_id: selectedDoc.id,
+        status: 'FAILED',
+        progress_percent: 0.0,
+        total_chunks: 0,
+        processed_chunks: 0,
+        accepted_claims: 0,
+        rejected_claims: 0,
+        error_message: err.message || 'Failed to submit ingestion job',
+        created_at: new Date().toISOString(),
+      };
+      setActiveJob(failedJob);
+      if (onActiveJobChange) onActiveJobChange(failedJob);
     }
   };
 
@@ -127,7 +234,8 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
 
   const isIngested =
     selectedDoc?.source_type === 'synthetic' ||
-    selectedDoc?.metadata?.ingestion_status === 'ingested';
+    selectedDoc?.metadata?.ingestion_status === 'ingested' ||
+    activeJob?.status.toUpperCase() === 'COMPLETED';
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 font-mono text-xs">
@@ -203,7 +311,6 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
                     onClick={() => {
                       setSelectedDoc(doc);
                       setHighlightOffsets(null);
-                      setIngestStatusMsg(null);
                     }}
                     className={`p-3 rounded cursor-pointer transition-colors border ${
                       isSelected
@@ -260,14 +367,23 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
                 </div>
 
                 {/* Extraction action button */}
-                {!isIngested ? (
+                {!isIngested || isJobActive ? (
                   <button
                     onClick={handleIngestDocument}
-                    disabled={ingesting || !llmStatus?.available}
+                    disabled={isJobActive || !llmStatus?.available}
                     className="flex items-center space-x-1.5 px-3 py-1.5 rounded bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-graphite-950 font-bold text-xs transition-colors"
                   >
-                    <Cpu className="w-3.5 h-3.5" />
-                    <span>{ingesting ? 'Extracting Claims...' : 'Extract & Ingest Claims'}</span>
+                    {isJobActive ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>{activeJob?.status.toUpperCase()} ({Math.round(activeJob?.progress_percent || 0)}%)...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Cpu className="w-3.5 h-3.5" />
+                        <span>Extract & Ingest Claims</span>
+                      </>
+                    )}
                   </button>
                 ) : (
                   <span className="flex items-center space-x-1 text-emerald-400 text-xs">
@@ -302,9 +418,87 @@ export const SourceVault: React.FC<SourceVaultProps> = ({ initialDocumentId, llm
                 )}
               </div>
 
-              {ingestStatusMsg && (
-                <div className="mt-3 p-3 rounded bg-graphite-950 border border-graphite-700 text-neutral-300 text-xs">
-                  {ingestStatusMsg}
+              {/* Real-time Ingestion Processing Status Panel (Tasks 2 & 3) */}
+              {activeJob && (
+                <div className={`mt-3 p-3.5 rounded-lg border font-mono text-xs space-y-2.5 ${
+                  activeJob.status.toUpperCase() === 'FAILED'
+                    ? 'bg-rose-950/20 border-rose-500/40 text-rose-300'
+                    : activeJob.status.toUpperCase() === 'COMPLETED'
+                    ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-300'
+                    : 'bg-graphite-950 border-amber-500/30 text-neutral-200'
+                }`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      {activeJob.status.toUpperCase() === 'COMPLETED' ? (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                      ) : activeJob.status.toUpperCase() === 'FAILED' ? (
+                        <AlertCircle className="w-4 h-4 text-rose-400" />
+                      ) : (
+                        <Loader2 className="w-4 h-4 text-amber-400 animate-spin" />
+                      )}
+                      <span className="font-bold uppercase tracking-wider text-[11px]">
+                        {activeJob.status.toUpperCase()}
+                      </span>
+                      <span className="text-[10px] text-neutral-400">
+                        ({Math.round(activeJob.progress_percent)}%)
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-neutral-400">
+                      Job: {activeJob.job_id}
+                    </span>
+                  </div>
+
+                  {/* Progress bar */}
+                  <div className="w-full bg-graphite-800 h-1.5 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full transition-all duration-300 ${
+                        activeJob.status.toUpperCase() === 'FAILED'
+                          ? 'bg-rose-500'
+                          : activeJob.status.toUpperCase() === 'COMPLETED'
+                          ? 'bg-emerald-500'
+                          : 'bg-amber-400'
+                      }`}
+                      style={{ width: `${Math.min(100, Math.max(0, activeJob.progress_percent))}%` }}
+                    />
+                  </div>
+
+                  {/* Live Metrics Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1 border-t border-graphite-800 text-[10px]">
+                    <div>
+                      <span className="text-neutral-500 block">Elapsed</span>
+                      <span className="font-semibold text-neutral-200">{activeJob.elapsed_time_seconds ?? 0}s</span>
+                    </div>
+                    <div>
+                      <span className="text-neutral-500 block">Chunks</span>
+                      <span className="font-semibold text-neutral-200">{activeJob.processed_chunks} / {activeJob.total_chunks}</span>
+                    </div>
+                    <div>
+                      <span className="text-neutral-500 block">Accepted</span>
+                      <span className="font-semibold text-emerald-400">{activeJob.accepted_claims}</span>
+                    </div>
+                    <div>
+                      <span className="text-neutral-500 block">Rejected</span>
+                      <span className="font-semibold text-neutral-400">{activeJob.rejected_claims}</span>
+                    </div>
+                    <div>
+                      <span className="text-neutral-500 block">Evidence</span>
+                      <span className="font-semibold text-neutral-200">{activeJob.evidence_records ?? 0}</span>
+                    </div>
+                  </div>
+
+                  {/* Terminal success summary */}
+                  {activeJob.status.toUpperCase() === 'COMPLETED' && (
+                    <div className="text-[11px] text-emerald-400 pt-1">
+                      ✓ Ingested successfully: {activeJob.total_chunks} chunk(s) processed in {activeJob.elapsed_time_seconds ?? 0}s. {activeJob.accepted_claims} claims accepted, {activeJob.evidence_records ?? 0} evidence records created.
+                    </div>
+                  )}
+
+                  {/* Terminal failure summary */}
+                  {activeJob.status.toUpperCase() === 'FAILED' && (
+                    <div className="text-[11px] text-rose-400 pt-1">
+                      ✗ Ingestion failed: {activeJob.error_message || 'Pipeline execution failed'}
+                    </div>
+                  )}
                 </div>
               )}
             </div>

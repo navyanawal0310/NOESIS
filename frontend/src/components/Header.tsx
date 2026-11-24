@@ -1,15 +1,16 @@
 import React from 'react';
 import { Database, ShieldCheck, Activity, Terminal, GitBranch, Layers, Cpu } from 'lucide-react';
-import { HealthData, LLMStatus } from '../types';
+import { HealthData, IngestionJob, LLMStatus } from '../types';
 
 interface HeaderProps {
   health: HealthData | null;
   llmStatus?: LLMStatus | null;
+  activeJob?: IngestionJob | null;
   activeTab: 'workspace' | 'graph' | 'vault';
   setActiveTab: (tab: 'workspace' | 'graph' | 'vault') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeTab, setActiveTab }) => {
+export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeJob, activeTab, setActiveTab }) => {
   return (
     <header className="border-b border-graphite-800 bg-graphite-900/90 backdrop-blur px-6 py-3 sticky top-0 z-40">
       <div className="flex items-center justify-between">
@@ -74,6 +75,17 @@ export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeTab, se
 
         {/* Telemetry Badges */}
         <div className="flex items-center space-x-3 text-xs font-mono">
+          {activeJob && !['COMPLETED', 'FAILED'].includes(activeJob.status.toUpperCase()) && (
+            <button
+              onClick={() => setActiveTab('vault')}
+              className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 animate-pulse hover:bg-amber-500/25"
+              title="Click to view ingestion progress in Source Vault"
+            >
+              <Cpu className="w-3.5 h-3.5 animate-spin" />
+              <span>Ingesting: {activeJob.status.toUpperCase()} ({Math.round(activeJob.progress_percent)}%)</span>
+            </button>
+          )}
+
           {/* LLM Status Indicator */}
           <div
             className={`flex items-center space-x-1.5 px-2.5 py-1 rounded border ${

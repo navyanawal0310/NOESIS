@@ -9,6 +9,8 @@ import {
   GroundedAnswer,
   GraphPayload,
   HealthData,
+  IngestionJob,
+  IngestSubmitResponse,
   LLMStatus,
   ReasoningResult,
   StructuredQueryPlan,
@@ -61,13 +63,23 @@ export const api = {
     return res.json();
   },
 
-  async ingestDocument(docId: string): Promise<any> {
-    const res = await fetch(`${API_BASE}/documents/${docId}/ingest`, {
+  async ingestDocument(docId: string, sync: boolean = false): Promise<IngestSubmitResponse> {
+    const url = sync ? `${API_BASE}/documents/${docId}/ingest?sync=true` : `${API_BASE}/documents/${docId}/ingest`;
+    const res = await fetch(url, {
       method: 'POST',
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({ detail: res.statusText }));
       throw new Error(err.detail || `Document ingestion failed: ${res.statusText}`);
+    }
+    return res.json();
+  },
+
+  async getJobStatus(jobId: string): Promise<IngestionJob> {
+    const res = await fetch(`${API_BASE}/jobs/${jobId}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: res.statusText }));
+      throw new Error(err.detail || `Fetch job ${jobId} failed: ${res.statusText}`);
     }
     return res.json();
   },
