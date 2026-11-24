@@ -167,3 +167,66 @@ def test_api_document_status_endpoint(seeded_repository):
     assert status_res["source_type"] == "synthetic"
     assert status_res["status"] == "ingested"
     assert status_res["total_chars"] > 0
+
+
+class OnlineMockLLM(BaseLLMProvider):
+    def check_status(self) -> LLMStatus:
+        return LLMStatus(
+            available=True,
+            provider_name="mock",
+            base_url="http://127.0.0.1:11434",
+            configured_model="mock:latest",
+            installed_models=["mock:latest"],
+            model_available=True,
+        )
+
+    def generate(self, prompt: str, system_prompt=None, schema=None, temperature=None, max_tokens=None) -> LLMResponse:
+        return LLMResponse(
+            content='{"start_entity": "ent_marcus_chen", "steps": [{"predicate": "FOUNDED", "direction": "outgoing", "target_type": "ORGANIZATION"}], "return_type": "ORGANIZATION", "max_hops": 1}',
+            model="mock:latest",
+            inference_duration_ms=5.0,
+        )
+
+
+def test_api_natural_query_success_with_eaqc(seeded_repository, reasoning_engine):
+    """Verifies POST /api/v1/query/natural returns status_code, executed_plan, and latencies."""
+    online_llm = OnlineMockLLM()
+    planner = NLQueryPlanner(repository=seeded_repository, llm_provider=online_llm)
+    answer_gen = GroundedAnswerGenerator(llm_provider=online_llm)
+    gap_detector = KnowledgeGapDetector(repository=seeded_repository)
+
+    req = NaturalQueryRequest(question="What organization did Marcus Chen found?")
+    ans = execute_natural_query(
+        request=req,
+        planner=planner,
+        engine=reasoning_engine,
+        answer_gen=answer_gen,
+        gap_detector=gap_detector,
+    )
+    assert ans.status == "success"
+    assert ans.status_code == "SUCCESS"
+    assert ans.executed_plan is not None
+    assert ans.executed_plan.start_entity == "ent_marcus_chen"
+    assert ans.latencies is not None
+    assert "total_ms" in ans.latencies
+
+
+def test_api_natural_query_entity_not_found(seeded_repository, reasoning_engine):
+    """Verifies POST /api/v1/query/natural returns ENTITY_NOT_FOUND when named entity does not exist."""
+    online_llm = OnlineMockLLM()
+    planner = NLQueryPlanner(repository=seeded_repository, llm_provider=online_llm)
+    answer_gen = GroundedAnswerGenerator(llm_provider=online_llm)
+    gap_detector = KnowledgeGapDetector(repository=seeded_repository)
+
+    req = NaturalQueryRequest(question="Who worked on Project Chimera?")
+    ans = execute_natural_query(
+        request=req,
+        planner=planner,
+        engine=reasoning_engine,
+        answer_gen=answer_gen,
+        gap_detector=gap_detector,
+    )
+    assert ans.status == "insufficient_evidence"
+    assert ans.status_code == "ENTITY_NOT_FOUND"
+    assert ans.executed_plan is None
+    assert "Project Chimera" in ans.answer

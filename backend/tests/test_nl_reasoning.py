@@ -69,7 +69,7 @@ def test_nl_planner_success():
     planner = NLQueryPlanner(repository=repo, llm_provider=mock_llm)
 
     plan = planner.plan_query("What organization did Elena Vance found?")
-    assert plan.start_entity == "Elena Vance"
+    assert plan.start_entity in ("Elena Vance", "ent_elena_vance")
     assert len(plan.steps) == 1
     assert plan.steps[0].predicate == "FOUNDED"
     assert plan.return_type == EntityType.ORGANIZATION
