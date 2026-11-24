@@ -1,5 +1,6 @@
 """FastAPI REST API Routers - v1."""
 
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
@@ -233,21 +234,77 @@ def ingest_document_claims(
 
     def _worker(job: Optional[IngestionJob] = None) -> Dict[str, Any]:
         if job:
-            job.total_chunks = len(chunks)
+            job.status = "PARSING"
+            job.progress_percent = 5.0
 
-        def _on_progress(processed, total, accepted, rejected):
+        page_spans_data = doc.metadata.get("page_spans", [])
+        page_spans = [PageSpan(**ps) for ps in page_spans_data]
+        parsed_doc = ParsedDocument(
+            document_id=doc.id,
+            filename=doc.title,
+            source_type=doc.source_type,
+            content_hash=doc.content_hash,
+            raw_text=doc.raw_text,
+            page_spans=page_spans,
+            total_pages=doc.metadata.get("total_pages", 1),
+            total_chars=len(doc.raw_text),
+            ingestion_timestamp=doc.ingestion_timestamp,
+            metadata=doc.metadata,
+        )
+
+        if job:
+            job.status = "CHUNKING"
+            job.progress_percent = 10.0
+
+        chunker = DocumentChunker()
+        chunks = chunker.chunk_document(parsed_doc)
+
+        if job:
+            job.total_chunks = len(chunks)
+            job.status = "EXTRACTING"
+            job.progress_percent = 15.0
+
+        def _on_progress(processed: int, total: int, accepted: int, rejected: int, stage: str = "EXTRACTING"):
             if job:
                 job.processed_chunks = processed
-                job.progress_percent = round((processed / total) * 100, 1) if total > 0 else 100.0
+                job.total_chunks = total
                 job.accepted_claims = accepted
                 job.rejected_claims = rejected
+                job.status = stage
+                if total > 0:
+                    job.progress_percent = round(15.0 + (processed / total) * 75.0, 1)
 
-        ingest_result = extractor.ingest_document_into_graph(parsed_doc, chunks, progress_callback=_on_progress)
-        doc.metadata["ingestion_status"] = "ingested"
-        doc.metadata["chunks_count"] = len(chunks)
-        doc.metadata["accepted_claims_count"] = ingest_result.get("claims_accepted", 0)
-        doc.metadata["rejected_claims_count"] = ingest_result.get("claims_rejected", 0)
-        return ingest_result
+        try:
+            ingest_result = extractor.ingest_document_into_graph(parsed_doc, chunks, progress_callback=_on_progress)
+
+            if job:
+                job.status = "INDEXING"
+                job.progress_percent = 95.0
+                job.accepted_claims = ingest_result.get("claims_accepted", 0)
+                job.rejected_claims = ingest_result.get("claims_rejected", 0)
+                job.evidence_records = ingest_result.get("evidence_records", 0)
+
+            # Persist and synchronize metadata back to repository
+            doc_to_save = repo.get_document(doc_id) or doc
+            doc_to_save.metadata["ingestion_status"] = "ingested"
+            doc_to_save.metadata["chunks_count"] = len(chunks)
+            doc_to_save.metadata["accepted_claims_count"] = ingest_result.get("claims_accepted", 0)
+            doc_to_save.metadata["rejected_claims_count"] = ingest_result.get("claims_rejected", 0)
+            doc_to_save.metadata["evidence_records_count"] = ingest_result.get("evidence_records", 0)
+            doc_to_save.metadata["new_entities_count"] = ingest_result.get("new_entities", 0)
+            doc_to_save.metadata["contradictions_flagged"] = ingest_result.get("newly_detected_contradictions", 0)
+            doc_to_save.metadata["total_corpus_contradictions"] = ingest_result.get("total_corpus_contradictions", 0)
+            doc_to_save.metadata["last_ingested_at"] = datetime.now(timezone.utc).isoformat()
+            doc_to_save.metadata.pop("error_message", None)
+            repo.add_document(doc_to_save)
+
+            return ingest_result
+        except Exception as e:
+            doc_to_save = repo.get_document(doc_id) or doc
+            doc_to_save.metadata["ingestion_status"] = "failed"
+            doc_to_save.metadata["error_message"] = str(e)
+            repo.add_document(doc_to_save)
+            raise e
 
     if sync:
         try:
@@ -309,25 +366,55 @@ def get_document_status(
             if ev.document_id == doc_id:
                 doc_evidence.append(ev)
 
-    ingestion_status = doc.metadata.get(
-        "ingestion_status",
-        "ingested" if doc.source_type == "synthetic" else "uploaded",
-    )
-
     active_job = get_job_by_document(doc_id)
+
+    # Determine unified source-of-truth status
+    if active_job:
+        job_status_upper = active_job.status.upper()
+        if job_status_upper == "COMPLETED":
+            doc_status = "ingested"
+        elif job_status_upper == "FAILED":
+            doc_status = "failed"
+        else:
+            doc_status = active_job.status
+    else:
+        doc_status = doc.metadata.get(
+            "ingestion_status",
+            "ingested" if doc.source_type == "synthetic" else "uploaded",
+        )
+
+    chunks_count = (
+        doc.metadata.get("chunks_count")
+        or (active_job.total_chunks if active_job else 0)
+    )
+    accepted_claims = (
+        doc.metadata.get("accepted_claims_count")
+        if doc.metadata.get("accepted_claims_count") is not None
+        else (active_job.accepted_claims if active_job else len(doc_evidence))
+    )
+    rejected_claims = (
+        doc.metadata.get("rejected_claims_count")
+        if doc.metadata.get("rejected_claims_count") is not None
+        else (active_job.rejected_claims if active_job else 0)
+    )
+    evidence_records = (
+        doc.metadata.get("evidence_records_count")
+        if doc.metadata.get("evidence_records_count") is not None
+        else (active_job.evidence_records if active_job else len(doc_evidence))
+    )
 
     return {
         "document_id": doc.id,
         "title": doc.title,
         "source_type": doc.source_type,
         "content_hash": doc.content_hash,
-        "status": ingestion_status,
+        "status": doc_status,
         "total_pages": doc.metadata.get("total_pages", 1),
         "total_chars": len(doc.raw_text),
-        "chunks_count": doc.metadata.get("chunks_count", 0),
-        "accepted_claims": doc.metadata.get("accepted_claims_count", len(doc_evidence)),
-        "rejected_claims": doc.metadata.get("rejected_claims_count", 0),
-        "evidence_records": len(doc_evidence),
+        "chunks_count": chunks_count,
+        "accepted_claims": accepted_claims,
+        "rejected_claims": rejected_claims,
+        "evidence_records": evidence_records,
         "job": active_job.model_dump() if active_job else None,
     }
 
