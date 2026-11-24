@@ -11,7 +11,6 @@ from pathlib import Path
 # Ensure workspace root is in sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from backend.app.config import settings
 from backend.app.graph.factory import get_graph_repository
 from backend.app.ontology.models import Claim, Document, Entity, EntityType, Evidence, Polarity
 from datasets.synthetic.builder import build_corpus_data

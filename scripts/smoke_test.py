@@ -17,9 +17,9 @@ import os
 import subprocess
 import sys
 import time
-from pathlib import Path
-import urllib.request
 import urllib.error
+import urllib.request
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
