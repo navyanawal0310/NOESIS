@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import {
   AlertTriangle,
-  ArrowRight,
   CheckCircle2,
   Clock,
   Compass,
+  Cpu,
   Layers,
+  MessageSquare,
   Network,
+  Search,
   ShieldAlert,
   Sparkles,
 } from 'lucide-react';
-import { Claim, Entity, ReasoningResult, StructuredQueryPlan } from '../types';
+import {
+  Claim,
+  Entity,
+  GroundedAnswer,
+  LLMStatus,
+  ReasoningResult,
+  StructuredQueryPlan,
+} from '../types';
+import { api } from '../services/api';
 import { AblationPanel } from './AblationPanel';
 import { QueryBuilder } from './QueryBuilder';
 
 interface InvestigationWorkspaceProps {
   entities: Entity[];
+  llmStatus?: LLMStatus | null;
   onSelectEntity: (entity: Entity) => void;
   onSelectClaim: (claim: Claim) => void;
   onSelectDocument: (docId: string) => void;
@@ -25,20 +36,35 @@ interface InvestigationWorkspaceProps {
 
 export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
   entities,
+  llmStatus,
   onSelectEntity,
   onSelectClaim,
   onSelectDocument,
   onNavigateToGraph,
   onExecuteQuery,
 }) => {
+  const [queryMode, setQueryMode] = useState<'structured' | 'natural'>('structured');
   const [result, setResult] = useState<ReasoningResult | null>(null);
+  const [naturalAnswer, setNaturalAnswer] = useState<GroundedAnswer | null>(null);
   const [activePlan, setActivePlan] = useState<StructuredQueryPlan | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedTargetForAblation, setSelectedTargetForAblation] = useState<Entity | null>(null);
 
+  // Natural query state
+  const [naturalQuestion, setNaturalQuestion] = useState<string>('');
+  const [naturalMaxHops, setNaturalMaxHops] = useState<number>(3);
+  const [naturalError, setNaturalError] = useState<string | null>(null);
+
+  const exampleQuestions = [
+    'What organization was founded by Elena Vance?',
+    'Who did Dr. Alyssa Vance collaborate with?',
+    'What technology or project was developed by Aetheris?',
+  ];
+
   const handleRunQuery = async (plan: StructuredQueryPlan) => {
     setLoading(true);
     setActivePlan(plan);
+    setNaturalAnswer(null);
     try {
       const res = await onExecuteQuery(plan);
       setResult(res);
@@ -49,6 +75,21 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRunNaturalQuery = async () => {
+    if (!naturalQuestion.trim()) return;
+    setLoading(true);
+    setNaturalError(null);
+    setResult(null);
+    try {
+      const ans = await api.executeNaturalQuery(naturalQuestion, naturalMaxHops, false);
+      setNaturalAnswer(ans);
+    } catch (err: any) {
+      setNaturalError(err.message || 'Natural query execution failed');
     } finally {
       setLoading(false);
     }
@@ -84,7 +125,7 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Top Banner / Mission Statement */}
+      {/* Top Banner */}
       <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -111,15 +152,228 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Query Mode Switcher */}
+        <div className="flex items-center space-x-2 mt-4 pt-4 border-t border-graphite-800 font-mono text-xs">
+          <span className="text-neutral-500 uppercase tracking-wider text-[11px] mr-2">Query Engine:</span>
+          <button
+            onClick={() => setQueryMode('structured')}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded transition-colors ${
+              queryMode === 'structured'
+                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/50'
+                : 'bg-graphite-950 text-neutral-400 hover:text-neutral-200 border border-graphite-800'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Structured Query Plan (Symbolic)</span>
+          </button>
+          <button
+            onClick={() => setQueryMode('natural')}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded transition-colors ${
+              queryMode === 'natural'
+                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/50'
+                : 'bg-graphite-950 text-neutral-400 hover:text-neutral-200 border border-graphite-800'
+            }`}
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Natural Language Query (Local LLM)</span>
+          </button>
+        </div>
       </div>
 
-      {/* Structured Query Builder */}
-      <QueryBuilder entities={entities} onExecute={handleRunQuery} loading={loading} />
+      {/* Query Builders */}
+      {queryMode === 'structured' ? (
+        <QueryBuilder entities={entities} onExecute={handleRunQuery} loading={loading} />
+      ) : (
+        <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-5 font-mono space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-xs uppercase text-amber-400 tracking-wider flex items-center space-x-2">
+              <Cpu className="w-4 h-4" />
+              <span>Natural-Language Query Planner</span>
+            </span>
+            <div className="text-[11px] text-neutral-500">
+              Ollama Model: <span className="text-neutral-300">{llmStatus?.configured_model || 'qwen3:4b'}</span>
+            </div>
+          </div>
 
-      {/* Query Execution Telemetry & Results */}
+          {!llmStatus?.available && (
+            <div className="p-3.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-start space-x-2.5">
+              <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-semibold block">Local LLM Offline (Ollama)</strong>
+                <span>
+                  Ollama is currently unreachable on http://127.0.0.1:11434. Natural language query planning requires an active local LLM.
+                  Switch to <strong>Structured Query Plan</strong> above to execute deterministic multi-hop reasoning directly on the graph.
+                </span>
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-2">
+            <label className="text-[11px] text-neutral-400 uppercase tracking-wider block">
+              Enter Research Question:
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="e.g., What organization was founded by Elena Vance?"
+                value={naturalQuestion}
+                onChange={(e) => setNaturalQuestion(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleRunNaturalQuery()}
+                className="flex-1 bg-graphite-950 border border-graphite-700 rounded px-3 py-2 text-neutral-100 placeholder-neutral-500 text-xs focus:outline-none focus:border-amber-500"
+              />
+              <div className="flex items-center space-x-2 bg-graphite-950 border border-graphite-700 rounded px-3 py-1">
+                <span className="text-neutral-400 text-[11px]">Max Hops:</span>
+                <select
+                  value={naturalMaxHops}
+                  onChange={(e) => setNaturalMaxHops(Number(e.target.value))}
+                  className="bg-graphite-900 text-neutral-200 border-none text-xs focus:outline-none"
+                >
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                </select>
+              </div>
+              <button
+                onClick={handleRunNaturalQuery}
+                disabled={loading || !naturalQuestion.trim()}
+                className="px-4 py-2 rounded bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-graphite-950 font-bold text-xs flex items-center space-x-1.5 transition-colors"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span>{loading ? 'Synthesizing...' : 'Execute'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Examples */}
+          <div className="flex items-center flex-wrap gap-2 pt-2 text-[11px]">
+            <span className="text-neutral-500">Suggested queries:</span>
+            {exampleQuestions.map((q, idx) => (
+              <button
+                key={idx}
+                onClick={() => setNaturalQuestion(q)}
+                className="px-2 py-0.5 rounded bg-graphite-950 hover:bg-graphite-800 text-neutral-400 hover:text-amber-400 border border-graphite-800 transition-colors"
+              >
+                "{q}"
+              </button>
+            ))}
+          </div>
+
+          {naturalError && (
+            <div className="p-3 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+              {naturalError}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Natural Query Grounded Answer Display */}
+      {naturalAnswer && (
+        <div className="space-y-6">
+          <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-4 font-mono flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div className="flex items-center space-x-3">
+              {getStatusBadge(naturalAnswer.status)}
+              <span className="text-neutral-500">|</span>
+              <div className="flex items-center space-x-1 text-neutral-300">
+                <Clock className="w-3.5 h-3.5 text-neutral-400" />
+                <span>{naturalAnswer.execution_time_ms} ms</span>
+              </div>
+              <span className="text-neutral-500">|</span>
+              <div className="flex items-center space-x-1 text-neutral-300">
+                <Layers className="w-3.5 h-3.5 text-neutral-400" />
+                <span>{naturalAnswer.hop_count} Hop(s)</span>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <span className="text-neutral-400">Path Confidence:</span>
+              <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold">
+                {(naturalAnswer.confidence * 100).toFixed(1)}%
+              </span>
+            </div>
+          </div>
+
+          {/* Answer Text */}
+          <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-5 font-mono space-y-4">
+            <span className="text-xs uppercase text-neutral-400 tracking-wider block">Grounded Answer</span>
+            <p className="text-sm font-sans text-neutral-100 leading-relaxed bg-graphite-950 p-4 rounded border border-graphite-850">
+              {naturalAnswer.answer}
+            </p>
+
+            {/* Knowledge Gap Diagnostics */}
+            {naturalAnswer.gap_diagnostics && (
+              <div className="p-4 rounded bg-rose-500/10 border border-rose-500/30 space-y-2">
+                <div className="flex items-center space-x-2 text-rose-400 font-semibold text-xs">
+                  <ShieldAlert className="w-4 h-4" />
+                  <span>Knowledge Gap Discontinuity Detected</span>
+                </div>
+                <p className="text-xs text-neutral-300 font-sans">
+                  {naturalAnswer.gap_diagnostics.diagnostic_message}
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 text-[11px] text-neutral-400 font-mono">
+                  <div>
+                    Completed Hops: <strong className="text-neutral-200">{naturalAnswer.gap_diagnostics.completed_hops}</strong>
+                  </div>
+                  <div>
+                    Halted Entity: <strong className="text-neutral-200">{naturalAnswer.gap_diagnostics.terminal_entity?.canonical_name || 'Unresolved'}</strong>
+                  </div>
+                  <div>
+                    Missing Predicate: <strong className="text-neutral-200">{naturalAnswer.gap_diagnostics.missing_predicate || 'None'}</strong>
+                  </div>
+                  <div>
+                    Expected Target: <strong className="text-neutral-200">{naturalAnswer.gap_diagnostics.expected_target_type || 'Any'}</strong>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Contradiction Warnings */}
+            {naturalAnswer.has_contradictions && naturalAnswer.contradiction_notes.length > 0 && (
+              <div className="p-3.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs space-y-1">
+                <div className="flex items-center space-x-2 font-semibold">
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                  <span>Active Factual Contradictions in Traversed Evidence:</span>
+                </div>
+                <ul className="list-disc list-inside text-neutral-300 text-[11px] pl-1">
+                  {naturalAnswer.contradiction_notes.map((note, idx) => (
+                    <li key={idx}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Supporting Evidence Quotes */}
+            {naturalAnswer.supporting_quotes.length > 0 && (
+              <div>
+                <span className="text-[11px] text-neutral-400 uppercase tracking-wider block mb-2">
+                  Grounding Source Quotations ({naturalAnswer.supporting_quotes.length})
+                </span>
+                <div className="space-y-2">
+                  {naturalAnswer.supporting_quotes.map((quote, idx) => (
+                    <div key={idx} className="p-3 rounded bg-graphite-950 border border-graphite-800 text-xs">
+                      <p className="text-amber-200/90 font-sans italic mb-1.5">"{quote}"</p>
+                      {naturalAnswer.supporting_document_ids[idx] && (
+                        <button
+                          onClick={() => onSelectDocument(naturalAnswer.supporting_document_ids[idx])}
+                          className="text-[10px] text-amber-400 hover:underline uppercase"
+                        >
+                          Source: {naturalAnswer.supporting_document_ids[idx]}
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Structured Query Telemetry & Results */}
       {result && (
         <div className="space-y-6">
-          {/* Results Header Bar */}
           <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-4 font-mono flex flex-wrap items-center justify-between gap-3 text-xs">
             <div className="flex items-center space-x-3">
               {getStatusBadge(result.status)}
@@ -143,7 +397,6 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
             </div>
           </div>
 
-          {/* Answer Card */}
           <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-5 font-mono">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs uppercase text-neutral-400 tracking-wider">Synthesized Answer & Findings</span>
@@ -158,7 +411,6 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
               {result.explanation}
             </p>
 
-            {/* Target Entities Cards */}
             {result.matching_entities.length > 0 && (
               <div className="mt-4">
                 <span className="text-[11px] text-neutral-400 uppercase tracking-wider block mb-2">
@@ -185,7 +437,6 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
             )}
           </div>
 
-          {/* Reasoning Paths Breakdown */}
           {result.paths.length > 0 && (
             <div className="bg-graphite-900 border border-graphite-800 rounded-lg p-5 font-mono">
               <div className="flex items-center justify-between mb-4">
@@ -210,7 +461,6 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
                       </div>
                     </div>
 
-                    {/* Step-by-step Segments */}
                     <div className="space-y-3">
                       {path.segments.map((seg, segIdx) => (
                         <div key={segIdx} className="bg-graphite-900/60 p-3 rounded border border-graphite-800">
@@ -222,21 +472,18 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
                               {seg.from_entity.canonical_name}
                             </button>
 
-                            <ArrowRight className="w-3.5 h-3.5 text-neutral-500" />
-
+                            <span className="text-neutral-500 font-mono text-[10px]">
+                              {seg.direction === 'outgoing' ? '─[' : '◀─['}
+                            </span>
                             <button
                               onClick={() => onSelectClaim(seg.claim)}
-                              className={`px-2 py-0.5 rounded border text-xs font-mono flex items-center space-x-1 ${
-                                seg.claim.polarity === 'negated'
-                                  ? 'bg-rose-500/10 border-rose-500/30 text-rose-400'
-                                  : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                              }`}
+                              className="px-2 py-0.5 rounded bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[11px] font-bold"
                             >
-                              <span>{seg.claim.predicate}</span>
-                              <span className="text-[10px] text-neutral-400">({seg.direction})</span>
+                              {seg.claim.predicate}
                             </button>
-
-                            <ArrowRight className="w-3.5 h-3.5 text-neutral-500" />
+                            <span className="text-neutral-500 font-mono text-[10px]">
+                              {seg.direction === 'outgoing' ? ']─▶' : ']─'}
+                            </span>
 
                             <button
                               onClick={() => onSelectEntity(seg.to_entity)}
@@ -245,34 +492,30 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
                               {seg.to_entity.canonical_name}
                             </button>
 
-                            {seg.is_disputed && (
-                              <span className="ml-auto text-[10px] px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 flex items-center space-x-1">
-                                <AlertTriangle className="w-3 h-3" />
-                                <span>Contradiction Flagged</span>
-                              </span>
-                            )}
+                            <div className="ml-auto flex items-center space-x-2 text-[11px]">
+                              <span className="text-neutral-400">C(e): {(seg.segment_confidence * 100).toFixed(1)}%</span>
+                              {seg.is_disputed && (
+                                <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px]">
+                                  Disputed
+                                </span>
+                              )}
+                            </div>
                           </div>
 
-                          {/* Evidence Quotes */}
-                          {seg.evidence.map((ev) => (
-                            <div key={ev.id} className="text-xs mt-2 pl-3 border-l-2 border-graphite-700">
-                              <div className="flex items-center space-x-2 text-[11px] text-neutral-400 mb-0.5">
+                          {seg.evidence.length > 0 && (
+                            <div className="mt-2 text-neutral-300 font-sans text-xs bg-graphite-950 p-2.5 rounded border border-graphite-850">
+                              <p className="italic text-amber-200/90 mb-1">"{seg.evidence[0].quote}"</p>
+                              <div className="flex items-center justify-between text-[10px] text-neutral-500 font-mono">
                                 <button
-                                  onClick={() => onSelectDocument(ev.document_id)}
-                                  className="text-amber-400 hover:underline font-semibold"
+                                  onClick={() => onSelectDocument(seg.evidence[0].document_id)}
+                                  className="text-amber-400 hover:underline uppercase"
                                 >
-                                  {ev.document_id}
+                                  {seg.evidence[0].document_id} (Page {seg.evidence[0].page ?? 1})
                                 </button>
-                                <span>•</span>
-                                <span>Page {ev.page || 1}</span>
-                                <span>•</span>
-                                <span className="text-neutral-500">[{ev.char_offset_start}:{ev.char_offset_end}]</span>
+                                <span>Offset: [{seg.evidence[0].char_offset_start}:{seg.evidence[0].char_offset_end}]</span>
                               </div>
-                              <blockquote className="text-xs text-neutral-300 font-sans italic">
-                                "{ev.quote}"
-                              </blockquote>
                             </div>
-                          ))}
+                          )}
                         </div>
                       ))}
                     </div>
@@ -282,8 +525,7 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
             </div>
           )}
 
-          {/* Counterfactual Evidence Ablation Section */}
-          {activePlan && result.matching_entities.length > 0 && selectedTargetForAblation && (
+          {activePlan && selectedTargetForAblation && (
             <AblationPanel
               queryPlan={activePlan}
               targetEntityId={selectedTargetForAblation.id}

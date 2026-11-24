@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Claim, Entity, HealthData, ReasoningResult, StructuredQueryPlan } from './types';
+import { Claim, Entity, HealthData, LLMStatus, ReasoningResult, StructuredQueryPlan } from './types';
 import { api } from './services/api';
 import { Header } from './components/Header';
 import { InvestigationWorkspace } from './components/InvestigationWorkspace';
@@ -11,6 +11,7 @@ import { ClaimDetailModal } from './components/ClaimDetailModal';
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'workspace' | 'graph' | 'vault'>('workspace');
   const [health, setHealth] = useState<HealthData | null>(null);
+  const [llmStatus, setLlmStatus] = useState<LLMStatus | null>(null);
   const [entities, setEntities] = useState<Entity[]>([]);
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [selectedClaim, setSelectedClaim] = useState<Claim | null>(null);
@@ -22,6 +23,11 @@ export const App: React.FC = () => {
       .getHealth()
       .then((h) => setHealth(h))
       .catch((err) => console.error('Health fetch error:', err));
+
+    api
+      .getLLMStatus()
+      .then((s) => setLlmStatus(s))
+      .catch((err) => console.error('LLM status fetch error:', err));
 
     api
       .getEntities()
@@ -40,12 +46,13 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-graphite-950 text-neutral-200 flex flex-col font-sans">
-      <Header health={health} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header health={health} llmStatus={llmStatus} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto p-6">
         {activeTab === 'workspace' && (
           <InvestigationWorkspace
             entities={entities}
+            llmStatus={llmStatus}
             onSelectEntity={(ent) => setSelectedEntity(ent)}
             onSelectClaim={(clm) => setSelectedClaim(clm)}
             onSelectDocument={handleSelectDocument}
@@ -62,7 +69,12 @@ export const App: React.FC = () => {
           />
         )}
 
-        {activeTab === 'vault' && <SourceVault initialDocumentId={vaultDocId} />}
+        {activeTab === 'vault' && (
+          <SourceVault
+            initialDocumentId={vaultDocId}
+            llmStatus={llmStatus}
+          />
+        )}
       </main>
 
       {/* Modals */}

@@ -162,3 +162,62 @@ export interface AblationReport {
   }>;
   summary: string;
 }
+
+export interface LLMStatus {
+  available: boolean;
+  provider_name: string;
+  base_url: string;
+  configured_model: string;
+  installed_models: string[];
+  model_available: boolean;
+  details?: string;
+}
+
+export interface KnowledgeGap {
+  query_id: string;
+  completed_hops: number;
+  terminal_entity?: Entity;
+  missing_predicate?: string;
+  expected_target_type?: EntityType;
+  diagnostic_message: string;
+}
+
+export interface GroundedAnswer {
+  answer: string;
+  status: 'success' | 'insufficient_evidence' | 'contradiction_detected';
+  confidence: number;
+  hop_count: number;
+  terminal_entities: string[];
+  supporting_document_ids: string[];
+  supporting_quotes: string[];
+  has_contradictions: boolean;
+  contradiction_notes: string[];
+  gap_diagnostics?: KnowledgeGap;
+  synthesized_by_llm: boolean;
+  execution_time_ms: number;
+}
+
+export interface DocumentUploadResponse {
+  document_id: string;
+  title: string;
+  source_type: string;
+  content_hash: string;
+  total_pages: number;
+  total_chars: number;
+  status: string;
+  message: string;
+}
+
+export interface DocumentStatusResponse {
+  document_id: string;
+  title: string;
+  source_type: string;
+  content_hash: string;
+  status: string;
+  total_pages: number;
+  total_chars: number;
+  chunks_count: number;
+  accepted_claims: number;
+  rejected_claims: number;
+  evidence_records: number;
+}

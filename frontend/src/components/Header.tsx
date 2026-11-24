@@ -1,14 +1,15 @@
 import React from 'react';
-import { Database, ShieldCheck, Activity, Terminal, GitBranch, Layers } from 'lucide-react';
-import { HealthData } from '../types';
+import { Database, ShieldCheck, Activity, Terminal, GitBranch, Layers, Cpu } from 'lucide-react';
+import { HealthData, LLMStatus } from '../types';
 
 interface HeaderProps {
   health: HealthData | null;
+  llmStatus?: LLMStatus | null;
   activeTab: 'workspace' | 'graph' | 'vault';
   setActiveTab: (tab: 'workspace' | 'graph' | 'vault') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ health, activeTab, setActiveTab }) => {
+export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeTab, setActiveTab }) => {
   return (
     <header className="border-b border-graphite-800 bg-graphite-900/90 backdrop-blur px-6 py-3 sticky top-0 z-40">
       <div className="flex items-center justify-between">
@@ -73,6 +74,22 @@ export const Header: React.FC<HeaderProps> = ({ health, activeTab, setActiveTab 
 
         {/* Telemetry Badges */}
         <div className="flex items-center space-x-3 text-xs font-mono">
+          {/* LLM Status Indicator */}
+          <div
+            className={`flex items-center space-x-1.5 px-2.5 py-1 rounded border ${
+              llmStatus?.available
+                ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+            }`}
+            title={llmStatus?.details || (llmStatus?.available ? 'Local LLM operational' : 'Ollama daemon offline')}
+          >
+            <Cpu className="w-3.5 h-3.5" />
+            <span className="text-neutral-400">LLM:</span>
+            <span>
+              {llmStatus?.available ? `${llmStatus.configured_model} (Online)` : 'Offline'}
+            </span>
+          </div>
+
           <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-graphite-850 border border-graphite-800">
             <Database className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-neutral-400">Mode:</span>
