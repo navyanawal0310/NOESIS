@@ -48,8 +48,13 @@ The study compares two experimental conditions:
 
 ---
 
-## 5. Experimental Ethics & Compliance
+## 5. Experimental Ethics & Pending Authorization
 
-- Participation is completely voluntary.
-- No personally identifiable information (PII) is stored; participants are assigned anonymous IDs (`P01` to `P05`).
-- Compliant with IEEE Code of Ethics and institutional academic research standards (BMSITM Winter of Projects 2026).
+> [!IMPORTANT]
+> **Study Status: PENDING / PROPOSAL STAGE**
+> Human subject evaluation has not yet been conducted. No formal Institutional Review Board (IRB) approval, ethical clearance, or official IEEE compliance certification has been requested, granted, or claimed. The protocol below constitutes a proposed experimental methodology awaiting formal authorization and participant onboarding.
+
+- **Participation**: Entirely voluntary with informed consent prior to session commencement.
+- **Privacy & Anonymity**: No personally identifiable information (PII) is recorded or retained; participants are designated exclusively by pseudo-anonymous identifiers (`P01`–`P05`).
+- **Data Governance**: Collected task timings, accuracy ratings, and Likert survey responses will be stored in anonymized CSV/JSON format for peer-review audit.
+- **Ethical Alignment**: The proposed protocol is designed in accordance with standard non-invasive software usability evaluation guidelines, subject to institutional clearance before data acquisition.

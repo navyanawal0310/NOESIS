@@ -712,7 +712,7 @@ def get_benchmark_overview():
 # 18. GET /api/v1/evaluation/experiments
 @router.get("/evaluation/experiments")
 def list_experiments():
-    """Lists all executed scientific evaluation experiments."""
+    """Lists all executed, incomplete, and failed scientific evaluation experiments."""
     results_dir = Path(__file__).resolve().parents[4] / "evaluation" / "results"
     if not results_dir.exists():
         return {"experiments": []}
@@ -721,24 +721,45 @@ def list_experiments():
     for exp_dir in results_dir.iterdir():
         if exp_dir.is_dir():
             summary_file = exp_dir / "summary.json"
+            meta_file = exp_dir / "metadata.json"
+            summary_data: Dict[str, Any] = {}
+
             if summary_file.exists():
                 try:
                     with open(summary_file, "r", encoding="utf-8") as sf:
                         summary_data = json.load(sf)
-                    experiments.append(
-                        {
-                            "experiment_id": exp_dir.name,
-                            "system_name": summary_data.get("config", {}).get("system_name"),
-                            "mode": summary_data.get("config", {}).get("mode"),
-                            "split": summary_data.get("config", {}).get("split"),
-                            "total_cases": summary_data.get("total_cases", 0),
-                            "completed_cases": summary_data.get("completed_cases", 0),
-                            "duration_seconds": summary_data.get("duration_seconds", 0.0),
-                            "completed_at": summary_data.get("completed_at"),
-                        }
-                    )
                 except Exception:
                     pass
+            elif meta_file.exists():
+                try:
+                    with open(meta_file, "r", encoding="utf-8") as mf:
+                        summary_data = json.load(mf)
+                except Exception:
+                    pass
+
+            if summary_data:
+                config = summary_data.get("config", {})
+                status = (
+                    summary_data.get("status")
+                    or summary_data.get("execution_status")
+                    or ("completed" if summary_data.get("completed_at") else "incomplete")
+                )
+                experiments.append(
+                    {
+                        "experiment_id": exp_dir.name,
+                        "status": status,
+                        "system_name": config.get("system_name"),
+                        "mode": config.get("mode"),
+                        "split": config.get("split"),
+                        "total_cases": summary_data.get("total_cases", 0),
+                        "completed_cases": summary_data.get("completed_cases", 0),
+                        "failed_cases": summary_data.get("failed_cases", 0),
+                        "duration_seconds": summary_data.get("duration_seconds", 0.0),
+                        "reason": summary_data.get("reason"),
+                        "completed_at": summary_data.get("completed_at"),
+                        "resumption_instructions": summary_data.get("resumption_instructions"),
+                    }
+                )
     return {"experiments": sorted(experiments, key=lambda x: x.get("completed_at") or "", reverse=True)}
 
 
@@ -755,23 +776,33 @@ def get_experiment_details(experiment_id: str):
     results_file = exp_dir / "results.json"
     meta_file = exp_dir / "metadata.json"
 
-    summary = {}
+    summary: Dict[str, Any] = {}
     if summary_file.exists():
         with open(summary_file, "r", encoding="utf-8") as sf:
             summary = json.load(sf)
 
-    records = []
+    records: List[Dict[str, Any]] = []
     if results_file.exists():
         with open(results_file, "r", encoding="utf-8") as rf:
             records = json.load(rf)
 
-    metadata = {}
+    metadata: Dict[str, Any] = {}
     if meta_file.exists():
         with open(meta_file, "r", encoding="utf-8") as mf:
             metadata = json.load(mf)
 
+    status = (
+        summary.get("status")
+        or summary.get("execution_status")
+        or metadata.get("status")
+        or ("completed" if summary.get("completed_at") else "incomplete")
+    )
+
     return {
         "experiment_id": experiment_id,
+        "status": status,
+        "reason": summary.get("reason") or metadata.get("reason"),
+        "resumption_instructions": summary.get("resumption_instructions") or metadata.get("resume_command"),
         "summary": summary,
         "metadata": metadata,
         "cases_evaluated": len(records),
@@ -785,6 +816,8 @@ def get_evaluation_summary():
     """Aggregated comparative benchmark summary across available experimental systems."""
     results_dir = Path(__file__).resolve().parents[4] / "evaluation" / "results"
     system_summaries: Dict[str, Any] = {}
+    incomplete_experiments: List[Dict[str, Any]] = []
+    infrastructure_failures: List[Dict[str, Any]] = []
 
     if results_dir.exists():
         for exp_dir in results_dir.iterdir():
@@ -794,17 +827,47 @@ def get_evaluation_summary():
                     try:
                         with open(sf, "r", encoding="utf-8") as f:
                             data = json.load(f)
+                        status = data.get("status") or ("completed" if data.get("completed_at") else "incomplete")
                         sys_name = data.get("config", {}).get("system_name", "unknown")
-                        if (
-                            sys_name not in system_summaries
-                            or data.get("completed_cases", 0) > system_summaries[sys_name].get("completed_cases", 0)
-                        ):
-                            system_summaries[sys_name] = data
+
+                        if status == "incomplete":
+                            incomplete_experiments.append({
+                                "experiment_id": exp_dir.name,
+                                "system_name": sys_name,
+                                "reason": data.get("reason"),
+                                "resumption_instructions": data.get("resumption_instructions"),
+                            })
+                        elif status == "infrastructure_failed":
+                            infrastructure_failures.append({
+                                "experiment_id": exp_dir.name,
+                                "system_name": sys_name,
+                                "reason": data.get("reason"),
+                            })
+                        else:
+                            if (
+                                sys_name not in system_summaries
+                                or data.get("completed_cases", 0) > system_summaries[sys_name].get("completed_cases", 0)
+                            ):
+                                system_summaries[sys_name] = data
                     except Exception:
                         pass
 
+    # Human validation status check
+    human_summary_file = Path(__file__).resolve().parents[4] / "evaluation" / "human_study" / "summary.json"
+    human_study_status = "pending"
+    if human_summary_file.exists():
+        try:
+            with open(human_summary_file, "r", encoding="utf-8") as hf:
+                hdata = json.load(hf)
+                human_study_status = hdata.get("status", "pending")
+        except Exception:
+            pass
+
     return {
         "status": "ready" if system_summaries else "pending_execution",
+        "human_study_status": human_study_status,
         "systems_evaluated": list(system_summaries.keys()),
         "summaries": system_summaries,
+        "incomplete_experiments": incomplete_experiments,
+        "infrastructure_failures": infrastructure_failures,
     }

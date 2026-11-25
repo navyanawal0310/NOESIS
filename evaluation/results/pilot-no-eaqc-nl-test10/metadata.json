@@ -24,5 +24,8 @@
     "results_json": "results.json",
     "results_csv": "results.csv",
     "summary_json": "summary.json"
-  }
+  },
+  "status": "completed",
+  "experiment_type": "ablation_study",
+  "finding": "Ablation of EAQC results in 0% start entity resolution because unconstrained extraction selected invalid tokens (e.g. located). Validates necessity of EAQC."
 }

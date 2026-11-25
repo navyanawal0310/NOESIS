@@ -127,6 +127,23 @@ def test_evaluation_api_endpoints():
 
     data_exp = list_experiments()
     assert "experiments" in data_exp
+    assert len(data_exp["experiments"]) >= 2
+    for exp in data_exp["experiments"]:
+        assert "status" in exp
+        assert "experiment_id" in exp
 
     data_sum = get_evaluation_summary()
     assert "systems_evaluated" in data_sum
+    assert "incomplete_experiments" in data_sum
+    assert "infrastructure_failures" in data_sum
+    assert "human_study_status" in data_sum
+
+    # Test individual experiment retrieval
+    from backend.app.api.v1.router import get_experiment_details
+
+    details_struct = get_experiment_details("nvs100-noesis-structured")
+    assert details_struct["status"] == "completed"
+    assert details_struct["cases_evaluated"] == 100
+
+    details_incomplete = get_experiment_details("nvs100-noesis-natural")
+    assert details_incomplete["status"] == "incomplete"

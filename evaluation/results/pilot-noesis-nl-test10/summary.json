@@ -159,5 +159,7 @@
       }
     }
   },
-  "completed_at": "2026-11-25T05:04:02.475698Z"
+  "completed_at": "2026-11-25T05:04:02.475698Z",
+  "status": "infrastructure_failed",
+  "reason": "Local LLM provider (Ollama qwen3:4b) was offline/unavailable during execution. Cases aborted at planning phase before traversal."
 }

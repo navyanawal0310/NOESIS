@@ -1,4 +1,8 @@
-# Informed Consent Form for Participation in Research
+# Informed Consent Form for Participation in Research (Template)
+
+> [!NOTE]
+> **Status: PROPOSED TEMPLATE (Execution Pending)**
+> This document represents the draft participant consent agreement prepared for future human validation upon obtaining appropriate study authorizations. No human participants have been recruited or enrolled to date.
 
 **Project Title**: NOESIS — Neural-Ontological Evidence Synthesis and Inference System  
 **Institution**: BMS Institute of Technology and Management (BMSITM) / IEEE Winter of Projects 2026  

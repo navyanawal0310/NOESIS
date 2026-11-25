@@ -159,5 +159,8 @@
       }
     }
   },
-  "completed_at": "2026-11-25T05:04:33.105687Z"
+  "completed_at": "2026-11-25T05:04:33.105687Z",
+  "status": "completed",
+  "experiment_type": "ablation_study",
+  "finding": "Ablation of EAQC results in 0% start entity resolution because unconstrained extraction selected invalid tokens (e.g. located). Validates necessity of EAQC."
 }

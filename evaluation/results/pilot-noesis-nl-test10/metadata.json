@@ -24,5 +24,7 @@
     "results_json": "results.json",
     "results_csv": "results.csv",
     "summary_json": "summary.json"
-  }
+  },
+  "status": "infrastructure_failed",
+  "reason": "Local LLM provider (Ollama qwen3:4b) was offline/unavailable during execution. Cases aborted at planning phase before traversal."
 }
