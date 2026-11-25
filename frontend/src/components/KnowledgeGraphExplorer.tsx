@@ -8,12 +8,14 @@ interface KnowledgeGraphExplorerProps {
   onSelectEntity: (entity: Entity) => void;
   onSelectClaim: (claim: Claim) => void;
   onSelectDocument: (docId: string) => void;
+  lastRefreshTimestamp?: number;
 }
 
 export const KnowledgeGraphExplorer: React.FC<KnowledgeGraphExplorerProps> = ({
   onSelectEntity,
   onSelectClaim,
   onSelectDocument,
+  lastRefreshTimestamp,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<cytoscape.Core | null>(null);
@@ -38,7 +40,7 @@ export const KnowledgeGraphExplorer: React.FC<KnowledgeGraphExplorerProps> = ({
 
   useEffect(() => {
     loadGraph();
-  }, []);
+  }, [lastRefreshTimestamp]);
 
   useEffect(() => {
     if (!containerRef.current || !graphData) return;

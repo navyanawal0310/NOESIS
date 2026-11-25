@@ -56,11 +56,13 @@ def evaluate_evidence_ablation(
         ablated_res = engine.execute_query(ablated_plan)
 
         survived = target_entity_id in {e.id for e in ablated_res.matching_entities}
-        ablation_details.append({
-            "excluded_document_id": doc_id,
-            "conclusion_survived": survived,
-            "active_paths_count": len([p for p in ablated_res.paths if p.terminal_entity.id == target_entity_id]),
-        })
+        ablation_details.append(
+            {
+                "excluded_document_id": doc_id,
+                "conclusion_survived": survived,
+                "active_paths_count": len([p for p in ablated_res.paths if p.terminal_entity.id == target_entity_id]),
+            }
+        )
 
         if survived:
             redundant_sources.append(doc_id)

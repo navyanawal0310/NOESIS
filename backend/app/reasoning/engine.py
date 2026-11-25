@@ -213,6 +213,41 @@ class BoundedReasoningEngine:
                 explanation="No valid reasoning paths found within the evidentiary bounds of the knowledge graph.",
             )
 
+        # Enforce explicit temporal constraints if requested
+        if plan.temporal_constraint:
+            t_req = plan.temporal_constraint.strip().lower()
+            matching_temporal_paths = []
+            for path in completed_paths:
+                has_temporal_match = False
+                for seg in path.segments:
+                    if seg.claim.temporal_scope and t_req in seg.claim.temporal_scope.lower():
+                        has_temporal_match = True
+                        break
+                if has_temporal_match:
+                    matching_temporal_paths.append(path)
+
+            if not matching_temporal_paths:
+                elapsed = (time.perf_counter() - start_time) * 1000
+                cand_names = ", ".join(p.terminal_entity.canonical_name for p in completed_paths)
+                diag = (
+                    f"Requested temporal constraint '{plan.temporal_constraint}' cannot be verified from the evidentiary corpus. "
+                    f"While structural path exists leading to [{cand_names}], source evidence contains no temporal scope confirming this assertion in {plan.temporal_constraint}."
+                )
+                return ReasoningResult(
+                    query_id=query_id,
+                    status="insufficient_evidence",
+                    start_entity=start_entity,
+                    matching_entities=[],
+                    paths=[],
+                    hop_count=num_steps,
+                    conflicting_claims=[],
+                    evidence_records=[],
+                    execution_time_ms=round(elapsed, 2),
+                    confidence=0.0,
+                    explanation=diag,
+                )
+            completed_paths = matching_temporal_paths
+
         # Collect unique matching entities and evidence
         matching_map: Dict[str, Entity] = {}
         all_evidence: Dict[str, Evidence] = {}

@@ -81,3 +81,33 @@ sequenceDiagram
     API-->>UI: 200 OK (JSON)
     UI-->>Analyst: Render Interactive Path, Graph Highlights, Evidence Spans
 ```
+
+---
+
+## 5. Entity-Anchored Query Compilation (EAQC)
+
+### 5.1 Problem Statement: Hallucinatory Entity Substitution
+When translating arbitrary natural-language research questions into symbolic graph query plans (`StructuredQueryPlan`), generative language models can substitute unrelated entities present in their context window instead of faithfully anchoring to the specific entity named in the user question. In NOESIS, injecting unrelated corpus candidate entities into the query planning prompt caused the model to wander into synthetic benchmark entities (e.g. `Nexus Advanced Research Institute`) rather than anchoring to the intended subject (e.g. `Project Horizon`).
+
+### 5.2 The EAQC Mechanism
+To eliminate unconstrained substitution, NOESIS implements **Entity-Anchored Query Compilation (EAQC)**:
+1. **Deterministic Mention Resolution**:
+   - **Tier 1 (Exact Canonical Match)**: Case-insensitive substring boundary matching against known entity canonical names.
+   - **Tier 2 (Exact Normalized Match)**: Normalization stripping honorific prefixes (`Dr.`, `Prof.`, `Mr.`, `Ms.`), punctuation, and extra whitespace.
+   - **Tier 3 (Alias Matching)**: Explicit matching against entity alias registries.
+   - **Longest-Span Prioritization**: Longer matching entity spans supersede shorter subsets.
+2. **Deterministic Anchor Locking**:
+   - Upon unique mention resolution, the starting entity is locked directly to the entity identifier (e.g. `ent_project_horizon`).
+   - The compiled query plan strictly enforces `start_entity = anchor.id`, regardless of any alternative entity proposed by the generative model.
+3. **Prompt Context Reduction**:
+   - Rather than broadcasting entire entity catalogs into the prompt, the local model is supplied only with the locked anchor entity details, relational direction rules, and target constraints, eliminating distractor interference and shrinking token consumption.
+4. **Semantic Plan Status Codes**:
+   - `SUCCESS`: Valid plan compiled and executed to conclusion.
+   - `ENTITY_NOT_FOUND`: Query explicitly mentions an unindexed proper noun / entity.
+   - `AMBIGUOUS_ENTITY`: Mention matches multiple candidates equally without contextual disambiguation.
+   - `QUERY_PLANNING_FAILED`: Malformed syntax or ontology constraint violation.
+   - `UNSUPPORTED_CONSTRAINT`: Question includes explicit constraints (such as temporal dates) that cannot be grounded in source evidence.
+   - `INSUFFICIENT_EVIDENCE`: Traversal completed without establishing a path to the requested target.
+5. **Knowledge Gap Decoupling**:
+   - Planner syntax or entity resolution errors are cleanly isolated and never misclassified as graph traversal discontinuities. Knowledge gaps are only diagnosed when a faithful, valid symbolic plan encounters a missing topological edge during actual graph traversal.
+

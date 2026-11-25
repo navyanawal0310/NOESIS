@@ -1,14 +1,16 @@
 import React from 'react';
-import { Database, ShieldCheck, Activity, Terminal, GitBranch, Layers } from 'lucide-react';
-import { HealthData } from '../types';
+import { Database, ShieldCheck, Activity, Terminal, GitBranch, Layers, Cpu } from 'lucide-react';
+import { HealthData, IngestionJob, LLMStatus } from '../types';
 
 interface HeaderProps {
   health: HealthData | null;
+  llmStatus?: LLMStatus | null;
+  activeJob?: IngestionJob | null;
   activeTab: 'workspace' | 'graph' | 'vault';
   setActiveTab: (tab: 'workspace' | 'graph' | 'vault') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ health, activeTab, setActiveTab }) => {
+export const Header: React.FC<HeaderProps> = ({ health, llmStatus, activeJob, activeTab, setActiveTab }) => {
   return (
     <header className="border-b border-graphite-800 bg-graphite-900/90 backdrop-blur px-6 py-3 sticky top-0 z-40">
       <div className="flex items-center justify-between">
@@ -73,6 +75,33 @@ export const Header: React.FC<HeaderProps> = ({ health, activeTab, setActiveTab 
 
         {/* Telemetry Badges */}
         <div className="flex items-center space-x-3 text-xs font-mono">
+          {activeJob && !['COMPLETED', 'FAILED'].includes(activeJob.status.toUpperCase()) && (
+            <button
+              onClick={() => setActiveTab('vault')}
+              className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 animate-pulse hover:bg-amber-500/25"
+              title="Click to view ingestion progress in Source Vault"
+            >
+              <Cpu className="w-3.5 h-3.5 animate-spin" />
+              <span>Ingesting: {activeJob.status.toUpperCase()} ({Math.round(activeJob.progress_percent)}%)</span>
+            </button>
+          )}
+
+          {/* LLM Status Indicator */}
+          <div
+            className={`flex items-center space-x-1.5 px-2.5 py-1 rounded border ${
+              llmStatus?.available
+                ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+            }`}
+            title={llmStatus?.details || (llmStatus?.available ? 'Local LLM operational' : 'Ollama daemon offline')}
+          >
+            <Cpu className="w-3.5 h-3.5" />
+            <span className="text-neutral-400">LLM:</span>
+            <span>
+              {llmStatus?.available ? `${llmStatus.configured_model} (Online)` : 'Offline'}
+            </span>
+          </div>
+
           <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-graphite-850 border border-graphite-800">
             <Database className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-neutral-400">Mode:</span>
@@ -89,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({ health, activeTab, setActiveTab 
 
           <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Provenance Verified</span>
+            <span className="hidden sm:inline">Lexically Grounded</span>
           </div>
         </div>
       </div>

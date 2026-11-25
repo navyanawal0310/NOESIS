@@ -67,6 +67,8 @@ export interface StructuredQueryPlan {
   predicate_filter?: string;
   max_hops: number;
   excluded_document_ids?: string[];
+  temporal_constraint?: string;
+  unsupported_constraints?: string[];
 }
 
 export interface PathSegment {
@@ -161,4 +163,118 @@ export interface AblationReport {
     active_paths_count: number;
   }>;
   summary: string;
+}
+
+export interface LLMStatus {
+  available: boolean;
+  provider_name: string;
+  base_url: string;
+  configured_model: string;
+  installed_models: string[];
+  model_available: boolean;
+  details?: string;
+}
+
+export interface KnowledgeGap {
+  query_id: string;
+  completed_hops: number;
+  terminal_entity?: Entity;
+  missing_predicate?: string;
+  expected_target_type?: EntityType;
+  diagnostic_message: string;
+}
+
+export interface GroundedAnswer {
+  answer: string;
+  status: 'success' | 'insufficient_evidence' | 'contradiction_detected';
+  status_code?: string;
+  executed_plan?: StructuredQueryPlan | null;
+  latencies?: {
+    entity_resolution_ms?: number;
+    llm_planning_ms?: number;
+    traversal_ms?: number;
+    total_ms?: number;
+    [key: string]: number | undefined;
+  };
+  confidence: number;
+  hop_count: number;
+  terminal_entities: string[];
+  supporting_document_ids: string[];
+  supporting_quotes: string[];
+  has_contradictions: boolean;
+  contradiction_notes: string[];
+  gap_diagnostics?: KnowledgeGap;
+  synthesized_by_llm: boolean;
+  execution_time_ms: number;
+}
+
+export interface DocumentUploadResponse {
+  document_id: string;
+  title: string;
+  source_type: string;
+  content_hash: string;
+  total_pages: number;
+  total_chars: number;
+  status: string;
+  message: string;
+}
+
+export interface DocumentStatusResponse {
+  document_id: string;
+  title: string;
+  source_type: string;
+  content_hash: string;
+  status: string;
+  total_pages: number;
+  total_chars: number;
+  chunks_count: number;
+  accepted_claims: number;
+  rejected_claims: number;
+  evidence_records: number;
+  job?: IngestionJob | null;
+}
+
+export type IngestionJobStatus =
+  | 'QUEUED'
+  | 'PARSING'
+  | 'CHUNKING'
+  | 'EXTRACTING'
+  | 'VALIDATING'
+  | 'INDEXING'
+  | 'COMPLETED'
+  | 'FAILED';
+
+export interface IngestionJob {
+  job_id: string;
+  document_id: string;
+  status: IngestionJobStatus | string;
+  progress_percent: number;
+  total_chunks: number;
+  processed_chunks: number;
+  accepted_claims: number;
+  rejected_claims: number;
+  evidence_records?: number;
+  elapsed_time_seconds?: number;
+  error_message?: string | null;
+  created_at: string;
+  completed_at?: string | null;
+  result?: {
+    document_id?: string;
+    filename?: string;
+    total_chunks?: number;
+    new_entities?: number;
+    claims_accepted?: number;
+    claims_rejected?: number;
+    evidence_records?: number;
+    contradictions_flagged?: number;
+    rejected_details?: any[];
+  } | null;
+}
+
+export interface IngestSubmitResponse {
+  job_id: string;
+  document_id: string;
+  status: string;
+  progress_percent: number;
+  message: string;
 }
