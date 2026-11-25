@@ -1,0 +1,27 @@
+{
+  "experiment_id": "nvs100-noesis-natural",
+  "status": "incomplete",
+  "reason": "Sprint 03 time constraint override: full natural-language LLM benchmark paused to respect hard project deadline without introducing paid cloud inference APIs.",
+  "config": {
+    "experiment_id": "nvs100-noesis-natural",
+    "system_name": "noesis",
+    "mode": "natural",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": null,
+    "resume": true,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T10:35:00Z"
+  },
+  "total_cases": 100,
+  "completed_cases": 0,
+  "failed_cases": 0,
+  "duration_seconds": 0.0,
+  "metrics": {},
+  "completed_at": null,
+  "resumption_instructions": {
+    "command": "python evaluation/run_benchmark.py --system noesis --mode natural --split all --experiment-id nvs100-noesis-natural --resume",
+    "estimated_duration_local_gpu": "approximately 12-15 minutes using local Ollama qwen3:4b (at ~7.27s warm inference per uncached compilation)"
+  }
+}

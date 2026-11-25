@@ -1,0 +1,11 @@
+case_id,system_name,category,split,difficulty,is_exact_match,precision,recall,f1,predicted_entities,expected_entities,contradiction_detected,expected_contradiction,abstained,expected_abstention,latency_ms,graph_traversal_ms,planning_ms,llm_calls
+NVS-010,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,Zurich Innovation Center,False,False,True,False,40.77,0.0,40.77,0
+NVS-011,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,Dr. Tariq Al-Mansoor,False,False,True,False,25.29,0.0,25.29,0
+NVS-012,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,QubitSync Protocol,False,False,True,False,42.97,0.0,42.97,0
+NVS-013,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,Project Hyperion,False,False,True,False,2.19,0.0,2.19,0
+NVS-014,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,21.87,0.0,21.87,0
+NVS-015,noesis,single_hop,test,easy,False,0.0,0.0,0.0,,Cygnus Systems,False,False,True,False,41.54,0.0,41.54,0
+NVS-025,noesis,two_hop,test,medium,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,42.36,0.0,42.36,0
+NVS-026,noesis,two_hop,test,medium,False,0.0,0.0,0.0,,Cygnus Systems,False,False,True,False,41.33,0.0,41.33,0
+NVS-027,noesis,two_hop,test,medium,False,0.0,0.0,0.0,,Dr. Alyssa Vance,False,False,True,False,40.01,0.0,40.01,0
+NVS-028,noesis,two_hop,test,medium,False,0.0,0.0,0.0,,Synaptic Core Engine,False,False,True,False,39.87,0.0,39.87,0

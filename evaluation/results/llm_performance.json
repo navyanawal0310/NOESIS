@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-11-25T04:55:49.963966Z",
+  "model_id": "qwen3:4b",
+  "endpoint": "http://127.0.0.1:11434",
+  "context_length": 2048,
+  "online": false,
+  "historical_baselines": {
+    "cold_initial_request_s": 249.8607,
+    "optimized_cold_request_s": 28.3803,
+    "warm_inference_request_s": 7.2723,
+    "browser_ingestion_duration_s": 33.23,
+    "graph_traversal_duration_ms": 1.42,
+    "end_to_end_query_latency_ms": 408.82
+  },
+  "status": "offline_baseline",
+  "current_metrics": {
+    "cold_load_s": 28.3803,
+    "mean_warm_latency_s": 7.2723,
+    "tokens_per_second": 28.5,
+    "prompt_eval_tokens_per_sec": 142.0,
+    "traversal_speedup_vs_llm": 5121.3
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "experiment_id": "nvs100-noesis-structured",
+  "config": {
+    "experiment_id": "nvs100-noesis-structured",
+    "system_name": "noesis",
+    "mode": "structured",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": null,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:01:16.812915Z",
+    "device_info": {}
+  },
+  "total_cases": 100,
+  "completed_cases": 100,
+  "failed_cases": 0,
+  "duration_seconds": 7.94,
+  "metrics": {
+    "answer_exact_match": {
+      "name": "answer_exact_match",
+      "value": 0.74,
+      "numerator": 74.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "entity_set_precision": {
+      "name": "entity_set_precision",
+      "value": 0.8791,
+      "numerator": 80,
+      "denominator": 91,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 91
+      }
+    },
+    "entity_set_recall": {
+      "name": "entity_set_recall",
+      "value": 0.8247,
+      "numerator": 80,
+      "denominator": 97,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 97
+      }
+    },
+    "entity_set_f1": {
+      "name": "entity_set_f1",
+      "value": 0.8511,
+      "numerator": 160,
+      "denominator": 188,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 108
+      }
+    },
+    "reasoning_path_validity": {
+      "name": "reasoning_path_validity",
+      "value": 0.41,
+      "numerator": 41.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 161
+      }
+    },
+    "abstention_accuracy": {
+      "name": "abstention_accuracy",
+      "value": 0.76,
+      "numerator": 76.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "end_to_end_latency": {
+      "name": "end_to_end_latency",
+      "value": 0.5631,
+      "numerator": 56.3118,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "graph_traversal_latency": {
+      "name": "graph_traversal_latency",
+      "value": 0.3301,
+      "numerator": 33.014,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "planning_latency": {
+      "name": "planning_latency",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "llm_calls_per_query": {
+      "name": "llm_calls_per_query",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "start_entity_accuracy": {
+      "name": "start_entity_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "predicate_sequence_accuracy": {
+      "name": "predicate_sequence_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "traversal_direction_accuracy": {
+      "name": "traversal_direction_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "complete_query_plan_accuracy": {
+      "name": "complete_query_plan_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "contradiction_precision": {
+      "name": "contradiction_precision",
+      "value": 0.5714,
+      "numerator": 12,
+      "denominator": 21,
+      "sample_size": 23,
+      "details": {
+        "total_subsamples": 21
+      }
+    },
+    "contradiction_recall": {
+      "name": "contradiction_recall",
+      "value": 0.8571,
+      "numerator": 12,
+      "denominator": 14,
+      "sample_size": 23,
+      "details": {
+        "total_subsamples": 14
+      }
+    },
+    "unsupported_constraint_handling": {
+      "name": "unsupported_constraint_handling",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 2,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    }
+  },
+  "completed_at": "2026-11-25T05:01:24.821296Z"
+}

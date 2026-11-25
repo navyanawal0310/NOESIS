@@ -1,0 +1,15 @@
+{
+  "experiment_id": "nvs100-noesis-natural",
+  "status": "incomplete",
+  "config": {
+    "experiment_id": "nvs100-noesis-natural",
+    "system_name": "noesis",
+    "mode": "natural",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all"
+  },
+  "created_at": "2026-11-25T10:35:00Z",
+  "interrupted_by": "SPRINT_03_TIME_CONSTRAINT_OVERRIDE",
+  "resume_command": "python evaluation/run_benchmark.py --system noesis --mode natural --split all --experiment-id nvs100-noesis-natural --resume"
+}

@@ -1,0 +1,1667 @@
+[
+  {
+    "case_id": "NVS-010",
+    "system_name": "noesis",
+    "question": "Where is Helix Compute Foundry located?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Zurich Innovation Center"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Zurich Innovation Center"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_004"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 40.76519992668182,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 40.76519992668182,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 40.7652,
+        "numerator": 40.7652,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 40.7652,
+        "numerator": 40.7652,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "LOCATED_IN"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.119198Z"
+  },
+  {
+    "case_id": "NVS-011",
+    "system_name": "noesis",
+    "question": "Who was employed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Dr. Tariq Al-Mansoor"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "Dr. Tariq Al-Mansoor"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 25.288600008934736,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 25.288600008934736,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 25.2886,
+        "numerator": 25.2886,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 25.2886,
+        "numerator": 25.2886,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.150438Z"
+  },
+  {
+    "case_id": "NVS-012",
+    "system_name": "noesis",
+    "question": "What technology was developed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QubitSync Protocol"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "QubitSync Protocol"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 42.96679992694408,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 42.96679992694408,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 42.9668,
+        "numerator": 42.9668,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 42.9668,
+        "numerator": 42.9668,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.197957Z"
+  },
+  {
+    "case_id": "NVS-013",
+    "system_name": "noesis",
+    "question": "What project did Dr. Daniel Kim work on?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Project Hyperion"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_daniel_kim",
+        "Project Hyperion"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_010"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 2.190600032918155,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 2.190600032918155,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 2.1906,
+        "numerator": 2.1906,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 2.1906,
+        "numerator": 2.1906,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "WORKED_ON"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.204290Z"
+  },
+  {
+    "case_id": "NVS-014",
+    "system_name": "noesis",
+    "question": "What technology was developed by Helix Compute Foundry in 2023?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 21.86689991503954,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 21.86689991503954,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 21.8669,
+        "numerator": 21.8669,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 21.8669,
+        "numerator": 21.8669,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.228487Z"
+  },
+  {
+    "case_id": "NVS-015",
+    "system_name": "noesis",
+    "question": "Who funded Helix Compute Foundry?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 41.53789998963475,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 41.53789998963475,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 41.5379,
+        "numerator": 41.5379,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 41.5379,
+        "numerator": 41.5379,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.275893Z"
+  },
+  {
+    "case_id": "NVS-025",
+    "system_name": "noesis",
+    "question": "What technology was developed by the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 42.35849995166063,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 42.35849995166063,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 42.3585,
+        "numerator": 42.3585,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 42.3585,
+        "numerator": 42.3585,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.323023Z"
+  },
+  {
+    "case_id": "NVS-026",
+    "system_name": "noesis",
+    "question": "Who funded the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 41.3274000165984,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 41.3274000165984,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 41.3274,
+        "numerator": 41.3274,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 41.3274,
+        "numerator": 41.3274,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY",
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.369976Z"
+  },
+  {
+    "case_id": "NVS-027",
+    "system_name": "noesis",
+    "question": "What organization was founded by the researcher who collaborated with Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Dr. Alyssa Vance"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Dr. Alyssa Vance"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011",
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 40.01230001449585,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 40.01230001449585,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 40.0123,
+        "numerator": 40.0123,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 40.0123,
+        "numerator": 40.0123,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "COLLABORATED_WITH",
+            "COLLABORATED_WITH"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.416590Z"
+  },
+  {
+    "case_id": "NVS-028",
+    "system_name": "noesis",
+    "question": "What technology was developed by the organization that collaborated with Nexus Advanced Research Institute?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Synaptic Core Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_nexus_institute",
+        "Synaptic Core Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 39.866300066933036,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 39.866300066933036,
+    "llm_calls": 0,
+    "raw_response": "Natural language query compilation failed: Local LLM provider 'qwen3:4b' is offline. Natural language query planning requires an active local LLM.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 39.8663,
+        "numerator": 39.8663,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 39.8663,
+        "numerator": 39.8663,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "COLLABORATED_WITH",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:02.463753Z"
+  }
+]

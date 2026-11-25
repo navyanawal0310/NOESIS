@@ -1,0 +1,101 @@
+case_id,system_name,category,split,difficulty,is_exact_match,precision,recall,f1,predicted_entities,expected_entities,contradiction_detected,expected_contradiction,abstained,expected_abstention,latency_ms,graph_traversal_ms,planning_ms,llm_calls
+NVS-001,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,False,False,False,False,0.05,0.04,0.0,0
+NVS-002,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Axiom Semantic Reasoner,Axiom Semantic Reasoner,False,False,False,False,0.04,0.02,0.0,0
+NVS-003,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Dr. Marcus Chen; Dr. Alyssa Vance,Dr. Alyssa Vance; Dr. Marcus Chen,False,False,False,False,0.02,0.01,0.0,0
+NVS-004,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Nexus Bio Innovations; Synapse Bio,Synapse Bio; Nexus Bio Innovations,False,False,False,False,0.02,0.01,0.0,0
+NVS-005,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Synaptic Core Engine,Synaptic Core Engine,False,False,False,False,0.04,0.02,0.0,0
+NVS-006,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.03,0.02,0.0,0
+NVS-007,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Project Chronos,Project Chronos,False,False,False,False,0.04,0.02,0.0,0
+NVS-008,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,TensorStream Runtime,TensorStream Runtime,False,False,False,False,0.02,0.01,0.0,0
+NVS-009,standard_kg,single_hop,dev,easy,True,1.0,1.0,1.0,Neural Mesh v2,Neural Mesh v2,False,False,False,False,0.02,0.01,0.0,0
+NVS-010,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,Zurich Innovation Center,Zurich Innovation Center,False,False,False,False,0.02,0.01,0.0,0
+NVS-011,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,Dr. Tariq Al-Mansoor,Dr. Tariq Al-Mansoor,False,False,False,False,0.02,0.01,0.0,0
+NVS-012,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,QubitSync Protocol,QubitSync Protocol,False,False,False,False,0.03,0.02,0.0,0
+NVS-013,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,Project Hyperion,Project Hyperion,False,False,False,False,0.04,0.03,0.0,0
+NVS-014,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.02,0.01,0.0,0
+NVS-015,standard_kg,single_hop,test,easy,True,1.0,1.0,1.0,Cygnus Systems,Cygnus Systems,False,False,False,False,0.04,0.02,0.0,0
+NVS-016,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Axiom Semantic Reasoner,Axiom Semantic Reasoner,False,False,False,False,0.06,0.04,0.0,0
+NVS-017,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Synaptic Core Engine,Synaptic Core Engine,False,False,False,False,0.04,0.03,0.0,0
+NVS-018,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.03,0.02,0.0,0
+NVS-019,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Project Chronos,Project Chronos,False,False,False,False,0.02,0.01,0.0,0
+NVS-020,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Neural Mesh v2,Neural Mesh v2,False,False,False,False,0.02,0.01,0.0,0
+NVS-021,standard_kg,two_hop,dev,medium,False,0.0,0.0,0.0,,Dr. Tariq Al-Mansoor,False,False,True,False,0.02,0.01,0.0,0
+NVS-022,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,HoloVector Architecture,HoloVector Architecture,False,False,False,False,0.03,0.02,0.0,0
+NVS-023,standard_kg,two_hop,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor,Bengaluru Tech Corridor,False,False,False,False,0.02,0.01,0.0,0
+NVS-024,standard_kg,two_hop,dev,medium,False,0.0,0.0,0.0,,Apex Robotics Systems,False,False,True,False,0.01,0.01,0.0,0
+NVS-025,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.05,0.03,0.0,0
+NVS-026,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,Cygnus Systems,Cygnus Systems,False,False,False,False,0.03,0.01,0.0,0
+NVS-027,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,Dr. Alyssa Vance,Dr. Alyssa Vance,False,False,False,False,0.04,0.03,0.0,0
+NVS-028,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,Synaptic Core Engine,Synaptic Core Engine,False,False,False,False,0.04,0.03,0.0,0
+NVS-029,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor,Bengaluru Tech Corridor,False,False,False,False,0.02,0.02,0.0,0
+NVS-030,standard_kg,two_hop,test,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.06,0.03,0.0,0
+NVS-031,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Axiom Semantic Reasoner; Synaptic Core Engine,Axiom Semantic Reasoner; Synaptic Core Engine,False,False,False,False,0.07,0.05,0.0,0
+NVS-032,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.03,0.02,0.0,0
+NVS-033,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Axiom Semantic Reasoner; TensorStream Runtime,Axiom Semantic Reasoner; TensorStream Runtime,False,False,False,False,0.15,0.03,0.0,0
+NVS-034,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Project Aegis; Project Prometheus,Project Prometheus; Project Aegis,False,False,False,False,0.02,0.02,0.0,0
+NVS-035,standard_kg,three_hop,dev,medium,False,0.0,0.0,0.0,,Zurich Innovation Center,False,False,True,False,0.02,0.01,0.0,0
+NVS-036,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.05,0.04,0.0,0
+NVS-037,standard_kg,three_hop,dev,medium,False,0.0,0.0,0.0,,HoloVector Architecture,False,False,True,False,0.03,0.01,0.0,0
+NVS-038,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor,Bengaluru Tech Corridor,False,False,False,False,0.06,0.03,0.0,0
+NVS-039,standard_kg,three_hop,dev,medium,True,1.0,1.0,1.0,Synaptic Core Engine,Synaptic Core Engine,False,False,False,False,0.06,0.03,0.0,0
+NVS-040,standard_kg,three_hop,test,medium,True,1.0,1.0,1.0,DeepLogic Labs,DeepLogic Labs,False,False,False,False,0.05,0.03,0.0,0
+NVS-041,standard_kg,three_hop,test,medium,True,1.0,1.0,1.0,DeepLogic Labs,DeepLogic Labs,False,False,False,False,0.04,0.02,0.0,0
+NVS-042,standard_kg,three_hop,test,medium,True,1.0,1.0,1.0,Cognitive Dynamics; Synapse Bio,Cognitive Dynamics; Synapse Bio,False,False,False,False,0.03,0.02,0.0,0
+NVS-043,standard_kg,three_hop,test,medium,False,1.0,0.3333,0.5,Dr. Elena Rostova,Dr. Alyssa Vance; Dr. Marcus Chen; Dr. Elena Rostova,False,False,False,False,0.04,0.02,0.0,0
+NVS-044,standard_kg,three_hop,test,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,False,False,False,0.04,0.03,0.0,0
+NVS-045,standard_kg,three_hop,test,medium,False,0.0,0.0,0.0,,Neural Mesh v2,False,False,True,False,0.04,0.02,0.0,0
+NVS-046,standard_kg,multi_hop,dev,hard,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,0.02,0.01,0.0,0
+NVS-047,standard_kg,multi_hop,dev,hard,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,0.04,0.03,0.0,0
+NVS-048,standard_kg,multi_hop,dev,hard,False,0.0,0.0,0.0,,Bengaluru Tech Corridor; Zurich Innovation Center,False,False,True,False,0.04,0.03,0.0,0
+NVS-049,standard_kg,multi_hop,dev,hard,True,1.0,1.0,1.0,Axiom Semantic Reasoner; TensorStream Runtime,Axiom Semantic Reasoner; TensorStream Runtime,False,False,False,False,0.07,0.05,0.0,0
+NVS-050,standard_kg,multi_hop,dev,hard,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,0.05,0.03,0.0,0
+NVS-051,standard_kg,multi_hop,dev,hard,False,0.0,0.0,0.0,,QuantumMesh Engine,False,False,True,False,0.04,0.02,0.0,0
+NVS-052,standard_kg,multi_hop,test,hard,False,0.0,0.0,0.0,,Cygnus Systems,False,False,True,False,0.04,0.02,0.0,0
+NVS-053,standard_kg,multi_hop,test,hard,False,0.0,0.0,0.0,,Zurich Innovation Center,False,False,True,False,0.02,0.01,0.0,0
+NVS-054,standard_kg,multi_hop,test,hard,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.11,0.05,0.0,0
+NVS-055,standard_kg,multi_hop,test,hard,False,0.0,0.0,0.0,,Cognitive Dynamics,False,False,True,False,0.06,0.03,0.0,0
+NVS-056,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,False,True,False,False,0.04,0.03,0.0,0
+NVS-057,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.03,0.02,0.0,0
+NVS-058,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,Nexus Advanced Research Institute,Nexus Advanced Research Institute,False,True,False,False,0.04,0.03,0.0,0
+NVS-059,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,DeepLogic Labs,DeepLogic Labs,False,True,False,False,0.04,0.02,0.0,0
+NVS-060,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,False,True,False,False,0.03,0.02,0.0,0
+NVS-061,standard_kg,contradiction,dev,medium,True,1.0,1.0,1.0,Dr. Alyssa Vance,Dr. Alyssa Vance,False,True,False,False,0.04,0.02,0.0,0
+NVS-062,standard_kg,contradiction,test,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.03,0.02,0.0,0
+NVS-063,standard_kg,contradiction,test,medium,True,1.0,1.0,1.0,Nexus Advanced Research Institute,Nexus Advanced Research Institute,False,True,False,False,0.03,0.02,0.0,0
+NVS-064,standard_kg,contradiction,test,medium,True,1.0,1.0,1.0,DeepLogic Labs,DeepLogic Labs,False,True,False,False,0.04,0.02,0.0,0
+NVS-065,standard_kg,contradiction,test,medium,True,1.0,1.0,1.0,Dr. Alyssa Vance,Dr. Alyssa Vance,False,True,False,False,0.04,0.02,0.0,0
+NVS-066,standard_kg,ablation,dev,hard,False,0.5,1.0,0.6667,Nexus Bio Innovations; Synapse Bio,Nexus Bio Innovations,False,False,False,False,0.02,0.01,0.0,0
+NVS-067,standard_kg,ablation,dev,hard,False,0.0,0.0,0.0,Synaptic Core Engine,,False,False,False,True,0.03,0.02,0.0,0
+NVS-068,standard_kg,ablation,dev,hard,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,False,False,False,False,0.03,0.03,0.0,0
+NVS-069,standard_kg,ablation,dev,hard,False,0.0,0.0,0.0,QuantumMesh Engine,,False,False,False,True,0.03,0.02,0.0,0
+NVS-070,standard_kg,ablation,dev,hard,False,0.0,0.0,0.0,Cygnus Systems,,False,False,False,True,0.03,0.02,0.0,0
+NVS-071,standard_kg,ablation,dev,hard,False,0.0,0.0,0.0,Neural Mesh v2,,False,False,False,True,0.03,0.02,0.0,0
+NVS-072,standard_kg,ablation,test,hard,False,0.0,0.0,0.0,QubitSync Protocol,,False,False,False,True,0.04,0.02,0.0,0
+NVS-073,standard_kg,ablation,test,hard,False,0.0,0.0,0.0,Project Hyperion,,False,False,False,True,0.03,0.02,0.0,0
+NVS-074,standard_kg,ablation,test,hard,False,0.0,0.0,0.0,Dr. Marcus Chen,,False,False,False,True,0.05,0.02,0.0,0
+NVS-075,standard_kg,ablation,test,hard,False,0.0,0.0,0.0,Synaptic Core Engine,,False,False,False,True,0.03,0.02,0.0,0
+NVS-076,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.02,0.0,0
+NVS-077,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.01,0.0,0
+NVS-078,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.02,0.01,0.0,0
+NVS-079,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.05,0.02,0.0,0
+NVS-080,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.05,0.03,0.0,0
+NVS-081,standard_kg,unanswerable,dev,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.02,0.0,0
+NVS-082,standard_kg,unanswerable,test,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.04,0.02,0.0,0
+NVS-083,standard_kg,unanswerable,test,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.01,0.0,0
+NVS-084,standard_kg,unanswerable,test,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.09,0.06,0.0,0
+NVS-085,standard_kg,unanswerable,test,medium,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.01,0.0,0
+NVS-086,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,False,False,False,False,0.03,0.02,0.0,0
+NVS-087,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,Axiom Semantic Reasoner,Axiom Semantic Reasoner,False,False,False,False,0.06,0.03,0.0,0
+NVS-088,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,Axiom Semantic Reasoner; Synaptic Core Engine,Axiom Semantic Reasoner; Synaptic Core Engine,False,False,False,False,0.07,0.05,0.0,0
+NVS-089,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,TensorStream Runtime,TensorStream Runtime,False,False,False,False,0.05,0.03,0.0,0
+NVS-090,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,Neural Mesh v2,Neural Mesh v2,False,False,False,False,0.02,0.01,0.0,0
+NVS-091,standard_kg,paraphrased,dev,medium,True,1.0,1.0,1.0,Bengaluru Tech Corridor; Zurich Innovation Center,Zurich Innovation Center; Bengaluru Tech Corridor,False,True,False,False,0.05,0.03,0.0,0
+NVS-092,standard_kg,paraphrased,test,medium,True,1.0,1.0,1.0,QubitSync Protocol,QubitSync Protocol,False,False,False,False,0.06,0.03,0.0,0
+NVS-093,standard_kg,paraphrased,test,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.04,0.02,0.0,0
+NVS-094,standard_kg,paraphrased,test,medium,True,1.0,1.0,1.0,Cygnus Systems,Cygnus Systems,False,False,False,False,0.03,0.02,0.0,0
+NVS-095,standard_kg,paraphrased,test,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,0.03,0.02,0.0,0
+NVS-096,standard_kg,adversarial,dev,hard,True,1.0,1.0,1.0,Axiom Semantic Reasoner,Axiom Semantic Reasoner,False,False,False,False,0.03,0.02,0.0,0
+NVS-097,standard_kg,adversarial,dev,hard,False,0.0,0.0,0.0,Cognitive Dynamics,,False,False,False,True,0.03,0.02,0.0,0
+NVS-098,standard_kg,adversarial,dev,hard,True,1.0,1.0,1.0,,,False,False,True,True,0.03,0.01,0.0,0
+NVS-099,standard_kg,adversarial,test,hard,False,0.0,0.0,0.0,HoloVector Architecture,,False,False,False,True,0.05,0.02,0.0,0
+NVS-100,standard_kg,adversarial,test,hard,True,1.0,1.0,1.0,DeepLogic Labs,DeepLogic Labs,False,False,False,False,0.04,0.03,0.0,0

@@ -1,0 +1,28 @@
+{
+  "config": {
+    "experiment_id": "pilot-rag-nl-test10",
+    "system_name": "rag",
+    "mode": "natural",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "test",
+    "category": "all",
+    "limit": 10,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:04:49.731949Z",
+    "device_info": {}
+  },
+  "device_info": {
+    "os": "Windows",
+    "release": "10",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "python_version": "3.11.0",
+    "machine": "AMD64"
+  },
+  "generated_at": "2026-11-25T05:04:50.012059Z",
+  "results_files": {
+    "results_json": "results.json",
+    "results_csv": "results.csv",
+    "summary_json": "summary.json"
+  }
+}
