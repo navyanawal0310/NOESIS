@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NVS100BenchmarkCase",
+  "description": "Schema definition for a single benchmark case in the NOESIS Validation Suite (NVS-100).",
+  "type": "object",
+  "required": [
+    "case_id",
+    "corpus_id",
+    "category",
+    "difficulty",
+    "question",
+    "structured_query_plan",
+    "expected_answer_entities",
+    "expected_reasoning_paths",
+    "expected_predicates",
+    "expected_directions",
+    "expected_evidence",
+    "expected_contradiction_status",
+    "expected_abstention_status",
+    "expected_critical_sources",
+    "annotation_notes",
+    "split"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^NVS-[0-9]{3}$"
+    },
+    "corpus_id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "single_hop",
+        "two_hop",
+        "three_hop",
+        "multi_hop",
+        "contradiction",
+        "ablation",
+        "unanswerable",
+        "paraphrased",
+        "adversarial"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"]
+    },
+    "question": {
+      "type": "string"
+    },
+    "structured_query_plan": {
+      "type": "object",
+      "required": ["start_entity", "steps", "max_hops"],
+      "properties": {
+        "start_entity": {"type": "string"},
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["predicate", "direction"],
+            "properties": {
+              "predicate": {"type": "string"},
+              "direction": {"type": "string", "enum": ["outgoing", "incoming", "both"]},
+              "target_type": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "return_type": {"type": ["string", "null"]},
+        "max_hops": {"type": "integer", "minimum": 1, "maximum": 5},
+        "temporal_constraint": {"type": ["string", "null"]}
+      }
+    },
+    "expected_answer_entities": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "expected_reasoning_paths": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {"type": "string"}
+      }
+    },
+    "expected_predicates": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "expected_directions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "expected_evidence": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "expected_contradiction_status": {
+      "type": "boolean"
+    },
+    "expected_abstention_status": {
+      "type": "boolean"
+    },
+    "expected_critical_sources": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "annotation_notes": {
+      "type": "string"
+    },
+    "split": {
+      "type": "string",
+      "enum": ["dev", "test"]
+    }
+  }
+}
