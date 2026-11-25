@@ -1,0 +1,11 @@
+case_id,system_name,category,split,difficulty,is_exact_match,precision,recall,f1,predicted_entities,expected_entities,contradiction_detected,expected_contradiction,abstained,expected_abstention,latency_ms,graph_traversal_ms,planning_ms,llm_calls
+NVS-001,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Cognitive Dynamics,Cognitive Dynamics,True,False,False,False,0.86,0.64,0.0,0
+NVS-002,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Axiom Semantic Reasoner,Axiom Semantic Reasoner,False,False,False,False,1.01,0.66,0.0,0
+NVS-003,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Dr. Marcus Chen; Dr. Alyssa Vance,Dr. Alyssa Vance; Dr. Marcus Chen,False,False,False,False,0.62,0.41,0.0,0
+NVS-004,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Synapse Bio; Nexus Bio Innovations,Synapse Bio; Nexus Bio Innovations,False,False,False,False,0.69,0.46,0.0,0
+NVS-005,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Synaptic Core Engine,Synaptic Core Engine,False,False,False,False,0.41,0.23,0.0,0
+NVS-006,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Zurich Innovation Center; Bengaluru Tech Corridor,Zurich Innovation Center; Bengaluru Tech Corridor,True,True,False,False,0.52,0.32,0.0,0
+NVS-007,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Project Chronos,Project Chronos,False,False,False,False,0.52,0.36,0.0,0
+NVS-008,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,TensorStream Runtime,TensorStream Runtime,False,False,False,False,0.42,0.23,0.0,0
+NVS-009,noesis,single_hop,dev,easy,True,1.0,1.0,1.0,Neural Mesh v2,Neural Mesh v2,False,False,False,False,0.36,0.19,0.0,0
+NVS-010,noesis,single_hop,test,easy,True,1.0,1.0,1.0,Zurich Innovation Center,Zurich Innovation Center,False,False,False,False,0.31,0.15,0.0,0

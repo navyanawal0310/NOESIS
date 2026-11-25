@@ -1,0 +1,10 @@
+Title: REALM: Retrieval-Augmented Language Model Pre-Training
+Authors: Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, Ming-Wei Chang
+Venue: ICML 2020 (2020)
+Open Access URL: https://arxiv.org/abs/2002.08909
+
+Abstract:
+Language model pre-training has been shown to capture a substantial amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network. We present REALM, which augments language models with a learned neural knowledge retriever.
+
+Summary Notes:
+This paper introduces REALM developed by Google Research in 2020. It addresses foundational machine intelligence architectures.

@@ -1,0 +1,28 @@
+{
+  "config": {
+    "experiment_id": "nvs100-standard-kg-structured",
+    "system_name": "standard_kg",
+    "mode": "structured",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": null,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:02:02.730422Z",
+    "device_info": {}
+  },
+  "device_info": {
+    "os": "Windows",
+    "release": "10",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "python_version": "3.11.0",
+    "machine": "AMD64"
+  },
+  "generated_at": "2026-11-25T05:02:09.304734Z",
+  "results_files": {
+    "results_json": "results.json",
+    "results_csv": "results.csv",
+    "summary_json": "summary.json"
+  }
+}

@@ -1,0 +1,10 @@
+Title: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+Authors: Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Kuttler, Mike Lewis, Wen-tau Yih, Tim Rocktaschel, Sebastian Riedel, Douwe Kiela
+Venue: NeurIPS 2020 (2020)
+Open Access URL: https://arxiv.org/abs/2005.11401
+
+Abstract:
+Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited. In this work, we explore retrieval-augmented generation (RAG) models, which combine pre-trained parametric memory with non-parametric neural retrieval.
+
+Summary Notes:
+This paper introduces Retrieval-Augmented Generation developed by Facebook AI Research in 2020. It addresses foundational machine intelligence architectures.

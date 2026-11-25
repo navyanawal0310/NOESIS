@@ -1,0 +1,163 @@
+{
+  "experiment_id": "pilot-rag-nl-test10",
+  "config": {
+    "experiment_id": "pilot-rag-nl-test10",
+    "system_name": "rag",
+    "mode": "natural",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "test",
+    "category": "all",
+    "limit": 10,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:04:49.731949Z",
+    "device_info": {}
+  },
+  "total_cases": 10,
+  "completed_cases": 10,
+  "failed_cases": 0,
+  "duration_seconds": 0.28,
+  "metrics": {
+    "answer_exact_match": {
+      "name": "answer_exact_match",
+      "value": 0.2,
+      "numerator": 2.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "entity_set_precision": {
+      "name": "entity_set_precision",
+      "value": 0.2,
+      "numerator": 2,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "entity_set_recall": {
+      "name": "entity_set_recall",
+      "value": 0.2,
+      "numerator": 2,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "entity_set_f1": {
+      "name": "entity_set_f1",
+      "value": 0.2,
+      "numerator": 4,
+      "denominator": 20,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "reasoning_path_validity": {
+      "name": "reasoning_path_validity",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "abstention_accuracy": {
+      "name": "abstention_accuracy",
+      "value": 1.0,
+      "numerator": 10.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "end_to_end_latency": {
+      "name": "end_to_end_latency",
+      "value": 19.8811,
+      "numerator": 198.8114,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "graph_traversal_latency": {
+      "name": "graph_traversal_latency",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "planning_latency": {
+      "name": "planning_latency",
+      "value": 0.4002,
+      "numerator": 4.0023,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "llm_calls_per_query": {
+      "name": "llm_calls_per_query",
+      "value": 1.0,
+      "numerator": 10.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "start_entity_accuracy": {
+      "name": "start_entity_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "predicate_sequence_accuracy": {
+      "name": "predicate_sequence_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "traversal_direction_accuracy": {
+      "name": "traversal_direction_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "complete_query_plan_accuracy": {
+      "name": "complete_query_plan_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    }
+  },
+  "completed_at": "2026-11-25T05:04:50.012059Z"
+}

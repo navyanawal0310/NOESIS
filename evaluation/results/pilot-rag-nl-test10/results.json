@@ -1,0 +1,1707 @@
+[
+  {
+    "case_id": "NVS-010",
+    "system_name": "rag",
+    "question": "Where is Helix Compute Foundry located?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "Zurich Innovation Center"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Zurich Innovation Center"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_004"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 20.267799962311983,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.1911999424919486,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 20.2678,
+        "numerator": 20.2678,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.1912,
+        "numerator": 0.1912,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "LOCATED_IN"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.760451Z"
+  },
+  {
+    "case_id": "NVS-011",
+    "system_name": "rag",
+    "question": "Who was employed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "Cognitive Dynamics"
+    ],
+    "expected_entities": [
+      "Dr. Tariq Al-Mansoor"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "Dr. Tariq Al-Mansoor"
+      ]
+    ],
+    "citations": [
+      "DOC_001"
+    ],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 20.026300102472305,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.45980000868439674,
+    "llm_calls": 1,
+    "raw_response": "Cognitive Dynamics [DOC_001]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 20.0263,
+        "numerator": 20.0263,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.4598,
+        "numerator": 0.4598,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.784896Z"
+  },
+  {
+    "case_id": "NVS-012",
+    "system_name": "rag",
+    "question": "What technology was developed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "Cognitive Dynamics"
+    ],
+    "expected_entities": [
+      "QubitSync Protocol"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "QubitSync Protocol"
+      ]
+    ],
+    "citations": [
+      "DOC_007"
+    ],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 17.29599991813302,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.48319995403289795,
+    "llm_calls": 1,
+    "raw_response": "Cognitive Dynamics [DOC_007]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 17.296,
+        "numerator": 17.296,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.4832,
+        "numerator": 0.4832,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.806961Z"
+  },
+  {
+    "case_id": "NVS-013",
+    "system_name": "rag",
+    "question": "What project did Dr. Daniel Kim work on?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "HoloVector Architecture"
+    ],
+    "expected_entities": [
+      "Project Hyperion"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_daniel_kim",
+        "Project Hyperion"
+      ]
+    ],
+    "citations": [
+      "DOC_010"
+    ],
+    "expected_evidence": [
+      "DOC_010"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 13.753799954429269,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.4805999342352152,
+    "llm_calls": 1,
+    "raw_response": "HoloVector Architecture [DOC_010]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 13.7538,
+        "numerator": 13.7538,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.4806,
+        "numerator": 0.4806,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "WORKED_ON"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.828046Z"
+  },
+  {
+    "case_id": "NVS-014",
+    "system_name": "rag",
+    "question": "What technology was developed by Helix Compute Foundry in 2023?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 17.126800026744604,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.44139998499304056,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 1.0,
+        "numerator": 2,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 17.1268,
+        "numerator": 17.1268,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.4414,
+        "numerator": 0.4414,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.851188Z"
+  },
+  {
+    "case_id": "NVS-015",
+    "system_name": "rag",
+    "question": "Who funded Helix Compute Foundry?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 23.36780005134642,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.43270003516227007,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 23.3678,
+        "numerator": 23.3678,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.4327,
+        "numerator": 0.4327,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.882724Z"
+  },
+  {
+    "case_id": "NVS-025",
+    "system_name": "rag",
+    "question": "What technology was developed by the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 23.933000047691166,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.3826000029221177,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 1.0,
+        "numerator": 2,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 23.933,
+        "numerator": 23.933,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.3826,
+        "numerator": 0.3826,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.913888Z"
+  },
+  {
+    "case_id": "NVS-026",
+    "system_name": "rag",
+    "question": "Who funded the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 24.042500066570938,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.36780000664293766,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 24.0425,
+        "numerator": 24.0425,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.3678,
+        "numerator": 0.3678,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "EMPLOYED_BY",
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.945249Z"
+  },
+  {
+    "case_id": "NVS-027",
+    "system_name": "rag",
+    "question": "What organization was founded by the researcher who collaborated with Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "Dr. Alyssa Vance"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Dr. Alyssa Vance"
+      ]
+    ],
+    "citations": [
+      "DOC_011"
+    ],
+    "expected_evidence": [
+      "DOC_011",
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 24.745199945755303,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.3439999418333173,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_011]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 24.7452,
+        "numerator": 24.7452,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.344,
+        "numerator": 0.344,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "COLLABORATED_WITH",
+            "COLLABORATED_WITH"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.977104Z"
+  },
+  {
+    "case_id": "NVS-028",
+    "system_name": "rag",
+    "question": "What technology was developed by the organization that collaborated with Nexus Advanced Research Institute?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [
+      "QuantumMesh Engine"
+    ],
+    "expected_entities": [
+      "Synaptic Core Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_nexus_institute",
+        "Synaptic Core Engine"
+      ]
+    ],
+    "citations": [
+      "DOC_012"
+    ],
+    "expected_evidence": [
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 14.252200024202466,
+    "graph_traversal_ms": 0.0,
+    "planning_ms": 0.4190000472590327,
+    "llm_calls": 1,
+    "raw_response": "QuantumMesh Engine [DOC_012]",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 14.2522,
+        "numerator": 14.2522,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.419,
+        "numerator": 0.419,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [],
+          "gold": [
+            "COLLABORATED_WITH",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:49.999116Z"
+  }
+]

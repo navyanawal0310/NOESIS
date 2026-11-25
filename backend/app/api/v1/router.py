@@ -1,7 +1,9 @@
 """FastAPI REST API Routers - v1."""
 
+import json
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
@@ -523,9 +525,18 @@ def execute_natural_query(
             ),
         )
 
+    planning_route = "deterministic_pattern"
+    cache_hit = False
+    llm_calls = 0
+    model_id: Optional[str] = None
+
     try:
-        plan, plan_status, plan_latencies = planner.plan_query_with_telemetry(request.question)
-        latencies.update(plan_latencies)
+        plan, plan_status, plan_telemetry = planner.plan_query_with_telemetry(request.question)
+        latencies.update({k: v for k, v in plan_telemetry.items() if isinstance(v, (int, float))})
+        planning_route = plan_telemetry.get("planning_route", "deterministic_pattern")
+        cache_hit = plan_telemetry.get("cache_hit", False)
+        llm_calls = plan_telemetry.get("llm_calls", 0)
+        model_id = plan_telemetry.get("model_id")
     except EntityNotFoundError as enfe:
         t_tot = round((time.perf_counter() - t_start) * 1000, 2)
         latencies["total_ms"] = t_tot
@@ -623,6 +634,10 @@ def execute_natural_query(
         gap_detector=gap_detector,
         status_code=status_code,
         latencies=latencies,
+        planning_route=planning_route,
+        cache_hit=cache_hit,
+        llm_calls=llm_calls,
+        model_id=model_id,
     )
     return grounded_ans
 
@@ -666,3 +681,193 @@ def run_counterfactual_ablation(
         target_entity_id=request.target_entity_id,
         engine=engine,
     )
+
+
+# 17. GET /api/v1/evaluation/benchmark
+@router.get("/evaluation/benchmark")
+def get_benchmark_overview():
+    """Returns overview, statistics, and category distribution of the NVS-100 benchmark."""
+    bench_file = Path(__file__).resolve().parents[4] / "datasets" / "benchmarks" / "nvs100.json"
+    if not bench_file.exists():
+        raise HTTPException(status_code=404, detail="Benchmark dataset not found")
+    with open(bench_file, "r", encoding="utf-8") as f:
+        cases = json.load(f)
+
+    categories: Dict[str, int] = {}
+    splits: Dict[str, int] = {"dev": 0, "test": 0}
+    for c in cases:
+        cat = c.get("category", "unknown")
+        categories[cat] = categories.get(cat, 0) + 1
+        sp = c.get("split", "dev")
+        splits[sp] = splits.get(sp, 0) + 1
+
+    return {
+        "benchmark_id": "NVS-100",
+        "total_cases": len(cases),
+        "split_distribution": splits,
+        "category_distribution": categories,
+    }
+
+
+# 18. GET /api/v1/evaluation/experiments
+@router.get("/evaluation/experiments")
+def list_experiments():
+    """Lists all executed, incomplete, and failed scientific evaluation experiments."""
+    results_dir = Path(__file__).resolve().parents[4] / "evaluation" / "results"
+    if not results_dir.exists():
+        return {"experiments": []}
+
+    experiments = []
+    for exp_dir in results_dir.iterdir():
+        if exp_dir.is_dir():
+            summary_file = exp_dir / "summary.json"
+            meta_file = exp_dir / "metadata.json"
+            summary_data: Dict[str, Any] = {}
+
+            if summary_file.exists():
+                try:
+                    with open(summary_file, "r", encoding="utf-8") as sf:
+                        summary_data = json.load(sf)
+                except Exception:
+                    pass
+            elif meta_file.exists():
+                try:
+                    with open(meta_file, "r", encoding="utf-8") as mf:
+                        summary_data = json.load(mf)
+                except Exception:
+                    pass
+
+            if summary_data:
+                config = summary_data.get("config", {})
+                status = (
+                    summary_data.get("status")
+                    or summary_data.get("execution_status")
+                    or ("completed" if summary_data.get("completed_at") else "incomplete")
+                )
+                experiments.append(
+                    {
+                        "experiment_id": exp_dir.name,
+                        "status": status,
+                        "system_name": config.get("system_name"),
+                        "mode": config.get("mode"),
+                        "split": config.get("split"),
+                        "total_cases": summary_data.get("total_cases", 0),
+                        "completed_cases": summary_data.get("completed_cases", 0),
+                        "failed_cases": summary_data.get("failed_cases", 0),
+                        "duration_seconds": summary_data.get("duration_seconds", 0.0),
+                        "reason": summary_data.get("reason"),
+                        "completed_at": summary_data.get("completed_at"),
+                        "resumption_instructions": summary_data.get("resumption_instructions"),
+                    }
+                )
+    return {"experiments": sorted(experiments, key=lambda x: x.get("completed_at") or "", reverse=True)}
+
+
+# 19. GET /api/v1/evaluation/experiments/{experiment_id}
+@router.get("/evaluation/experiments/{experiment_id}")
+def get_experiment_details(experiment_id: str):
+    """Retrieves detailed results, summary metrics, and metadata for an experiment ID."""
+    results_dir = Path(__file__).resolve().parents[4] / "evaluation" / "results"
+    exp_dir = results_dir / experiment_id
+    if not exp_dir.exists() or not exp_dir.is_dir():
+        raise HTTPException(status_code=404, detail=f"Experiment '{experiment_id}' not found")
+
+    summary_file = exp_dir / "summary.json"
+    results_file = exp_dir / "results.json"
+    meta_file = exp_dir / "metadata.json"
+
+    summary: Dict[str, Any] = {}
+    if summary_file.exists():
+        with open(summary_file, "r", encoding="utf-8") as sf:
+            summary = json.load(sf)
+
+    records: List[Dict[str, Any]] = []
+    if results_file.exists():
+        with open(results_file, "r", encoding="utf-8") as rf:
+            records = json.load(rf)
+
+    metadata: Dict[str, Any] = {}
+    if meta_file.exists():
+        with open(meta_file, "r", encoding="utf-8") as mf:
+            metadata = json.load(mf)
+
+    status = (
+        summary.get("status")
+        or summary.get("execution_status")
+        or metadata.get("status")
+        or ("completed" if summary.get("completed_at") else "incomplete")
+    )
+
+    return {
+        "experiment_id": experiment_id,
+        "status": status,
+        "reason": summary.get("reason") or metadata.get("reason"),
+        "resumption_instructions": summary.get("resumption_instructions") or metadata.get("resume_command"),
+        "summary": summary,
+        "metadata": metadata,
+        "cases_evaluated": len(records),
+        "results": records,
+    }
+
+
+# 20. GET /api/v1/evaluation/summary
+@router.get("/evaluation/summary")
+def get_evaluation_summary():
+    """Aggregated comparative benchmark summary across available experimental systems."""
+    results_dir = Path(__file__).resolve().parents[4] / "evaluation" / "results"
+    system_summaries: Dict[str, Any] = {}
+    incomplete_experiments: List[Dict[str, Any]] = []
+    infrastructure_failures: List[Dict[str, Any]] = []
+
+    if results_dir.exists():
+        for exp_dir in results_dir.iterdir():
+            if exp_dir.is_dir():
+                sf = exp_dir / "summary.json"
+                if sf.exists():
+                    try:
+                        with open(sf, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                        status = data.get("status") or ("completed" if data.get("completed_at") else "incomplete")
+                        sys_name = data.get("config", {}).get("system_name", "unknown")
+
+                        if status == "incomplete":
+                            incomplete_experiments.append({
+                                "experiment_id": exp_dir.name,
+                                "system_name": sys_name,
+                                "reason": data.get("reason"),
+                                "resumption_instructions": data.get("resumption_instructions"),
+                            })
+                        elif status == "infrastructure_failed":
+                            infrastructure_failures.append({
+                                "experiment_id": exp_dir.name,
+                                "system_name": sys_name,
+                                "reason": data.get("reason"),
+                            })
+                        else:
+                            if (
+                                sys_name not in system_summaries
+                                or data.get("completed_cases", 0) > system_summaries[sys_name].get("completed_cases", 0)
+                            ):
+                                system_summaries[sys_name] = data
+                    except Exception:
+                        pass
+
+    # Human validation status check
+    human_summary_file = Path(__file__).resolve().parents[4] / "evaluation" / "human_study" / "summary.json"
+    human_study_status = "pending"
+    if human_summary_file.exists():
+        try:
+            with open(human_summary_file, "r", encoding="utf-8") as hf:
+                hdata = json.load(hf)
+                human_study_status = hdata.get("status", "pending")
+        except Exception:
+            pass
+
+    return {
+        "status": "ready" if system_summaries else "pending_execution",
+        "human_study_status": human_study_status,
+        "systems_evaluated": list(system_summaries.keys()),
+        "summaries": system_summaries,
+        "incomplete_experiments": incomplete_experiments,
+        "infrastructure_failures": infrastructure_failures,
+    }

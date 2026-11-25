@@ -1,0 +1,28 @@
+{
+  "config": {
+    "experiment_id": "test-pilot-2",
+    "system_name": "noesis",
+    "mode": "structured",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": 2,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T04:51:15.571271Z",
+    "device_info": {}
+  },
+  "device_info": {
+    "os": "Windows",
+    "release": "10",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "python_version": "3.11.0",
+    "machine": "AMD64"
+  },
+  "generated_at": "2026-11-25T04:51:15.612836Z",
+  "results_files": {
+    "results_json": "results.json",
+    "results_csv": "results.csv",
+    "summary_json": "summary.json"
+  }
+}

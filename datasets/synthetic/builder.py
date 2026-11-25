@@ -41,6 +41,13 @@ ENTITIES_DATA = [
 
     {"id": "ent_bengaluru", "canonical_name": "Bengaluru Tech Corridor", "type": "LOCATION", "aliases": ["Bengaluru"], "description": "Technology innovation district in Karnataka"},
     {"id": "ent_zurich", "canonical_name": "Zurich Innovation Center", "type": "LOCATION", "aliases": ["Zurich"], "description": "Technology cluster in Switzerland"},
+
+    {"id": "ent_valeria_moretti", "canonical_name": "Dr. Valeria Moretti", "type": "PERSON", "aliases": ["Valeria Moretti", "V. Moretti"], "description": "Chief hardware architect at Helix Compute Foundry"},
+    {"id": "ent_proj_orion", "canonical_name": "Project Orion", "type": "PROJECT", "aliases": ["Orion Project", "Orion"], "description": "Low-noise analog quantum-neuromorphic integration project"},
+    {"id": "ent_tech_quantum_mesh", "canonical_name": "QuantumMesh Engine", "type": "TECHNOLOGY", "aliases": ["QuantumMesh", "QuantumMesh Accelerator"], "description": "Fault-tolerant asynchronous quantum execution engine"},
+    {"id": "ent_cygnus_systems", "canonical_name": "Cygnus Systems", "type": "ORGANIZATION", "aliases": ["Cygnus"], "description": "Strategic venture and investment corporation"},
+    {"id": "ent_nexus_bio", "canonical_name": "Nexus Bio Innovations", "type": "ORGANIZATION", "aliases": ["Nexus Bio"], "description": "Autonomous agricultural biotechnology spinout"},
+    {"id": "ent_proj_chimera", "canonical_name": "Project Chimera", "type": "PROJECT", "aliases": ["Chimera Project", "Chimera"], "description": "Disconnected conceptual exploratory project with no active claims"},
 ]
 
 RAW_CLAIMS_EVIDENCE = [
@@ -523,6 +530,191 @@ RAW_CLAIMS_EVIDENCE = [
         "quote": "Dr. Daniel Kim collaborated with Dr. Vikram Patel on distributed localization benchmarks.",
         "page": 1,
     },
+    # DOC_011
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_valeria_moretti",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_helix_foundry",
+        "polarity": "affirmed",
+        "temporal_scope": "2021-2024",
+        "quote": "Dr. Valeria Moretti was employed by Helix Compute Foundry from 2021 to 2024 as chief hardware architect.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_valeria_moretti",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_orion",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Dr. Valeria Moretti worked on Project Orion to design low-noise analog interfaces.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_helix_foundry",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_quantum_mesh",
+        "polarity": "affirmed",
+        "temporal_scope": "2023",
+        "quote": "Helix Compute Foundry developed the QuantumMesh Engine in late 2023.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_cygnus_systems",
+        "predicate": "FUNDED",
+        "object_id": "ent_helix_foundry",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Cygnus Systems funded Helix Compute Foundry with strategic capital.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_valeria_moretti",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_sarah_jenkins",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Dr. Valeria Moretti collaborated with Dr. Sarah Jenkins on asynchronous pulse routing.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_011",
+        "subject_id": "ent_helix_foundry",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_deep_logic",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Helix Compute Foundry collaborated with DeepLogic Labs to validate hybrid execution pipelines.",
+        "page": 1,
+    },
+    # DOC_012
+    {
+        "doc_id": "DOC_012",
+        "subject_id": "ent_nexus_institute",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_turing_bengaluru",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Nexus Advanced Research Institute collaborated with Turing Institute of Bengaluru on foundational representation benchmarks.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_012",
+        "subject_id": "ent_turing_bengaluru",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_synaptic_core",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Turing Institute of Bengaluru developed the Synaptic Core Engine to support open academic research.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_012",
+        "subject_id": "ent_deep_logic",
+        "predicate": "USES",
+        "object_id": "ent_tech_quantum_mesh",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "DeepLogic Labs uses QuantumMesh Engine for extreme-scale asynchronous models.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_012",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "COLLABORATED_WITH",
+        "object_id": "ent_sarah_jenkins",
+        "polarity": "affirmed",
+        "temporal_scope": None,
+        "quote": "Dr. Alyssa Vance collaborated with Dr. Sarah Jenkins on distributed temporal reasoning formalisms.",
+        "page": 1,
+    },
+    # DOC_013
+    {
+        "doc_id": "DOC_013",
+        "subject_id": "ent_marcus_chen",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_nexus_institute",
+        "polarity": "negated",
+        "temporal_scope": "2021",
+        "quote": "Dr. Marcus Chen was not employed by Nexus Advanced Research Institute during 2021",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_013",
+        "subject_id": "ent_sarah_jenkins",
+        "predicate": "EMPLOYED_BY",
+        "object_id": "ent_deep_logic",
+        "polarity": "affirmed",
+        "temporal_scope": "2012-2015",
+        "quote": "Dr. Sarah Jenkins was employed by DeepLogic Labs from 2012 to 2015",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_013",
+        "subject_id": "ent_sarah_jenkins",
+        "predicate": "WORKED_ON",
+        "object_id": "ent_proj_chronos",
+        "polarity": "affirmed",
+        "temporal_scope": "2022",
+        "quote": "Dr. Sarah Jenkins worked on Project Chronos during 2022",
+        "page": 1,
+    },
+    # DOC_014
+    {
+        "doc_id": "DOC_014",
+        "subject_id": "ent_marcus_chen",
+        "predicate": "FOUNDED",
+        "object_id": "ent_nexus_bio",
+        "temporal_scope": "2024",
+        "polarity": "affirmed",
+        "quote": "Nexus Bio Innovations was founded by Dr. Marcus Chen in 2024.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_014",
+        "subject_id": "ent_nexus_bio",
+        "predicate": "LOCATED_IN",
+        "object_id": "ent_bengaluru",
+        "temporal_scope": None,
+        "polarity": "affirmed",
+        "quote": "Nexus Bio Innovations is located in Bengaluru Tech Corridor as an autonomous enterprise distinct from Nexus Advanced Research Institute.",
+        "page": 1,
+    },
+    # DOC_015
+    {
+        "doc_id": "DOC_015",
+        "subject_id": "ent_cognitive_dyn",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_axiom_reasoner",
+        "temporal_scope": None,
+        "polarity": "affirmed",
+        "quote": "Cognitive Dynamics developed the Axiom Semantic Reasoner, while HoloVector Architecture was developed by Apex Robotics Systems.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_015",
+        "subject_id": "ent_apex_robotics",
+        "predicate": "DEVELOPED",
+        "object_id": "ent_tech_holo_vector",
+        "temporal_scope": None,
+        "polarity": "affirmed",
+        "quote": "HoloVector Architecture was developed by Apex Robotics Systems.",
+        "page": 1,
+    },
+    {
+        "doc_id": "DOC_015",
+        "subject_id": "ent_alyssa_vance",
+        "predicate": "FOUNDED",
+        "object_id": "ent_cognitive_dyn",
+        "temporal_scope": "1850",
+        "polarity": "affirmed",
+        "quote": "Dr. Alyssa Vance founded Cognitive Dynamics in 1850.",
+        "page": 1,
+    },
 ]
 
 
@@ -626,6 +818,12 @@ def build_corpus_data():
         "evidence": compiled_evidence,
         "contradictions": contradiction_pairs,
     }
+
+
+def populate_repository(repo: Any) -> None:
+    """Populates a graph repository with the synthetic benchmark corpus."""
+    from scripts.seed_graph import seed_database
+    seed_database(clear_existing=True, repo=repo)
 
 
 if __name__ == "__main__":

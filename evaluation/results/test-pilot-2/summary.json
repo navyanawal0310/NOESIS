@@ -1,0 +1,183 @@
+{
+  "experiment_id": "test-pilot-2",
+  "config": {
+    "experiment_id": "test-pilot-2",
+    "system_name": "noesis",
+    "mode": "structured",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": 2,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T04:51:15.571271Z",
+    "device_info": {}
+  },
+  "total_cases": 2,
+  "completed_cases": 2,
+  "failed_cases": 0,
+  "duration_seconds": 0.02,
+  "metrics": {
+    "answer_exact_match": {
+      "name": "answer_exact_match",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "entity_set_precision": {
+      "name": "entity_set_precision",
+      "value": 1.0,
+      "numerator": 2,
+      "denominator": 2,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "entity_set_recall": {
+      "name": "entity_set_recall",
+      "value": 1.0,
+      "numerator": 2,
+      "denominator": 2,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "entity_set_f1": {
+      "name": "entity_set_f1",
+      "value": 1.0,
+      "numerator": 4,
+      "denominator": 4,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "reasoning_path_validity": {
+      "name": "reasoning_path_validity",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 4
+      }
+    },
+    "abstention_accuracy": {
+      "name": "abstention_accuracy",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "end_to_end_latency": {
+      "name": "end_to_end_latency",
+      "value": 0.624,
+      "numerator": 1.2479,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "graph_traversal_latency": {
+      "name": "graph_traversal_latency",
+      "value": 0.418,
+      "numerator": 0.8361,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "planning_latency": {
+      "name": "planning_latency",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "llm_calls_per_query": {
+      "name": "llm_calls_per_query",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "start_entity_accuracy": {
+      "name": "start_entity_accuracy",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "predicate_sequence_accuracy": {
+      "name": "predicate_sequence_accuracy",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "traversal_direction_accuracy": {
+      "name": "traversal_direction_accuracy",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "complete_query_plan_accuracy": {
+      "name": "complete_query_plan_accuracy",
+      "value": 1.0,
+      "numerator": 2.0,
+      "denominator": 2.0,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    },
+    "contradiction_precision": {
+      "name": "contradiction_precision",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 1,
+      "sample_size": 1,
+      "details": {
+        "total_subsamples": 1
+      }
+    },
+    "contradiction_recall": {
+      "name": "contradiction_recall",
+      "value": 1.0,
+      "numerator": 0,
+      "denominator": 0,
+      "sample_size": 1,
+      "details": {
+        "total_subsamples": 0
+      }
+    }
+  },
+  "completed_at": "2026-11-25T04:51:15.612836Z"
+}

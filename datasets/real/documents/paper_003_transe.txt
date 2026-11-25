@@ -1,0 +1,10 @@
+Title: Translating Embeddings for Modeling Multi-relational Data
+Authors: Antoine Bordes, Nicolas Usunier, Alberto Garcia-Duran, Jason Weston, Oksana Yakhnenko
+Venue: NeurIPS 2013 (2013)
+Open Access URL: https://proceedings.neurips.cc/paper/2013/hash/1cecc7a77928ca34c341868755ecf581-Abstract.html
+
+Abstract:
+We consider the problem of embedding entities and relationships of multi-relational data into low-dimensional vector spaces. Our goal is to propose a canonical model which is easy to train, offers a small number of parameters and can scale up to very large databases. We introduce TransE, an energy-based model for learning low-dimensional embeddings of knowledge graphs.
+
+Summary Notes:
+This paper introduces TransE developed by Heuristics in 2013. It addresses foundational machine intelligence architectures.

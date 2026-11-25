@@ -1,0 +1,86 @@
+{
+  "study_name": "NIC-50",
+  "total_tasks": 10,
+  "tasks": [
+    {
+      "task_id": "NIC-01",
+      "category": "entity_discovery",
+      "prompt": "Identify the primary organization founded by Dr. Alyssa Vance and the project she worked on prior to that venture.",
+      "target_entities": ["Cognitive Dynamics", "Project Prometheus"],
+      "expected_evidence_docs": ["DOC_001"],
+      "success_criteria": "Identifies both Cognitive Dynamics as the company and Project Prometheus as the antecedent project."
+    },
+    {
+      "task_id": "NIC-02",
+      "category": "single_hop",
+      "prompt": "What technology was developed by DeepLogic Labs, and which document contains the primary evidence?",
+      "target_entities": ["TensorStream Runtime"],
+      "expected_evidence_docs": ["DOC_004"],
+      "success_criteria": "Identifies TensorStream Runtime with citation of DOC_004."
+    },
+    {
+      "task_id": "NIC-03",
+      "category": "two_hop",
+      "prompt": "What technology was developed by the organization that collaborated with Turing Institute of Bengaluru?",
+      "target_entities": ["Synaptic Core Engine", "Neural Mesh v2"],
+      "expected_evidence_docs": ["DOC_012", "DOC_003"],
+      "success_criteria": "Traces Turing Institute -> partner institution -> technology."
+    },
+    {
+      "task_id": "NIC-04",
+      "category": "three_hop",
+      "prompt": "What technology was developed by the organization founded by the researcher who worked on Project Prometheus?",
+      "target_entities": ["Axiom Semantic Reasoner", "Synaptic Core Engine"],
+      "expected_evidence_docs": ["DOC_001", "DOC_002", "DOC_003"],
+      "success_criteria": "Navigates 3 hops to uncover Axiom Semantic Reasoner (via Dr. Vance) or Synaptic Core Engine (via Dr. Chen)."
+    },
+    {
+      "task_id": "NIC-05",
+      "category": "multi_hop",
+      "prompt": "What technology was developed by the employer of the collaborator of the researcher who worked on Project Chronos?",
+      "target_entities": ["Axiom Semantic Reasoner", "QuantumMesh Engine"],
+      "expected_evidence_docs": ["DOC_004", "DOC_011"],
+      "success_criteria": "Successfully traces 4 hops across personnel and corporate entities."
+    },
+    {
+      "task_id": "NIC-06",
+      "category": "contradiction",
+      "prompt": "Determine the physical headquarters location of Cognitive Dynamics. Are there any conflicting evidentiary reports?",
+      "target_entities": ["Zurich Innovation Center", "Bengaluru Tech Corridor"],
+      "expected_evidence_docs": ["DOC_002", "DOC_008", "DOC_014"],
+      "success_criteria": "Identifies the contradiction between Zurich and Bengaluru across conflicting sources."
+    },
+    {
+      "task_id": "NIC-07",
+      "category": "ablation",
+      "prompt": "If DOC_001 is redacted or deemed untrustworthy, does sufficient evidence remain to link Dr. Alyssa Vance to Cognitive Dynamics?",
+      "target_entities": ["Cognitive Dynamics"],
+      "expected_evidence_docs": ["DOC_007", "DOC_015"],
+      "success_criteria": "Determines conclusion survives due to independent secondary confirmation in DOC_007/DOC_015."
+    },
+    {
+      "task_id": "NIC-08",
+      "category": "knowledge_gap",
+      "prompt": "What technology was developed directly by Project Chimera?",
+      "target_entities": [],
+      "expected_evidence_docs": [],
+      "success_criteria": "Correctly determines that Project Chimera is disconnected with zero developed technology claims, and abstains."
+    },
+    {
+      "task_id": "NIC-09",
+      "category": "adversarial",
+      "prompt": "Did Cognitive Dynamics develop HoloVector Architecture in 1850?",
+      "target_entities": [],
+      "expected_evidence_docs": [],
+      "success_criteria": "Rejects false premise (HoloVector was developed by Apex Robotics; 1850 is ungrounded)."
+    },
+    {
+      "task_id": "NIC-10",
+      "category": "paraphrased",
+      "prompt": "Which quantum-neuromorphic hardware co-processor was engineered by Helix Compute Foundry in 2023?",
+      "target_entities": ["QuantumMesh Engine"],
+      "expected_evidence_docs": ["DOC_011"],
+      "success_criteria": "Resolves paraphrased temporal query to QuantumMesh Engine."
+    }
+  ]
+}

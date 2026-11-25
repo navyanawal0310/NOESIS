@@ -1,0 +1,1687 @@
+[
+  {
+    "case_id": "NVS-010",
+    "system_name": "noesis_no_eaqc",
+    "question": "Where is Helix Compute Foundry located?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Zurich Innovation Center"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Zurich Innovation Center"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_004"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 63.59899998642504,
+    "graph_traversal_ms": 0.23520004469901323,
+    "planning_ms": 63.13990009948611,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'located' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 63.599,
+        "numerator": 63.599,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.2352,
+        "numerator": 0.2352,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 63.1399,
+        "numerator": 63.1399,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "LOCATED_IN"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": true
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:32.946377Z"
+  },
+  {
+    "case_id": "NVS-011",
+    "system_name": "noesis_no_eaqc",
+    "question": "Who was employed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Dr. Tariq Al-Mansoor"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "Dr. Tariq Al-Mansoor"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 12.075799982994795,
+    "graph_traversal_ms": 0.2120999852195382,
+    "planning_ms": 11.699000024236739,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Group' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 12.0758,
+        "numerator": 12.0758,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.2121,
+        "numerator": 0.2121,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 11.699,
+        "numerator": 11.699,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "EMPLOYED_BY"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:32.967286Z"
+  },
+  {
+    "case_id": "NVS-012",
+    "system_name": "noesis_no_eaqc",
+    "question": "What technology was developed by Qubit Dynamics Group?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QubitSync Protocol"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_qubit_dynamics",
+        "QubitSync Protocol"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_009"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 21.654599928297102,
+    "graph_traversal_ms": 0.1343999756500125,
+    "planning_ms": 21.440499927848577,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Group' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 21.6546,
+        "numerator": 21.6546,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.1344,
+        "numerator": 0.1344,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 21.4405,
+        "numerator": 21.4405,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": true,
+          "dir_ok": true
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:32.996788Z"
+  },
+  {
+    "case_id": "NVS-013",
+    "system_name": "noesis_no_eaqc",
+    "question": "What project did Dr. Daniel Kim work on?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Project Hyperion"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_daniel_kim",
+        "Project Hyperion"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_010"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 1.5210999408736825,
+    "graph_traversal_ms": 0.11559994891285896,
+    "planning_ms": 1.323999953456223,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'on' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 1.5211,
+        "numerator": 1.5211,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.1156,
+        "numerator": 0.1156,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 1.324,
+        "numerator": 1.324,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "WORKED_ON"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": true
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.003665Z"
+  },
+  {
+    "case_id": "NVS-014",
+    "system_name": "noesis_no_eaqc",
+    "question": "What technology was developed by Helix Compute Foundry in 2023?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 1.6513000009581447,
+    "graph_traversal_ms": 0.16459997277706861,
+    "planning_ms": 1.3809000374749303,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity '2023' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 1.6513,
+        "numerator": 1.6513,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.1646,
+        "numerator": 0.1646,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 1.3809,
+        "numerator": 1.3809,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": true,
+          "dir_ok": true
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.013238Z"
+  },
+  {
+    "case_id": "NVS-015",
+    "system_name": "noesis_no_eaqc",
+    "question": "Who funded Helix Compute Foundry?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_helix_foundry",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 1.2650000862777233,
+    "graph_traversal_ms": 0.14240003656595945,
+    "planning_ms": 1.0403000051155686,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Foundry' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 1.265,
+        "numerator": 1.265,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.1424,
+        "numerator": 0.1424,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 1.0403,
+        "numerator": 1.0403,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.020616Z"
+  },
+  {
+    "case_id": "NVS-025",
+    "system_name": "noesis_no_eaqc",
+    "question": "What technology was developed by the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "QuantumMesh Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "QuantumMesh Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 14.749999972991645,
+    "graph_traversal_ms": 0.0754999928176403,
+    "planning_ms": 14.62779997382313,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Moretti' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 14.75,
+        "numerator": 14.75,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0755,
+        "numerator": 0.0755,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 14.6278,
+        "numerator": 14.6278,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "EMPLOYED_BY",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.041100Z"
+  },
+  {
+    "case_id": "NVS-026",
+    "system_name": "noesis_no_eaqc",
+    "question": "Who funded the employer of Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Cygnus Systems"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Cygnus Systems"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 1.151600037701428,
+    "graph_traversal_ms": 0.08850009180605412,
+    "planning_ms": 0.9847000474110246,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Moretti' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 1.1516,
+        "numerator": 1.1516,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.0885,
+        "numerator": 0.0885,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.9847,
+        "numerator": 0.9847,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "EMPLOYED_BY",
+            "FUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.047283Z"
+  },
+  {
+    "case_id": "NVS-027",
+    "system_name": "noesis_no_eaqc",
+    "question": "What organization was founded by the researcher who collaborated with Dr. Valeria Moretti?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Dr. Alyssa Vance"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_valeria_moretti",
+        "Dr. Alyssa Vance"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_011",
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 17.86510006058961,
+    "graph_traversal_ms": 0.25370006915181875,
+    "planning_ms": 17.483400064520538,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Moretti' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 17.8651,
+        "numerator": 17.8651,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.2537,
+        "numerator": 0.2537,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 17.4834,
+        "numerator": 17.4834,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "COLLABORATED_WITH",
+            "COLLABORATED_WITH"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.073560Z"
+  },
+  {
+    "case_id": "NVS-028",
+    "system_name": "noesis_no_eaqc",
+    "question": "What technology was developed by the organization that collaborated with Nexus Advanced Research Institute?",
+    "category": "two_hop",
+    "difficulty": "medium",
+    "split": "test",
+    "predicted_entities": [],
+    "expected_entities": [
+      "Synaptic Core Engine"
+    ],
+    "is_exact_match": false,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "executed_paths": [],
+    "expected_paths": [
+      [
+        "ent_nexus_institute",
+        "Synaptic Core Engine"
+      ]
+    ],
+    "citations": [],
+    "expected_evidence": [
+      "DOC_012"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": true,
+    "expected_abstention": false,
+    "latency_ms": 2.433000016026199,
+    "graph_traversal_ms": 0.27520000003278255,
+    "planning_ms": 2.0201000152155757,
+    "llm_calls": 1,
+    "raw_response": "Insufficient evidence in the knowledge graph. A factual conclusion cannot be established. Diagnostic: Start entity 'Institute' does not exist in the knowledge graph. Cannot initiate multi-hop traversal.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 0,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 2.433,
+        "numerator": 2.433,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.2752,
+        "numerator": 0.2752,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 2.0201,
+        "numerator": 2.0201,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "COLLABORATED_WITH",
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": false,
+          "pred_ok": false,
+          "dir_ok": false
+        }
+      }
+    },
+    "timestamp": "2026-11-25T05:04:33.090349Z"
+  }
+]

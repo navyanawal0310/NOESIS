@@ -1,0 +1,386 @@
+[
+  {
+    "case_id": "NVS-001",
+    "system_name": "noesis",
+    "question": "What organization was founded by Dr. Alyssa Vance?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "dev",
+    "predicted_entities": [
+      "Cognitive Dynamics"
+    ],
+    "expected_entities": [
+      "Cognitive Dynamics"
+    ],
+    "is_exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "executed_paths": [
+      [
+        "Dr. Alyssa Vance",
+        "Cognitive Dynamics"
+      ],
+      [
+        "Dr. Alyssa Vance",
+        "Cognitive Dynamics"
+      ],
+      [
+        "Dr. Alyssa Vance",
+        "Cognitive Dynamics"
+      ]
+    ],
+    "expected_paths": [
+      [
+        "ent_alyssa_vance",
+        "Cognitive Dynamics"
+      ]
+    ],
+    "citations": [
+      "DOC_006",
+      "DOC_015",
+      "DOC_007",
+      "DOC_001"
+    ],
+    "expected_evidence": [
+      "DOC_001"
+    ],
+    "contradiction_detected": true,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 0.7731999503448606,
+    "graph_traversal_ms": 0.5455999635159969,
+    "planning_ms": 0.0,
+    "llm_calls": 0,
+    "raw_response": "Based on 1-hop evidentiary traversal from 'Dr. Alyssa Vance', the verified target entity is: Cognitive Dynamics (Confidence: 0.88). Grounding documents: [DOC_006, DOC_015, DOC_007, DOC_001]. Note: Active factual contradictions exist for one or more claims.",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 1.0,
+        "numerator": 2,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 3,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 0.7732,
+        "numerator": 0.7732,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.5456,
+        "numerator": 0.5456,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "FOUNDED"
+          ],
+          "gold": [
+            "FOUNDED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": true,
+          "pred_ok": true,
+          "dir_ok": true
+        }
+      },
+      "contradiction_precision": {
+        "name": "contradiction_precision",
+        "value": 0.0,
+        "numerator": 0,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "contradiction_recall": {
+        "name": "contradiction_recall",
+        "value": 1.0,
+        "numerator": 0,
+        "denominator": 0,
+        "sample_size": 0,
+        "details": {}
+      }
+    },
+    "timestamp": "2026-11-25T04:51:15.598931Z"
+  },
+  {
+    "case_id": "NVS-002",
+    "system_name": "noesis",
+    "question": "What technology was developed by Cognitive Dynamics?",
+    "category": "single_hop",
+    "difficulty": "easy",
+    "split": "dev",
+    "predicted_entities": [
+      "Axiom Semantic Reasoner"
+    ],
+    "expected_entities": [
+      "Axiom Semantic Reasoner"
+    ],
+    "is_exact_match": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "executed_paths": [
+      [
+        "Cognitive Dynamics",
+        "Axiom Semantic Reasoner"
+      ]
+    ],
+    "expected_paths": [
+      [
+        "ent_cognitive_dyn",
+        "Axiom Semantic Reasoner"
+      ]
+    ],
+    "citations": [
+      "DOC_015",
+      "DOC_002",
+      "DOC_001"
+    ],
+    "expected_evidence": [
+      "DOC_001",
+      "DOC_002"
+    ],
+    "contradiction_detected": false,
+    "expected_contradiction": false,
+    "abstained": false,
+    "expected_abstention": false,
+    "latency_ms": 0.47470000572502613,
+    "graph_traversal_ms": 0.2905000001192093,
+    "planning_ms": 0.0,
+    "llm_calls": 0,
+    "raw_response": "Based on 1-hop evidentiary traversal from 'Cognitive Dynamics', the verified target entity is: Axiom Semantic Reasoner (Confidence: 1.00). Grounding documents: [DOC_015, DOC_002, DOC_001].",
+    "metrics": {
+      "answer_exact_match": {
+        "name": "answer_exact_match",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "pred_count": 1,
+          "gold_count": 1
+        }
+      },
+      "entity_set_precision": {
+        "name": "entity_set_precision",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_recall": {
+        "name": "entity_set_recall",
+        "value": 1.0,
+        "numerator": 1,
+        "denominator": 1,
+        "sample_size": 1,
+        "details": {}
+      },
+      "entity_set_f1": {
+        "name": "entity_set_f1",
+        "value": 1.0,
+        "numerator": 2,
+        "denominator": 2,
+        "sample_size": 1,
+        "details": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "reasoning_path_validity": {
+        "name": "reasoning_path_validity",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "abstention_accuracy": {
+        "name": "abstention_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "end_to_end_latency": {
+        "name": "end_to_end_latency",
+        "value": 0.4747,
+        "numerator": 0.4747,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "graph_traversal_latency": {
+        "name": "graph_traversal_latency",
+        "value": 0.2905,
+        "numerator": 0.2905,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "planning_latency": {
+        "name": "planning_latency",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "llm_calls_per_query": {
+        "name": "llm_calls_per_query",
+        "value": 0.0,
+        "numerator": 0.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "start_entity_accuracy": {
+        "name": "start_entity_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "predicate_sequence_accuracy": {
+        "name": "predicate_sequence_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "predicted": [
+            "DEVELOPED"
+          ],
+          "gold": [
+            "DEVELOPED"
+          ]
+        }
+      },
+      "traversal_direction_accuracy": {
+        "name": "traversal_direction_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {}
+      },
+      "complete_query_plan_accuracy": {
+        "name": "complete_query_plan_accuracy",
+        "value": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "sample_size": 1,
+        "details": {
+          "start_ok": true,
+          "pred_ok": true,
+          "dir_ok": true
+        }
+      }
+    },
+    "timestamp": "2026-11-25T04:51:15.604319Z"
+  }
+]

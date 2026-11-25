@@ -1,0 +1,38 @@
+{
+  "PAPER_001": {
+    "title": "Attention Is All You Need",
+    "path": "datasets\\real\\documents\\paper_001_transformer.txt",
+    "sha256": "33532a3be2b3295840887a6402e5eaf08bc95c68aa7d3cb85fb26a16ee519ba8",
+    "bytes": 797
+  },
+  "PAPER_002": {
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "path": "datasets\\real\\documents\\paper_002_rag.txt",
+    "sha256": "e74d38aa0654c437268290c5f8e038c83d3ff666c3f53cbcae6b3d5e9fd2539b",
+    "bytes": 942
+  },
+  "PAPER_003": {
+    "title": "Translating Embeddings for Modeling Multi-relational Data",
+    "path": "datasets\\real\\documents\\paper_003_transe.txt",
+    "sha256": "655a07836833f5a300abc04ffc4841f0bbe085dfff82b8a4b2bc202211c37a55",
+    "bytes": 821
+  },
+  "PAPER_004": {
+    "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+    "path": "datasets\\real\\documents\\paper_004_realm.txt",
+    "sha256": "b095345ef45e110310e65b705dae1f6a9fd6feff330518573e0bb50ed4414256",
+    "bytes": 689
+  },
+  "PAPER_005": {
+    "title": "LLaMA: Open and Efficient Foundation Language Models",
+    "path": "datasets\\real\\documents\\paper_005_llama.txt",
+    "sha256": "0d095cff45043991699b0a5ea5731a0e7c6a35baaac1406027fe9ff134159263",
+    "bytes": 842
+  },
+  "PAPER_006": {
+    "title": "Deep Residual Learning for Image Recognition",
+    "path": "datasets\\real\\documents\\paper_006_resnet.txt",
+    "sha256": "78557fd99b4a018babcd69dc52bbdded163a15011ece7f51d7e91cf2397082a5",
+    "bytes": 685
+  }
+}

@@ -4,7 +4,7 @@ import json
 import logging
 import re
 import time
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from pydantic import ValidationError
 
@@ -99,6 +99,11 @@ class NLQueryPlanner:
         self.repo = repository
         self.llm_provider = llm_provider
         self.anchor_resolver = EntityAnchorResolver(repository)
+        self.plan_cache: Dict[str, Dict[str, Any]] = {}
+
+    def clear_cache(self) -> None:
+        """Clears cached query plans."""
+        self.plan_cache.clear()
 
     def plan_query(self, question: str) -> StructuredQueryPlan:
         """Translates question into a StructuredQueryPlan."""
@@ -106,12 +111,12 @@ class NLQueryPlanner:
         return plan
 
     def plan_query_with_telemetry(
-        self, question: str
-    ) -> Tuple[StructuredQueryPlan, str, Dict[str, float]]:
+        self, question: str, cache_policy: str = "enabled"
+    ) -> Tuple[StructuredQueryPlan, str, Dict[str, Any]]:
         """Translates question with EAQC mention resolution, prompt minimization, and latency telemetry.
 
         Returns:
-            Tuple of (plan, status_code, latencies)
+            Tuple of (plan, status_code, telemetry_dict)
         """
         latencies: Dict[str, float] = {
             "entity_resolution_ms": 0.0,
@@ -119,6 +124,21 @@ class NLQueryPlanner:
             "total_planning_ms": 0.0,
         }
         t_start = time.perf_counter()
+        normalized_q = question.strip().lower()
+
+        # Step 0: Check Query Plan Cache if policy allows
+        if cache_policy in ("enabled", "warm") and normalized_q in self.plan_cache:
+            cached_data = self.plan_cache[normalized_q]
+            plan = cached_data["plan"]
+            latencies["total_planning_ms"] = round((time.perf_counter() - t_start) * 1000, 2)
+            telemetry: Dict[str, Any] = {
+                **latencies,
+                "planning_route": "cached_plan",
+                "cache_hit": True,
+                "llm_calls": 0,
+                "model_id": cached_data.get("model_id"),
+            }
+            return plan, "SUCCESS", telemetry
 
         # Step 1: Deterministic Entity Mention Resolution (EAQC)
         t_ent_0 = time.perf_counter()
@@ -145,7 +165,16 @@ class NLQueryPlanner:
         pattern_plan = self._match_relational_patterns(question, anchor_res, detected_temporal)
         if pattern_plan:
             latencies["total_planning_ms"] = round((time.perf_counter() - t_start) * 1000, 2)
-            return pattern_plan, "SUCCESS", latencies
+            telemetry = {
+                **latencies,
+                "planning_route": "deterministic_pattern",
+                "cache_hit": False,
+                "llm_calls": 0,
+                "model_id": None,
+            }
+            if cache_policy != "disabled":
+                self.plan_cache[normalized_q] = {"plan": pattern_plan, "model_id": None}
+            return pattern_plan, "SUCCESS", telemetry
 
         # Step 3: Local LLM Generation with Context Reduction & Anchor Locking
         if not self.llm_provider:
@@ -162,7 +191,18 @@ class NLQueryPlanner:
         latencies["llm_planning_ms"] = round((time.perf_counter() - t_llm_0) * 1000, 2)
         latencies["total_planning_ms"] = round((time.perf_counter() - t_start) * 1000, 2)
 
-        return plan, "SUCCESS", latencies
+        model_name = getattr(self.llm_provider, "model_name", "qwen3:4b")
+        telemetry = {
+            **latencies,
+            "planning_route": "llm_generated",
+            "cache_hit": False,
+            "llm_calls": 1,
+            "model_id": model_name,
+        }
+        if cache_policy != "disabled":
+            self.plan_cache[normalized_q] = {"plan": plan, "model_id": model_name}
+
+        return plan, "SUCCESS", telemetry
 
     def _match_relational_patterns(
         self,

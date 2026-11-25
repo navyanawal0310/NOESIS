@@ -1,0 +1,541 @@
+{
+  "experiment_id": "nvs100-standard-kg-structured",
+  "config": {
+    "experiment_id": "nvs100-standard-kg-structured",
+    "system_name": "standard_kg",
+    "mode": "structured",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "all",
+    "category": "all",
+    "limit": null,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:02:02.730422Z",
+    "device_info": {}
+  },
+  "total_cases": 100,
+  "completed_cases": 100,
+  "failed_cases": 0,
+  "duration_seconds": 6.53,
+  "metrics": {
+    "answer_exact_match": {
+      "name": "answer_exact_match",
+      "value": 0.75,
+      "numerator": 75.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "entity_set_precision": {
+      "name": "entity_set_precision",
+      "value": 0.8804,
+      "numerator": 81,
+      "denominator": 92,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 92
+      }
+    },
+    "entity_set_recall": {
+      "name": "entity_set_recall",
+      "value": 0.8351,
+      "numerator": 81,
+      "denominator": 97,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 97
+      }
+    },
+    "entity_set_f1": {
+      "name": "entity_set_f1",
+      "value": 0.8571,
+      "numerator": 162,
+      "denominator": 189,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 108
+      }
+    },
+    "reasoning_path_validity": {
+      "name": "reasoning_path_validity",
+      "value": 0.42,
+      "numerator": 42.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 144
+      }
+    },
+    "abstention_accuracy": {
+      "name": "abstention_accuracy",
+      "value": 0.77,
+      "numerator": 77.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "end_to_end_latency": {
+      "name": "end_to_end_latency",
+      "value": 0.0379,
+      "numerator": 3.7904,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "graph_traversal_latency": {
+      "name": "graph_traversal_latency",
+      "value": 0.0226,
+      "numerator": 2.2598,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "planning_latency": {
+      "name": "planning_latency",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "llm_calls_per_query": {
+      "name": "llm_calls_per_query",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "start_entity_accuracy": {
+      "name": "start_entity_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "predicate_sequence_accuracy": {
+      "name": "predicate_sequence_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "traversal_direction_accuracy": {
+      "name": "traversal_direction_accuracy",
+      "value": 1.0,
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "complete_query_plan_accuracy": {
+      "name": "complete_query_plan_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 100.0,
+      "sample_size": 100,
+      "details": {
+        "total_subsamples": 100
+      }
+    },
+    "contradiction_precision": {
+      "name": "contradiction_precision",
+      "value": 1.0,
+      "numerator": 0,
+      "denominator": 0,
+      "sample_size": 14,
+      "details": {
+        "total_subsamples": 0
+      }
+    },
+    "contradiction_recall": {
+      "name": "contradiction_recall",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 14,
+      "sample_size": 14,
+      "details": {
+        "total_subsamples": 14,
+        "is_unsupported_feature": true,
+        "note": "N/A: Direct-edge standard KG topology lacks polarity and dialectical contradiction awareness."
+      }
+    },
+    "unsupported_constraint_handling": {
+      "name": "unsupported_constraint_handling",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 2,
+      "sample_size": 2,
+      "details": {
+        "total_subsamples": 2
+      }
+    }
+  },
+  "completed_at": "2026-11-25T05:02:09.304734Z",
+  "split_breakdown": {
+    "dev": {
+      "total_cases_evaluated": 60,
+      "metrics": {
+        "answer_exact_match": {
+          "name": "answer_exact_match",
+          "value": 0.75,
+          "numerator": 45.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "entity_set_precision": {
+          "name": "entity_set_precision",
+          "value": 0.8947,
+          "numerator": 51,
+          "denominator": 57,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 57
+          }
+        },
+        "entity_set_recall": {
+          "name": "entity_set_recall",
+          "value": 0.8361,
+          "numerator": 51,
+          "denominator": 61,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 61
+          }
+        },
+        "entity_set_f1": {
+          "name": "entity_set_f1",
+          "value": 0.8644,
+          "numerator": 102,
+          "denominator": 118,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 67
+          }
+        },
+        "reasoning_path_validity": {
+          "name": "reasoning_path_validity",
+          "value": 0.4167,
+          "numerator": 25.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 93
+          }
+        },
+        "abstention_accuracy": {
+          "name": "abstention_accuracy",
+          "value": 0.7667,
+          "numerator": 46.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "end_to_end_latency": {
+          "name": "end_to_end_latency",
+          "value": 0.0373,
+          "numerator": 2.2364,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "graph_traversal_latency": {
+          "name": "graph_traversal_latency",
+          "value": 0.0225,
+          "numerator": 1.3479,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "planning_latency": {
+          "name": "planning_latency",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "llm_calls_per_query": {
+          "name": "llm_calls_per_query",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "start_entity_accuracy": {
+          "name": "start_entity_accuracy",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "predicate_sequence_accuracy": {
+          "name": "predicate_sequence_accuracy",
+          "value": 1.0,
+          "numerator": 60.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "traversal_direction_accuracy": {
+          "name": "traversal_direction_accuracy",
+          "value": 1.0,
+          "numerator": 60.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "complete_query_plan_accuracy": {
+          "name": "complete_query_plan_accuracy",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 60.0,
+          "sample_size": 60,
+          "details": {
+            "total_subsamples": 60
+          }
+        },
+        "contradiction_precision": {
+          "name": "contradiction_precision",
+          "value": 1.0,
+          "numerator": 0,
+          "denominator": 0,
+          "sample_size": 10,
+          "details": {
+            "total_subsamples": 0
+          }
+        },
+        "contradiction_recall": {
+          "name": "contradiction_recall",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 10,
+          "sample_size": 10,
+          "details": {
+            "total_subsamples": 10
+          }
+        },
+        "unsupported_constraint_handling": {
+          "name": "unsupported_constraint_handling",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 2,
+          "sample_size": 2,
+          "details": {
+            "total_subsamples": 2
+          }
+        }
+      }
+    },
+    "test": {
+      "total_cases_evaluated": 40,
+      "metrics": {
+        "answer_exact_match": {
+          "name": "answer_exact_match",
+          "value": 0.75,
+          "numerator": 30.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "entity_set_precision": {
+          "name": "entity_set_precision",
+          "value": 0.8571,
+          "numerator": 30,
+          "denominator": 35,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 35
+          }
+        },
+        "entity_set_recall": {
+          "name": "entity_set_recall",
+          "value": 0.8333,
+          "numerator": 30,
+          "denominator": 36,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 36
+          }
+        },
+        "entity_set_f1": {
+          "name": "entity_set_f1",
+          "value": 0.8451,
+          "numerator": 60,
+          "denominator": 71,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 41
+          }
+        },
+        "reasoning_path_validity": {
+          "name": "reasoning_path_validity",
+          "value": 0.425,
+          "numerator": 17.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 51
+          }
+        },
+        "abstention_accuracy": {
+          "name": "abstention_accuracy",
+          "value": 0.775,
+          "numerator": 31.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "end_to_end_latency": {
+          "name": "end_to_end_latency",
+          "value": 0.0388,
+          "numerator": 1.554,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "graph_traversal_latency": {
+          "name": "graph_traversal_latency",
+          "value": 0.0228,
+          "numerator": 0.9119,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "planning_latency": {
+          "name": "planning_latency",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "llm_calls_per_query": {
+          "name": "llm_calls_per_query",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "start_entity_accuracy": {
+          "name": "start_entity_accuracy",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "predicate_sequence_accuracy": {
+          "name": "predicate_sequence_accuracy",
+          "value": 1.0,
+          "numerator": 40.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "traversal_direction_accuracy": {
+          "name": "traversal_direction_accuracy",
+          "value": 1.0,
+          "numerator": 40.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "complete_query_plan_accuracy": {
+          "name": "complete_query_plan_accuracy",
+          "value": 0.0,
+          "numerator": 0.0,
+          "denominator": 40.0,
+          "sample_size": 40,
+          "details": {
+            "total_subsamples": 40
+          }
+        },
+        "contradiction_precision": {
+          "name": "contradiction_precision",
+          "value": 1.0,
+          "numerator": 0,
+          "denominator": 0,
+          "sample_size": 4,
+          "details": {
+            "total_subsamples": 0
+          }
+        },
+        "contradiction_recall": {
+          "name": "contradiction_recall",
+          "value": 0.0,
+          "numerator": 0,
+          "denominator": 4,
+          "sample_size": 4,
+          "details": {
+            "total_subsamples": 4
+          }
+        }
+      }
+    }
+  },
+  "architectural_limitations": {
+    "contradiction_detection": "N/A: Direct-edge standard KG topology does not support edge polarity or dialectical contradiction detection.",
+    "evidence_citations": "N/A: Standard KG stores direct entity-entity triples without an evidence quotation substrate."
+  }
+}

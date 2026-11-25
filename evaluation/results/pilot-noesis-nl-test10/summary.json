@@ -1,0 +1,165 @@
+{
+  "experiment_id": "pilot-noesis-nl-test10",
+  "config": {
+    "experiment_id": "pilot-noesis-nl-test10",
+    "system_name": "noesis",
+    "mode": "natural",
+    "corpus_id": "SYNTHETIC-CORPUS-V2",
+    "split": "test",
+    "category": "all",
+    "limit": 10,
+    "resume": false,
+    "cache_policy": "use_cache",
+    "timestamp": "2026-11-25T05:04:02.065143Z",
+    "device_info": {}
+  },
+  "total_cases": 10,
+  "completed_cases": 10,
+  "failed_cases": 0,
+  "duration_seconds": 0.4,
+  "metrics": {
+    "answer_exact_match": {
+      "name": "answer_exact_match",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "entity_set_precision": {
+      "name": "entity_set_precision",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 0
+      }
+    },
+    "entity_set_recall": {
+      "name": "entity_set_recall",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "entity_set_f1": {
+      "name": "entity_set_f1",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "reasoning_path_validity": {
+      "name": "reasoning_path_validity",
+      "value": 0.0,
+      "numerator": 0,
+      "denominator": 10,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "abstention_accuracy": {
+      "name": "abstention_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "end_to_end_latency": {
+      "name": "end_to_end_latency",
+      "value": 33.818,
+      "numerator": 338.1805,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "graph_traversal_latency": {
+      "name": "graph_traversal_latency",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "planning_latency": {
+      "name": "planning_latency",
+      "value": 33.818,
+      "numerator": 338.1805,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "llm_calls_per_query": {
+      "name": "llm_calls_per_query",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "start_entity_accuracy": {
+      "name": "start_entity_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "predicate_sequence_accuracy": {
+      "name": "predicate_sequence_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "traversal_direction_accuracy": {
+      "name": "traversal_direction_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    },
+    "complete_query_plan_accuracy": {
+      "name": "complete_query_plan_accuracy",
+      "value": 0.0,
+      "numerator": 0.0,
+      "denominator": 10.0,
+      "sample_size": 10,
+      "details": {
+        "total_subsamples": 10
+      }
+    }
+  },
+  "completed_at": "2026-11-25T05:04:02.475698Z",
+  "status": "infrastructure_failed",
+  "reason": "Local LLM provider (Ollama qwen3:4b) was offline/unavailable during execution. Cases aborted at planning phase before traversal."
+}

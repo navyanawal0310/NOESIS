@@ -1,0 +1,11 @@
+case_id,system_name,category,split,difficulty,is_exact_match,precision,recall,f1,predicted_entities,expected_entities,contradiction_detected,expected_contradiction,abstained,expected_abstention,latency_ms,graph_traversal_ms,planning_ms,llm_calls
+NVS-010,rag,single_hop,test,easy,False,0.0,0.0,0.0,QuantumMesh Engine,Zurich Innovation Center,False,False,False,False,20.27,0.0,0.19,1
+NVS-011,rag,single_hop,test,easy,False,0.0,0.0,0.0,Cognitive Dynamics,Dr. Tariq Al-Mansoor,False,False,False,False,20.03,0.0,0.46,1
+NVS-012,rag,single_hop,test,easy,False,0.0,0.0,0.0,Cognitive Dynamics,QubitSync Protocol,False,False,False,False,17.3,0.0,0.48,1
+NVS-013,rag,single_hop,test,easy,False,0.0,0.0,0.0,HoloVector Architecture,Project Hyperion,False,False,False,False,13.75,0.0,0.48,1
+NVS-014,rag,single_hop,test,easy,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,17.13,0.0,0.44,1
+NVS-015,rag,single_hop,test,easy,False,0.0,0.0,0.0,QuantumMesh Engine,Cygnus Systems,False,False,False,False,23.37,0.0,0.43,1
+NVS-025,rag,two_hop,test,medium,True,1.0,1.0,1.0,QuantumMesh Engine,QuantumMesh Engine,False,False,False,False,23.93,0.0,0.38,1
+NVS-026,rag,two_hop,test,medium,False,0.0,0.0,0.0,QuantumMesh Engine,Cygnus Systems,False,False,False,False,24.04,0.0,0.37,1
+NVS-027,rag,two_hop,test,medium,False,0.0,0.0,0.0,QuantumMesh Engine,Dr. Alyssa Vance,False,False,False,False,24.75,0.0,0.34,1
+NVS-028,rag,two_hop,test,medium,False,0.0,0.0,0.0,QuantumMesh Engine,Synaptic Core Engine,False,False,False,False,14.25,0.0,0.42,1

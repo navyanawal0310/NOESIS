@@ -3,7 +3,7 @@
 import time
 from typing import Dict, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from backend.app.llm.base import BaseLLMProvider, LLMUnavailableError
 from backend.app.reasoning.gap_detector import KnowledgeGap, KnowledgeGapDetector
@@ -12,6 +12,8 @@ from backend.app.reasoning.models import ReasoningResult, StructuredQueryPlan
 
 class GroundedAnswer(BaseModel):
     """Provenance-backed answer synthesized strictly from verified graph evidence."""
+
+    model_config = ConfigDict(protected_namespaces=())
 
     answer: str
     status: str
@@ -28,6 +30,10 @@ class GroundedAnswer(BaseModel):
     status_code: str = "SUCCESS"
     executed_plan: Optional[StructuredQueryPlan] = None
     latencies: Dict[str, float] = Field(default_factory=dict)
+    planning_route: Optional[str] = "deterministic_pattern"
+    cache_hit: bool = False
+    llm_calls: int = 0
+    model_id: Optional[str] = None
 
 
 class GroundedAnswerGenerator:
@@ -45,6 +51,10 @@ class GroundedAnswerGenerator:
         gap_detector: Optional[KnowledgeGapDetector] = None,
         status_code: Optional[str] = None,
         latencies: Optional[Dict[str, float]] = None,
+        planning_route: Optional[str] = None,
+        cache_hit: bool = False,
+        llm_calls: int = 0,
+        model_id: Optional[str] = None,
     ) -> GroundedAnswer:
         """Synthesizes a grounded answer from reasoning results and evidence quotations."""
         start_time = time.perf_counter()
@@ -81,6 +91,10 @@ class GroundedAnswerGenerator:
                 execution_time_ms=round(elapsed + result.execution_time_ms, 2),
                 executed_plan=plan,
                 latencies=latencies_dict,
+                planning_route=planning_route or "deterministic_pattern",
+                cache_hit=cache_hit,
+                llm_calls=llm_calls,
+                model_id=model_id,
             )
 
         # Extract verified facts
@@ -150,6 +164,9 @@ class GroundedAnswerGenerator:
 
         resolved_status_code = status_code or ("CONTRADICTION_DETECTED" if has_contradictions else "SUCCESS")
 
+        total_llm_calls = llm_calls + (1 if synthesized_by_llm else 0)
+        active_model_id = model_id or (getattr(self.llm_provider, "model_name", None) if synthesized_by_llm else None)
+
         return GroundedAnswer(
             answer=final_answer,
             status=result.status,
@@ -166,4 +183,8 @@ class GroundedAnswerGenerator:
             execution_time_ms=round(elapsed + result.execution_time_ms, 2),
             executed_plan=plan,
             latencies=latencies_dict,
+            planning_route=planning_route or ("llm_generated" if synthesized_by_llm else "deterministic_pattern"),
+            cache_hit=cache_hit,
+            llm_calls=total_llm_calls,
+            model_id=active_model_id,
         )

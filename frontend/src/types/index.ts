@@ -206,6 +206,10 @@ export interface GroundedAnswer {
   gap_diagnostics?: KnowledgeGap;
   synthesized_by_llm: boolean;
   execution_time_ms: number;
+  planning_route?: 'deterministic_pattern' | 'cached_plan' | 'llm_generated' | 'unresolved' | string;
+  cache_hit?: boolean;
+  llm_calls?: number;
+  model_id?: string | null;
 }
 
 export interface DocumentUploadResponse {

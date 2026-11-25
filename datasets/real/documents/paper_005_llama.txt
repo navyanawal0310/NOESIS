@@ -1,0 +1,10 @@
+Title: LLaMA: Open and Efficient Foundation Language Models
+Authors: Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothee Lacroix, Baptiste Roziere, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, Guillaume Lample
+Venue: arXiv preprint (2023)
+Open Access URL: https://arxiv.org/abs/2302.13971
+
+Abstract:
+We introduce LLaMA, a collection of foundation language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets.
+
+Summary Notes:
+This paper introduces LLaMA developed by Open-Source LLMs in 2023. It addresses foundational machine intelligence architectures.
