@@ -1,0 +1,99 @@
+{
+  "corpus_name": "NOESIS-REAL-CORPUS-V1",
+  "description": "Curated collection of seminal open-access scientific papers in deep learning, Transformers, Knowledge Graphs, and RAG for real-world pilot evaluation.",
+  "papers": [
+    {
+      "paper_id": "PAPER_001",
+      "title": "Attention Is All You Need",
+      "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Lukasz Kaiser", "Illia Polosukhin"],
+      "year": 2017,
+      "venue": "NeurIPS 2017",
+      "doi_or_arxiv": "arXiv:1706.03762",
+      "open_access_url": "https://arxiv.org/abs/1706.03762",
+      "file_path": "datasets/real/documents/paper_001_transformer.txt",
+      "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+      "key_entities": ["Transformer", "Self-Attention", "Multi-Head Attention", "Google Brain", "Google Research"],
+      "key_claims": [
+        {"subject": "Transformer", "predicate": "USES", "object": "Multi-Head Attention", "polarity": "affirmed"},
+        {"subject": "Google Brain", "predicate": "DEVELOPED", "object": "Transformer", "polarity": "affirmed"}
+      ]
+    },
+    {
+      "paper_id": "PAPER_002",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "authors": ["Patrick Lewis", "Ethan Perez", "Aleksandra Piktus", "Fabio Petroni", "Vladimir Karpukhin", "Naman Goyal", "Heinrich Kuttler", "Mike Lewis", "Wen-tau Yih", "Tim Rocktaschel", "Sebastian Riedel", "Douwe Kiela"],
+      "year": 2020,
+      "venue": "NeurIPS 2020",
+      "doi_or_arxiv": "arXiv:2005.11401",
+      "open_access_url": "https://arxiv.org/abs/2005.11401",
+      "file_path": "datasets/real/documents/paper_002_rag.txt",
+      "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited. In this work, we explore retrieval-augmented generation (RAG) models, which combine pre-trained parametric memory with non-parametric neural retrieval.",
+      "key_entities": ["Retrieval-Augmented Generation", "DPR", "BART", "Facebook AI Research"],
+      "key_claims": [
+        {"subject": "Retrieval-Augmented Generation", "predicate": "USES", "object": "DPR", "polarity": "affirmed"},
+        {"subject": "Facebook AI Research", "predicate": "DEVELOPED", "object": "Retrieval-Augmented Generation", "polarity": "affirmed"}
+      ]
+    },
+    {
+      "paper_id": "PAPER_003",
+      "title": "Translating Embeddings for Modeling Multi-relational Data",
+      "authors": ["Antoine Bordes", "Nicolas Usunier", "Alberto Garcia-Duran", "Jason Weston", "Oksana Yakhnenko"],
+      "year": 2013,
+      "venue": "NeurIPS 2013",
+      "doi_or_arxiv": "NeurIPS-2013-5071",
+      "open_access_url": "https://proceedings.neurips.cc/paper/2013/hash/1cecc7a77928ca34c341868755ecf581-Abstract.html",
+      "file_path": "datasets/real/documents/paper_003_transe.txt",
+      "abstract": "We consider the problem of embedding entities and relationships of multi-relational data into low-dimensional vector spaces. Our goal is to propose a canonical model which is easy to train, offers a small number of parameters and can scale up to very large databases. We introduce TransE, an energy-based model for learning low-dimensional embeddings of knowledge graphs.",
+      "key_entities": ["TransE", "Knowledge Graph Embedding", "Energy-Based Models", "Heuristics"],
+      "key_claims": [
+        {"subject": "Antoine Bordes", "predicate": "DEVELOPED", "object": "TransE", "polarity": "affirmed"}
+      ]
+    },
+    {
+      "paper_id": "PAPER_004",
+      "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+      "authors": ["Kelvin Guu", "Kenton Lee", "Zora Tung", "Panupong Pasupat", "Ming-Wei Chang"],
+      "year": 2020,
+      "venue": "ICML 2020",
+      "doi_or_arxiv": "arXiv:2002.08909",
+      "open_access_url": "https://arxiv.org/abs/2002.08909",
+      "file_path": "datasets/real/documents/paper_004_realm.txt",
+      "abstract": "Language model pre-training has been shown to capture a substantial amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network. We present REALM, which augments language models with a learned neural knowledge retriever.",
+      "key_entities": ["REALM", "Neural Knowledge Retriever", "Masked Language Model", "Google Research"],
+      "key_claims": [
+        {"subject": "Google Research", "predicate": "DEVELOPED", "object": "REALM", "polarity": "affirmed"}
+      ]
+    },
+    {
+      "paper_id": "PAPER_005",
+      "title": "LLaMA: Open and Efficient Foundation Language Models",
+      "authors": ["Hugo Touvron", "Thibaut Lavril", "Gautier Izacard", "Xavier Martinet", "Marie-Anne Lachaux", "Timothee Lacroix", "Baptiste Roziere", "Naman Goyal", "Eric Hambro", "Faisal Azhar", "Aurelien Rodriguez", "Armand Joulin", "Edouard Grave", "Guillaume Lample"],
+      "year": 2023,
+      "venue": "arXiv preprint",
+      "doi_or_arxiv": "arXiv:2302.13971",
+      "open_access_url": "https://arxiv.org/abs/2302.13971",
+      "file_path": "datasets/real/documents/paper_005_llama.txt",
+      "abstract": "We introduce LLaMA, a collection of foundation language models ranging from 7B to 65B parameters. We train our models on trillions of tokens, and show that it is possible to train state-of-the-art models using publicly available datasets exclusively, without resorting to proprietary and inaccessible datasets.",
+      "key_entities": ["LLaMA", "Foundation Models", "Meta AI", "Open-Source LLMs"],
+      "key_claims": [
+        {"subject": "Meta AI", "predicate": "DEVELOPED", "object": "LLaMA", "polarity": "affirmed"}
+      ]
+    },
+    {
+      "paper_id": "PAPER_006",
+      "title": "Deep Residual Learning for Image Recognition",
+      "authors": ["Kaiming He", "Xiangyu Zhang", "Shaoqing Ren", "Jian Sun"],
+      "year": 2016,
+      "venue": "CVPR 2016",
+      "doi_or_arxiv": "arXiv:1512.03385",
+      "open_access_url": "https://arxiv.org/abs/1512.03385",
+      "file_path": "datasets/real/documents/paper_006_resnet.txt",
+      "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions.",
+      "key_entities": ["ResNet", "Residual Learning", "Microsoft Research", "Deep Convolutional Networks"],
+      "key_claims": [
+        {"subject": "Microsoft Research", "predicate": "DEVELOPED", "object": "ResNet", "polarity": "affirmed"},
+        {"subject": "Kaiming He", "predicate": "EMPLOYED_BY", "object": "Microsoft Research", "polarity": "affirmed"}
+      ]
+    }
+  ]
+}

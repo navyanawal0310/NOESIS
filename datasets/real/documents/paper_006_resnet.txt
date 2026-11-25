@@ -1,0 +1,10 @@
+Title: Deep Residual Learning for Image Recognition
+Authors: Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+Venue: CVPR 2016 (2016)
+Open Access URL: https://arxiv.org/abs/1512.03385
+
+Abstract:
+Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions.
+
+Summary Notes:
+This paper introduces ResNet developed by Deep Convolutional Networks in 2016. It addresses foundational machine intelligence architectures.
