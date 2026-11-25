@@ -1,0 +1,15 @@
+{
+  "status": "pending_human_execution",
+  "study_name": "NIC-50",
+  "participants_planned": 5,
+  "tasks_per_participant": 10,
+  "total_planned_trials": 50,
+  "conditions": [
+    "noesis_assisted",
+    "manual_unassisted"
+  ],
+  "protocol_file": "C:\\Users\\HP V\\OneDrive\\Documents\\GitHub\\NOESIS\\evaluation\\human_study\\protocol.md",
+  "tasks_file": "C:\\Users\\HP V\\OneDrive\\Documents\\GitHub\\NOESIS\\evaluation\\human_study\\tasks.json",
+  "template_file": "C:\\Users\\HP V\\OneDrive\\Documents\\GitHub\\NOESIS\\evaluation\\human_study\\results_template.csv",
+  "results_collected": 0
+}
