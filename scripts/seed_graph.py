@@ -7,6 +7,7 @@ validating entity uniqueness, deterministic fingerprints, and evidence quotation
 import logging
 import sys
 from pathlib import Path
+from typing import Any, Optional
 
 # Ensure workspace root is in sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -19,9 +20,10 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger("noesis.scripts.seed")
 
 
-def seed_database(clear_existing: bool = True) -> dict:
-    """Seeds the active graph repository idempotently."""
-    repo = get_graph_repository()
+def seed_database(clear_existing: bool = True, repo: Optional[Any] = None) -> dict:
+    """Seeds the active or provided graph repository idempotently."""
+    if repo is None:
+        repo = get_graph_repository()
     logger.info("Initializing graph seed against storage mode: %s", repo.get_storage_mode())
 
     if clear_existing:
